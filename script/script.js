@@ -4,7 +4,7 @@ class Achivement {
             {
                 'title': "Startups Incubated",
                 'value': 10,
-                'description': 'Startups Incubated',
+                 'description': 'Startups Incubated',
                 'icon': 'https://img.freepik.com/premium-vector/business-incubator-businesspeople-investors-supporting-new-businesses-money-professional-assistance-start-up-project-flat-vector-illustration_277904-23829.jpg?w=740',
             },
             {
