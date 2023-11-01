@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Team Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+</head>
+<body>
+    <form action="" id="form2">
+        <h3>START-UP COMPANY EVALUATION SHEET</h3>
+        <h2>Team Details</h2>
+        <label for="add-team-member" style="display: flex; align-items: center;">
+            Details of all Team Members
+            <i class="fas fa-plus" id="add-member-icon" style="cursor: pointer;"></i>
+        </label>
+
+        <div id="team-members">
+            <div class="team-member">
+                <input type="text" name="member_name" placeholder="Team member name">
+                <input type="number" name="member_number" placeholder="Team member mobile number">
+                <input type="email" name="member_email" placeholder="Team member email id">
+            </div>
+        </div>
+
+        <div class="btn_next">
+            <button type="button" id="back1">Back</button>
+            <button type="button" id="next2">Next</button>
+        </div>
+    </form>
+
+    <script>
+        const addMemberIcon = document.getElementById('add-member-icon');
+        const teamMembersContainer = document.getElementById('team-members');
+
+        addMemberIcon.addEventListener('click', function() {
+            const newTeamMember = document.createElement('div');
+            newTeamMember.innerHTML = `
+                <input type="text" name="member_name" placeholder="Team member name">
+                <input type="number" name="member_number" placeholder="Team member mobile number">
+                <input type="email" name="member_email" placeholder="Team member email id">
+            `;
+            teamMembersContainer.appendChild(newTeamMember);
+        });
+    </script>
+</body>
+</html>

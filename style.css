@@ -1,0 +1,151 @@
+
+:root {
+    --theme_color1: #1e90ff;
+    --theme_color2: #ffffff;
+    --font: black;
+  }
+
+body{
+    background: #9DA2A1;
+}
+.container{
+    width: 38vw;
+    height: 90vh;
+    margin: 2% auto;
+    background: var(--theme_color2);
+    border-radius: 5px;
+    position: relative;
+    padding: 0.2rem;
+    overflow: hidden;
+}
+
+.container h3{
+    text-align: center;
+    margin-bottom: 0.8rem;
+    color:var(--font);
+}
+.container h2{
+    text-align: center;
+    margin-top: 0.1rem;
+    margin-bottom: 1rem;
+    color:var(--font);
+}
+
+.container form{
+    width: 70vh;
+    height: 85vh;
+    position: absolute;
+    padding: 0.3rem;
+    padding-top: 2rem;
+    transition: 0.5s;
+
+}
+
+form input{
+    width: 100%;
+    padding: 10px 5px;
+    margin: 5px 0;
+    border: 0;
+    border-bottom: 1px solid #999;
+    outline:none;
+    background: transparent;
+}
+
+::placeholder{
+    color: #1e90ff;
+}
+
+.btn_next{
+    width: 100%;
+    margin: 30px auto;
+    text-align: center;
+}
+
+form button{
+    width: 110px;
+    height: 35px;
+    margin: 0 10px;
+    background: var(--font);
+    border-radius: 30px;
+    border: 0;
+    outline: none;
+    color: #ffffff;
+    cursor: pointer;
+
+}
+
+/* info icon */
+.input-container {
+    position: relative;
+  }
+  
+  .info-icon {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+  .info-icon::before {
+    content: "";
+    position: absolute;
+    width: 200px;
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.5;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in;
+    z-index: 1;
+    text-align: left;
+  }
+  
+  .info-icon:hover::before {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+
+/* ifo icon closing */
+
+#form2, #form3, #form4, #form5{
+    left: 30rem; 
+}
+
+.step_row{
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    align-items: center ;
+    box-shadow: 0 -1px 5px -1px #000;
+    position: relative;
+}
+
+.step_col{
+    flex: 1;
+    text-align: center;
+    color: #333;
+    position: relative;
+
+}
+
+#progress{
+    position: absolute;
+    height: 100% ;
+    background: #1e90ff;
+    transition: 1s;
+}
+
+#progress::after{
+    content: '';
+    height: 0;
+    width: 0;
+    position: absolute;
+    top:0;
+    
+}

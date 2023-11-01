@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Registration</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="script.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+
+</head>
+<body>
+    <div class="container">
+        <form action="" id="form1">
+            <h3>START-UP COMPANY EVALUATION SHEET</h3>
+            <p>Carefully answer all the questions below. Your company's potential will be evaluated based on your answers.</p>
+
+            <input type="text" name="" id="Team_name" placeholder="Startup/Team name" required>
+            <input type="mail" name="" id="mail" placeholder="leader's Email" required>
+            <input type="number" name="" id="mob_number" placeholder="leader's Number" required>
+
+            <label for="company_registered">Is your Company registered?</label required>
+            <input type="radio" id="yes" name="company_registered" value="Yes">
+            <label for="Yes">Yes</label><br>
+            <input type="radio" id="No" name="company_registered" value="No">
+            <label for="No">No</label>
+            <input type="text" placeholder="Enter your NSUT Roll Number" required>
+
+            <div class="btn_next">
+                <button type="button" id="next1">Next</button>
+            </div>
+
+        </form>
+
+
+        <form action="" id="form2">
+            <h3>START-UP COMPANY EVALUATION SHEET</h3>
+            <h2>Team Details</h2>
+            <label for="add-team-member" style="display: flex; align-items: center;">
+                Details of all Team Members
+                <i class="fas fa-plus" id="add-member-icon" style="cursor: pointer;"></i>
+            </label>
+    
+            <div id="team-members">
+                <div class="team-member">
+                    <input type="text" name="member_name" placeholder="Team member name">
+                    <input type="number" name="member_number" placeholder="Team member mobile number">
+                    <input type="email" name="member_email" placeholder="Team member email id">
+                </div>
+            </div>
+    
+            <div class="btn_next">
+                <button type="button" id="back1">Back</button>
+                <button type="button" id="next2">Next</button>
+            </div>
+
+        </form>
+
+        <form action="" id="form3">
+            <h3>START-UP COMPANY EVALUATION SHEET</h3>
+            <h2>Startup Details</h2>
+            <label for="">What is the stage of your startup</label>
+            <select id="stage_of_startup">
+                <option value="apple">Ideation Stage</option>
+                <option value="banana">Prototype Stage (PoC i.e. Proof of Concept Validated</option>
+                <option value="cherry">MVP Stage i.e. Minimum Viable Product/ Proposition (Pre-Revenue)</option>
+                <option value="date">Seed Stage (Early Revenue)</option>
+                <option value="grape">Product Market Fit (Validation Stage)</option>
+                <option value="grape">Go-to-Market Stage (Scale-up)</option>
+                <option value="grape">Growth Stage (Expansion)</option>
+            </select>
+
+            <br><label for="">Business Type:</label>
+            <select id="Business_type">
+                <option value="apple">B2C i.e. Business to Consumer</option>
+                <option value="banana">B2B i.e. Business to Business</option>
+                <option value="cherry">B2G i.e. Business to Government</option>
+                <option value="cherry">D2C i.e. Direct to Consumer</option>
+            </select>
+
+            <br><label for="">Is your product/service a </label>
+            <select id="Business_type">
+                <option value="apple">Nice to Have</option>
+                <option value="banana">Must Have</option>
+            </select>
+
+
+            <br><label for="">Is your solution: </label>
+            <select id="Business_type">
+                <option value="apple">Globally Scalable Solution</option>
+                <option value="banana">Only for Indian Audience</option>
+            </select>
+
+            
+
+           
+            <div class="btn_next">
+                <button type="button" id="back2">Back</button>
+                <button type="button" id="next3">Next</button>
+            </div>
+
+        </form> 
+
+
+        <form action="" id="form4">
+            <h3>START-UP COMPANY EVALUATION SHEET</h3>
+            <h2>Startup Details</h2>
+            <input type="text" name="" id="member_name" placeholder="What is the problem you are trying to solve?">
+            <input type="text" name="" id="member_name" placeholder="Briefly explain your idea in less than 500 characters.">
+            <input type="text" name="" id="member_name" placeholder="In what ways is your solution better than the available alternatives, i.e., is it cheaper, easier, or faster, etc.?">
+            <input type="text" name="" id="member_name" placeholder="What is the total market size of your targeted sector?">
+            <input type="text" name="" id="member_name" placeholder="What is your Go-To-Market strategy?">
+            <input type="text" name="" id="member_name" placeholder="How do you plan on acquiring customer and have you figured out your customer acquisition cost (CAC)?">
+            <div class="input-container">
+            <input type="text" id="inputField" name="inputField" placeholder="What are your Unit Economics?">
+            <div class="info-icon" title="(e.g. How much does it cost to make your solution and how much are you selling it for?)"><i class="fas fa-info-circle"></i></div>
+            </div>
+           
+            <div class="btn_next">
+                <button type="button" id="back3">Back</button>
+                <button type="button" id="next4">Next</button>
+            </div>
+
+        </form>
+
+
+        <form action="" id="form5">
+            <h3>START-UP COMPANY EVALUATION SHEET</h3>
+            <h2>Startup Details</h2>
+            <label for="">Is the product defensible or patentable?</label>
+            <select id="patentable">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <input type="text" name="" id="member_name" placeholder="Are there any large companies in this domain having a significant hold on this market? if yes, name them:">
+            <input type="text" name="" id="member_name" placeholder="Mention the uniqueness of your team members and what role do they play in scaling up your business.">
+            <input type="text" name="" id="member_name" placeholder="How much funds are you seeking from NSUT IIF and how do you plan on utilizing those funds?">
+            <label for="presentation">Share your company presentation:</label><input type="file" id="presentation" name="presentation">
+            <label for="">Have you prepared a business model/financial model?</label>
+            <select id="Business_model">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <br><br><label for="cash_flow_statement">If yes, attach your cash flow statement and projected sales sheet:</label><input type="file" id="cash_flow_statement" name="cash_flow_statement">
+           
+            <div class="btn_next">
+                <button type="button" id="back4">Back</button>
+                <button type="submit" id="next5">Submit</button>
+            </div>
+
+        </form>
+
+        <div class="step_row">
+            <div id="progress"></div>
+            <div class="step_col">Step 1</div>
+            <div class="step_col">Step 2</div>
+            <div class="step_col">Step 3</div>
+            <div class="step_col">Step 4</div>
+            <div class="step_col">Step 5</div>
+        </div>
+
+
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
