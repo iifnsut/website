@@ -1,0 +1,412 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+html, body{
+    height: 100%;
+    color: #fff;
+    /* background-color: rgba(0, 0, 0, 0.381); */
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+#top{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 4vh;
+    background-color: rgba(99, 0, 0, 0.808);
+}
+
+#left-top{
+    padding-left: 50px;
+    font-size: small;
+    gap: 4px;
+    display: flex;
+    font-weight : lighter;
+    align-items: center;
+}
+
+#left-top img{
+    height: 35px;
+    width: 26px;
+}
+
+#right-top{
+    padding-right: 60px;
+    gap: 10px;
+    display: flex;
+}
+
+.logo{
+    opacity: 0.9;
+    height: 4vh;
+    width: 3vw;
+    cursor: pointer;
+}
+
+.logo:hover{
+    opacity: 1;
+}
+
+#nav{
+    width: 100%;
+    height: 80px;
+    background-color: #fff;
+    z-index: 1000;
+    position: sticky;
+}
+
+#nav img{
+    margin-left: 20px;
+    margin-top: 10px;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+
+#nav ul {
+    float: right;
+    margin-right: 20px;
+}
+
+#nav ul li{
+    display: inline-block;
+    line-height: 50px;
+    margin: 0 5px;
+    text-align: center;
+}
+
+#nav ul li a{
+    text-align: center;
+    color: #000;
+    font-size: 20px;
+    text-align: center;
+    padding: 7px 8px;
+    border-radius: 6%;
+}
+
+a.active, a:hover{
+    background: #1b9bff;
+    transition: .5s;
+}
+
+#navcheck{
+    display: none;
+}
+
+.checkbtn{
+    float: right;
+    display: none;
+    margin-right: 30px;
+    /* line-height: 80px; */
+    cursor: pointer;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#slider{
+    overflow: hidden;
+    cursor: pointer;
+    height: 70vh;
+    display: flex;
+    width: 100vw;
+    white-space: nowrap;
+    position: relative;
+}
+
+#slider::before{
+    position: absolute;
+    width: 6vw;
+    height: 70vh;
+    left: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0),rgba(255, 255, 255, 0.347));
+    content: "";
+    z-index: 1;
+}
+
+#slider::after{
+    position: absolute;
+    width: 6vw;
+    right: 0;
+    height: 70vh;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0),rgba(255, 255, 255, 0.347));
+    content: "";
+    z-index: 1;
+}
+
+#slides{
+    display: flex;
+    animation: marquee 30s infinite linear;
+}
+
+@keyframes marquee {
+    0%{
+        transform: translateX(0);
+    } 100% {
+        transform: translateX(-100%);
+    }
+}
+
+.slide{
+    height: 70vh;
+    width: 80vw;
+}
+
+#slider:hover #slides{
+    animation-play-state: paused;
+}
+
+img:hover{
+    transform: translateZ(20px);
+}
+
+#page2{
+    background-color:  #9da2a19f;
+    height: 60vh;
+    width: 100vw;
+}
+
+#page2 h3{
+    font-size: 70px;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: black;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding-top: 4vh;
+    text-align: center;
+} 
+
+#about-us{
+    height: 40vh;
+    width: 100vw;
+    /* background-color: red; */
+    display: flex;
+    padding: 0 50px;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    justify-content: space-around;
+} 
+
+#about-us img{
+    height: 210px;
+    width: 210px;
+    border-radius: 40px;
+    object-fit: cover;
+} 
+
+#aboutus{
+    position: relative;
+    width: 50%;
+    text-align: center;
+}
+
+#aboutus p{
+    text-wrap: wrap;
+    text-align: center;
+    color: #000;
+    font-size: 20px;
+    line-height: 26px;
+}
+
+#show{
+    display: none;
+    text-align: center;
+}
+
+label{
+    background: rgba(0, 255, 255, 0.582);
+    border-radius: 5px;
+    padding: 5px 5px;
+    margin: 4px 4px;
+    display: inline-block;
+    cursor: pointer;
+    margin: 20px 0;
+}
+
+label:hover{
+    background: rgba(0, 255, 255, 0.800);
+}
+
+button{
+    background: rgba(0, 255, 255, 0.5);
+    border-radius: 5px;
+    color: #fff;
+    padding: 6px 15px;
+    margin: 4px 4px;
+    display: inline-block;
+    cursor: pointer;
+    margin: 20px 0;
+}
+
+button:hover{
+    background: rgba(0, 255, 255, 0.800);
+}
+
+#more{
+    display: none;
+}
+
+#show:checked ~ #more{
+    display: block;
+}
+
+#show:checked ~ label{
+    display: none;
+}
+
+@media (max-width: 1000px) {
+    #nav ul li a{
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 920px) {
+    #top{
+        height: 6vh;
+    }
+
+    #left-top{
+        margin: auto;
+        padding: 0 10px;
+    }
+
+    #left-top h1{
+        font-size: small;
+    }
+
+    #right-top{
+        display: none;
+    }
+
+    .checkbtn{
+        display: block;
+    }
+
+    #nav img{
+        margin-top: 16px;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+    }
+
+    ul{
+        margin-top: 27px;
+        position: fixed;
+        width: 100%;
+        height: 90vh;
+        background: #5d8bb8;
+        top: 80px;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
+        position: fixed;
+        z-index: 2;
+    }
+
+    #nav ul li{
+
+        font-weight: 800;
+        display: block;
+        margin: 35px 0;
+        line-height: 50px;
+    }
+
+    nav ul li a{
+        color: white;
+        font-size: 20px;
+    }
+
+    a:hover, a.active{
+        background: none;
+    }
+
+    #navcheck:checked ~ ul{
+        left: 0;
+    }
+
+    #page2{
+        height: 70vh;
+        justify-content: center;
+    }
+    
+    #page2 h3{
+        font-size: 55px;
+    }
+
+    #aboutus{
+        text-wrap: wrap;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding-right: 15px;
+    }
+}
+
+@media (max-width: 625px) {
+    #slider{
+        height: 50vh;
+        width: 100vw;
+    }
+
+    .slide{
+        height: 50vh;
+        width: 80vw;
+    }
+
+    #page2{
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100vw;
+    }
+
+    #page2 h3{
+        font-size: 50px;
+    }
+
+    #about-us{
+        margin-top: 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+    }
+
+    #about-us img{
+        height: 150px;
+        width: 150px;
+    } 
+
+    #aboutus{
+        margin-top: 20px;
+        width: 100%;
+        text-align: center;
+        text-wrap: wrap;
+    }
+
+    #aboutus p{
+        font-size: medium;
+        text-align: center;
+        padding-right: 15%;
+    }
+}
+
+@media (max-width:375px) {
+    #page2{
+        height: 100vh;
+    }
+}
