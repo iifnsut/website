@@ -26,6 +26,7 @@
 8.  Use classes for css and use hyphen-delimited strings to name them
 9.  Follow the BEM convention
 10. Always put code to first-branch (no need to fork)
+11. Use the code that has been already uploaded if possible, modify it if it doesn't mess up the previous code.
 
 ### Tailwind breakpoints:
 
