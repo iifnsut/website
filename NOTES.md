@@ -25,6 +25,7 @@
 7.  Use IDs for JS and use hyphen-delimited strings to name them
 8.  Use classes for css and use hyphen-delimited strings to name them
 9.  Follow the BEM convention
+10. Always put code to first-branch (no need to fork)
 
 ### Tailwind breakpoints:
 
