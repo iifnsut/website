@@ -278,3 +278,187 @@ $(document).ready(function () {
     );
   });
 });
+
+
+
+
+//Section 8(Offerings and Collaborations) JS
+//Collaboration Container
+const carousel1 = document.querySelector(".collaboration-carousel");
+firstImg = carousel1.querySelectorAll("img")[0];
+arrowIcons = document.querySelectorAll(".collaboration-wrapper i");
+
+let isDragStart1 = false, isDragging1 = false, prevPageX, prevScrollLeft, positionDiff;
+
+
+
+
+const showHideIcons = () => {
+    // getting max scrollable width
+    let scrollWidth = carousel1.scrollWidth - carousel1.clientWidth;
+    let scrollLeft = carousel1.scrollLeft;
+
+    // setting a threshold for comparison
+    let threshold = 1;
+
+    // If the scroll position is less than the threshold, hide the left arrow
+    arrowIcons[0].style.display = scrollLeft <= threshold ? "none" : "block";
+
+    // If the scroll position is within a threshold of the max scrollable width, hide the right arrow
+    arrowIcons[1].style.display = scrollLeft >= scrollWidth - threshold ? "none" : "block";
+};
+
+
+
+
+arrowIcons.forEach(icon => {
+    icon.addEventListener("click", () => {
+        let firstImgWidth = firstImg.clientWidth + 14; // getting first img width & adding 14 margin value
+        // if clicked icon is left, reduce width value from the carousel scroll left else add to it
+        carousel1.scrollLeft += icon.id == "left" ? -firstImgWidth : firstImgWidth;
+        setTimeout(() => showHideIcons(), 60); // calling showHideIcons after 60ms
+    });
+});
+
+const autoSlide = () => {
+    // if there is no image left to scroll then return from here
+    if(carousel1.scrollLeft - (carousel1.scrollWidth - carousel1.clientWidth) > -1 || carousel1.scrollLeft <= 0) return;
+
+    positionDiff = Math.abs(positionDiff); // making positionDiff value to positive
+    let firstImgWidth = firstImg.clientWidth + 14;
+    // getting difference value that needs to add or reduce from carousel left to take middle img center
+    let valDifference = firstImgWidth - positionDiff;
+
+    if(carousel1.scrollLeft > prevScrollLeft) { // if user is scrolling to the right
+        return carousel1.scrollLeft += positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff;
+    }
+    // if user is scrolling to the left
+    carousel1.scrollLeft -= positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff;
+}
+
+const dragStart1 = (e) => {
+    // updatating global variables value on mouse down event
+    isDragStart1 = true;
+    prevPageX = e.pageX || e.touches[0].pageX;
+    prevScrollLeft = carousel1.scrollLeft;
+}
+
+const dragging1= (e) => {
+    // scrolling images/carousel to left according to mouse pointer
+    if(!isDragStart1) return;
+    e.preventDefault();
+    isDragging1 = true;
+    carousel1.classList.add("dragging1");
+    positionDiff = (e.pageX || e.touches[0].pageX) - prevPageX;
+    carousel1.scrollLeft = prevScrollLeft - positionDiff;
+    showHideIcons();
+}
+
+const dragStop1 = () => {
+    isDragStart1 = false;
+    carousel1.classList.remove("dragging1");
+
+    if(!isDragging1) return;
+    isDragging1 = false;
+    autoSlide();
+}
+
+carousel1.addEventListener("mousedown", dragStart1);
+carousel1.addEventListener("touchstart", dragStart1);
+
+document.addEventListener("mousemove", dragging1);
+carousel1.addEventListener("touchmove", dragging1);
+
+document.addEventListener("mouseup", dragStop1);
+carousel1.addEventListener("touchend", dragStop1);
+
+
+//---------------------------------------------------------------------------------------------------------------------
+
+
+//Mobile View Offering Container
+const wrapper = document.querySelector(".offering-wrapper");
+const carousel = document.querySelector(".offering-carousel");
+const firstCardWidth = carousel.querySelector(".offering-box").offsetWidth;
+const arrowBtns = document.querySelectorAll(".offering-wrapper i");
+const carouselChildrens = [...carousel.children];
+
+let isDragging = false, isAutoPlay = true, startX, startScrollLeft, timeoutId;
+
+// Get the number of cards that can fit in the carousel at once
+let cardPerView = Math.round(carousel.offsetWidth / firstCardWidth);
+
+// Insert copies of the last few cards to beginning of carousel for infinite scrolling
+carouselChildrens.slice(-cardPerView).reverse().forEach(section3_box => {
+    carousel.insertAdjacentHTML("afterbegin", section3_box.outerHTML);
+});
+
+// Insert copies of the first few cards to end of carousel for infinite scrolling
+carouselChildrens.slice(0, cardPerView).forEach(section3_box => {
+    carousel.insertAdjacentHTML("beforeend", section3_box.outerHTML);
+});
+
+// Scroll the carousel at appropriate postition to hide first few duplicate cards on Firefox
+carousel.classList.add("no-transition");
+carousel.scrollLeft = carousel.offsetWidth;
+carousel.classList.remove("no-transition");
+
+// Add event listeners for the arrow buttons to scroll the carousel left and right
+arrowBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        carousel.scrollLeft += btn.id == "left" ? -firstCardWidth : firstCardWidth;
+    });
+});
+
+const dragStart = (e) => {
+    isDragging = true;
+    carousel.classList.add("dragging");
+    // Records the initial cursor and scroll position of the carousel
+    startX = e.pageX;
+    startScrollLeft = carousel.scrollLeft;
+}
+
+const dragging = (e) => {
+    if(!isDragging) return; // if isDragging is false return from here
+    // Updates the scroll position of the carousel based on the cursor movement
+    carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
+}
+
+const dragStop = () => {
+    isDragging = false;
+    carousel.classList.remove("dragging");
+}
+
+const infiniteScroll = () => {
+    // If the carousel is at the beginning, scroll to the end
+    if(carousel.scrollLeft === 0) {
+        carousel.classList.add("no-transition");
+        carousel.scrollLeft = carousel.scrollWidth - (2 * carousel.offsetWidth);
+        carousel.classList.remove("no-transition");
+    }
+    // If the carousel is at the end, scroll to the beginning
+    else if(Math.ceil(carousel.scrollLeft) === carousel.scrollWidth - carousel.offsetWidth) {
+        carousel.classList.add("no-transition");
+        carousel.scrollLeft = carousel.offsetWidth;
+        carousel.classList.remove("no-transition");
+    }
+
+    // Clear existing timeout & start autoplay if mouse is not hovering over carousel
+    clearTimeout(timeoutId);
+    if(!wrapper.matches(":hover")) autoPlay();
+}
+
+const autoPlay = () => {
+    if(window.innerWidth < 800 || !isAutoPlay) return; // Return if window is smaller than 800 or isAutoPlay is false
+    // Autoplay the carousel after every 2500 ms
+    timeoutId = setTimeout(() => carousel.scrollLeft += firstCardWidth, 2500);
+}
+autoPlay();
+
+carousel.addEventListener("mousedown", dragStart);
+carousel.addEventListener("mousemove", dragging);
+document.addEventListener("mouseup", dragStop);
+carousel.addEventListener("scroll", infiniteScroll);
+wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
+wrapper.addEventListener("mouseleave", autoPlay);
+
