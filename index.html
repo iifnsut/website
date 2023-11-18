@@ -30,6 +30,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous" />
     <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -39,6 +40,12 @@
     />
       <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css" />
+
+        <!-- Swiper CSS -->
+        <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+
+        <!-- Swiper JS -->
+        <script src="js/swiper-bundle.min.js"></script>
   </head>
   <body class="fade-in">
     <header>
@@ -291,6 +298,234 @@
       </div>
     </section>
     <!-- Section 6 (Success Story Section) End @DheerajSharma -->
+
+
+    <!--  Section 8 (Offerings and Collaborations) Start @Shivam Goswami  -->
+    <section class="section8">
+      <!-- Our Offerings -->
+      <div class="offering-container">
+          <div class="section8-heading">Our Offerings</div>
+          <div class="offering-inner-container">
+              <div class="offering-row">
+                  <div class="offering-box">
+                      <div class="offering-box-image">
+                          <img src="./metadata/benefitsfromhostinstitute.jpg" alt="benefits">
+                      </div>
+                      <div class="offering-flip-card">
+                          <div class="offering-flip-card-inner">
+                              <div class="offering-flip-card-front">
+                                  <h3>Benefits From Host Institute</h3>
+                              </div>
+                              <div class="offering-flip-card-back">
+                                  <p>Financial Accounting and Management Services to our Incubatees</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="offering-box">
+                      <div class="offering-box-image">
+                          <img src="./metadata/infrastructurefacility.jpg" alt="infrastructure">
+                      </div>
+                      <div class="offering-flip-card">
+                          <div class="offering-flip-card-inner">
+                              <div class="offering-flip-card-front">
+                                  <h3>Infrastructure Facility</h3>
+                              </div>
+                              <div class="offering-flip-card-back">
+                                  <p>We provide State of Art Infrastructure to our Incubatees</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="offering-box">
+                      <div class="offering-box-image">
+                          <img src="./metadata/financialassistance.jpg" alt="financial">
+                      </div>
+                      <div class="offering-flip-card">
+                          <div class="offering-flip-card-inner">
+                              <div class="offering-flip-card-front">
+                                  <h3>Financial Assistance To Grow</h3>
+                              </div>
+                              <div class="offering-flip-card-back">
+                                  <p>Various Funds to innovative and technology related Startups</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+               
+              
+                  <div class="offering-box">
+                      <div class="offering-box-image">
+                          <img src="./metadata/networking.jpg" alt="networking">
+                      </div>
+                      <div class="offering-flip-card">
+                          <div class="offering-flip-card-inner">
+                              <div class="offering-flip-card-front">
+                                  <h3>Networking & Outreach</h3>
+                              </div>
+                              <div class="offering-flip-card-back">
+                                  <p>Networking to our incubatees through events and partner organizations</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="offering-box">
+                      <div class="offering-box-image">
+                          <img src="./metadata/techsupport.jpg" alt="techsupport">
+                      </div>
+                      <div class="offering-flip-card">
+                          <div class="offering-flip-card-inner">
+                              <div class="offering-flip-card-front">
+                                  <h3>High-End Tech Support</h3>
+                              </div>
+                              <div class="offering-flip-card-back">
+                                  <p>We provide a complete state of Technical Support and Fabrication Facilities</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="offering-box">
+                      <div class="offering-box-image">
+                          <img src="./metadata/mentorship.jpg" alt="mentorship">
+                      </div>
+                      <div class="offering-flip-card">
+                          <div class="offering-flip-card-inner">
+                              <div class="offering-flip-card-front">
+                                  <h3>Mentorship & Advisory</h3>
+                              </div>
+                              <div class="offering-flip-card-back">
+                                  <p>Academicians and industry leaders who provide expert mentorship</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+          </div>
+  
+  
+          <!--Mobile View-->
+          <div class="offering-wrapper">
+              <i id="left" class="fa-solid fa-angle-left"></i>
+              <ul class="offering-carousel">
+                <li class="offering-box">
+                      <div class="offering-box-image">
+                          <img src="./metadata/benefitsfromhostinstitute.jpg" alt="benefits">
+                      </div>
+                      <div class="offering-flip-card">
+                          <div class="offering-flip-card-inner">
+                              <div class="offering-flip-card-front">
+                                  <h3>Benefits From Host Institute</h3>
+                              </div>
+                              <div class="offering-flip-card-back">
+                                  <p>Financial Accounting and Management Services to our Incubatees</p>
+                              </div>
+                          </div>
+                      </div>
+                
+                </li>
+                <li class="offering-box">
+                      <div class="offering-box-image">
+                          <img src="./metadata/infrastructurefacility.jpg" alt="infrastructure">
+                      </div>
+                      <div class="offering-flip-card">
+                          <div class="offering-flip-card-inner">
+                              <div class="offering-flip-card-front">
+                                  <h3>Infrastructure Facility</h3>
+                              </div>
+                              <div class="offering-flip-card-back">
+                                  <p>We provide State of Art Infrastructure to our Incubatees</p>
+                              </div>
+                          </div>
+                      </div>
+                  
+                </li>
+                <li class="offering-box">
+                      <div class="offering-box-image">
+                          <img src="./metadata/financialassistance.jpg" alt="financial">
+                      </div>
+                      <div class="offering-flip-card">
+                          <div class="offering-flip-card-inner">
+                              <div class="offering-flip-card-front">
+                                  <h3>Financial Assistance To Grow</h3>
+                              </div>
+                              <div class="offering-flip-card-back">
+                                  <p>Various Funds to innovative and technology related Startups</p>
+                              </div>
+                          </div>
+                      </div>
+                </li>
+                <li class="offering-box">
+                      <div class="offering-box-image">
+                          <img src="./metadata/networking.jpg" alt="networking">
+                      </div>
+                      <div class="offering-flip-card">
+                          <div class="offering-flip-card-inner">
+                              <div class="offering-flip-card-front">
+                                  <h3>Networking & Outreach</h3>
+                              </div>
+                              <div class="offering-flip-card-back">
+                                  <p>Networking to our incubatees through events and partner organizations</p>
+                              </div>
+                          </div>
+                      </div>
+                </li>
+                <li class="offering-box">
+                      <div class="offering-box-image">
+                          <img src="./metadata/techsupport.jpg" alt="techsupport">
+                      </div>
+                      <div class="offering-flip-card">
+                          <div class="offering-flip-card-inner">
+                              <div class="offering-flip-card-front">
+                                  <h3>High-End Tech Support</h3>
+                              </div>
+                              <div class="offering-flip-card-back">
+                                  <p>We provide a complete state of Technical Support and Fabrication Facilities</p>
+                              </div>
+                          </div>
+                      </div>
+                </li>
+                <li class="offering-box">
+                      <div class="offering-box-image">
+                          <img src="./metadata/mentorship.jpg" alt="mentorship">
+                      </div>
+                      <div class="offering-flip-card">
+                          <div class="offering-flip-card-inner">
+                              <div class="offering-flip-card-front">
+                                  <h3>Mentorship & Advisory</h3>
+                              </div>
+                              <div class="offering-flip-card-back">
+                                  <p>Academicians and industry leaders who provide expert mentorship</p>
+                              </div>
+                          </div>
+                      </div>
+                </li>
+              </ul>
+              <i id="right" class="fa-solid fa-angle-right"></i>
+            </div>
+  
+      </div> 
+      
+      
+      <!--Collaboration and Supported By -->
+      <div class="collaboration-container">
+          <div class="section8-heading">Collaboration & Supported By</div>
+              <div  class="collaboration-wrapper">
+                  <i id="left" class="fa-solid fa-angle-left"></i>
+                  <div id="collaboration-carousel" class="collaboration-carousel">
+                    <img src="./metadata/Dept-of-Sci-and-Tech.png" alt="img" draggable="false">
+                    <img src="./metadata/iiclogo.jpg" alt="img" draggable="false">
+                    <img src="./metadata/GNCTof Delhi.png" alt="img" draggable="false">
+                    <img src="./metadata/1600x960_1015320-aicte-3.jpg" alt="img" draggable="false">
+                    <img src="./metadata/aws.png" alt="img" draggable="false">
+                    <img src="./metadata/MSME-Logo.png" alt="img" draggable="false">
+                    <img src="./metadata/NITI-Aayog.png" alt="img" draggable="false">
+                  </div>
+                  <i id="right" class="fa-solid fa-angle-right"></i>
+              </div>
+      </div>
+  </section>
+  <!--  Section 8(Offerings and Collaborations) End @Shivam Goswami  -->
 
 
     </main>
