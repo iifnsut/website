@@ -1,284 +1,492 @@
-// Section 6,7, 8
+// Section 6,7, 8 @DS
 
 // Do not modify the below following code
-class Achivement {
-  constructor(data = null, target = "#achivements") {
-    this.Target = target;
-    if (data) {
-      this.Data = data;
-    } else {
-      this.Data = [
+/**
+ * Represents a class for managing achievements.
+ * @class
+ */
+class OurAchievements {
+  /**
+   * Creates an instance of OurAchievements.
+   * @param {Array} data - JSON Objects of Achievements List containing icon, count, and title in Dictionary format.
+   * @param {String} target - Id of the target element.
+   */
+  constructor(data = null, target = "OA-List") {
+    if (data === null) {
+      this.data = [
         {
-          title: "Startups Incubated",
-          value: 10,
-          description: "Startups Incubated",
-          icon: "https://img.freepik.com/premium-vector/business-incubator-businesspeople-investors-supporting-new-businesses-money-professional-assistance-start-up-project-flat-vector-illustration_277904-23829.jpg?w=740",
+          icon: "fa-solid fa-rocket",
+          count: 50,
+          title: "Startup Incubated",
         },
         {
-          title: "Entrepreneurs Engaged",
-          value: 10,
-          description: "Entrepreneurs Engaged",
-          icon: "https://previews.123rf.com/images/bilahstudio/bilahstudio2102/bilahstudio210200292/175360238-business-graphic-vector-creative-illustration-entrepreneurs-engaged-in-teamwork-building-business.jpg",
+          icon: "fa-solid fa-user",
+          count: 500,
+          title: "Entrepreneur Engaged",
         },
         {
-          title: "Funds",
-          value: 10,
-          description: "Funds Provided to Startups",
-          icon: "https://cdn.fundsindia.com/prelogin/slideshow/welcome-to-fundsindia.webp",
+          icon: "fas fa-hand-holding-usd",
+          count: "10Cr",
+          title: "Fund Raised",
         },
         {
-          title: "Jobs Created",
-          value: 10,
-          description: "Jobs Created by Startups Incubated",
-          icon: "https://i.pinimg.com/736x/59/89/b1/5989b169e93d36c18b1db3064349135f.jpg",
+          icon: "fa-solid fa-bullseye",
+          count: "10k",
+          title: "Job Created",
         },
         {
+          icon: "fa-solid fa-graduation-cap",
+          count: "500",
           title: "Graduated",
-          value: 10,
-          description: "Graduated from Incubation Program",
-          icon: "https://www.freeiconspng.com/uploads/graduation-icon-9.png",
         },
         {
+          icon: "fa-solid fa-arrow-up-right-dots",
+          count: "100Cr",
           title: "Valuation",
-          value: 10,
-          description: "Valuation of Startups Incubated",
-          icon: "https://info.sapphirecapitalpartners.co.uk/hubfs/Blog_Photos/shutterstock_503293813.jpg",
         },
       ];
-    }
-  }
-
-  setData(elem) {
-    let content = `
-          <a class="col achivlink"  href="/achivment/${elem.title}">
-          <div class="card achiv-card">
-              <img src="${elem.icon}"
-                  class="card-img-top" alt="${elem.title}">
-              <div class="card-body">
-                  <h5 class="card-title text-uppercase text-wrap">${elem.title}</h5>
-                  <p class="card-text text-wrap">${elem.description}</p>
-  
-              </div>
-          </div>
-  
-      </a>`;
-    $(this.Target).append(content);
-  }
-}
-
-class LatestEvent {
-  constructor(data = null, target = "#eventList") {
-    this.Target = target;
-    if (data) {
-      this.Data = data;
     } else {
-      this.Data = [
-        {
-          id: 1,
-          title: "Event 1",
-          description: "Event 1 Description",
-          date: "2023-10-30",
-          image: "https://nsutiif.in/img/event/event3.png",
-        },
-        {
-          id: 2,
-          title: "Event 2",
-          description: "Event 2 Description",
-          date: "2023-10-30",
-          image: "https://nsutiif.in/img/event/event3.png",
-        },
-        {
-          id: 3,
-          title: "Event 3",
-          description: "Event 3 Description",
-          date: "2023-10-30",
-          image: "https://nsutiif.in/img/event/event3.png",
-        },
-        {
-          id: 4,
-          title: "Event 4",
-          description: "Event 4 Description",
-          date: "2023-10-30",
-          image: "https://nsutiif.in/img/event/event3.png",
-        },
-        {
-          id: 5,
-          title: "Event 5",
-          description: "Event 5 Description ",
-          date: "2023-10-30",
-          image: "https://nsutiif.in/img/event/event3.png",
-        },
-        {
-          id: 6,
-          title: "Event 6",
-          description: "Event 6 Description",
-          date: "2023-10-30",
-          image: "https://nsutiif.in/img/event/event3.png",
-        },
-      ];
+      this.data = data;
     }
+    this.target = target;
   }
-  setData(elem) {
-    let date = new Date(elem.date);
-    let content = `<div class="ev-sudo">
-          <div class="card ev-cd m-2 border-0 p-0">
-          <a href=  "/event?${
-            elem.id
-          }" class="position-relative text-decoration-none text-light">
-            <div class="position-absolute bg-secondary p-1 date">
-              <div class="date-day">${date.getDate()}</div>
-              <div class="date-month">${date.toLocaleString("default", {
-                month: "short",
-              })}</div>
-              <div class="date-year">${date.getFullYear()}</div>
+
+  /**
+   * Adds an achievement to the target element.
+   * @param {JSON} elem - JSON Object of Achievement containing icon, count, and title.
+   * @returns {void}
+   * @example
+   * let OA = new OurAchievements();
+   * OA.addAchievement({
+   *   icon: "fa-solid fa-rocket",
+   *   count: 50,
+   *   title: "Startup Incubated",
+   * });
+   */
+  addElements(elem = null) {
+    if (elem === null) {
+      elem = this.data;
+    } else {
+      if (!Array.isArray(elem)) {
+        elem = [elem];
+      } else if (Object.prototype.toString.call(elem) === "[object Object]") {
+        elem = this.data;
+      }
+    }
+
+    for (let i = 0; i < elem.length; i++) {
+      let target = document.getElementById(this.target);
+      let div = document.createElement("div");
+      div.classList.add("OA-items");
+      div.innerHTML = `
+        <div class="OA-items">
+          <div class="OA-items-logo flext-center">
+            <i class="flext-center ${elem[i].icon}"></i>
+          </div>
+          <div class="OA-items-data">
+            <div class="OA-items-data-num">
+              <span>${elem[i].count}</span>+
             </div>
-            <img
-              src="${elem.image}"
-              alt="${elem.title}"
-              class="card-img-top ev-cd-img"
-            />
-          </a>
-          <div class="card-body pb-1">
-            <a
-              href="/event?${elem.id}"
-              class="card-title my-1 text-dark text-capitalize font-weight-bold text-decoration-none h5"
-              >${elem.title}</a
-            >
-            <p class="card-text my-2">
-              ${elem.description}
-            </p>
-            <a href="/event?${elem.id}" class="btn btn-secondary my-3"
-              >Read More <i class="fa-solid fa-arrow-right"></i
-            ></a>
+            <div class="OA-items-data-text">
+              <span>${elem[i].title}</span>
+            </div>
           </div>
         </div>
-          </div>`;
-    $(this.Target).append(content);
-  }
-}
-
-class SuccessStory {
-  constructor(data = null, target = "#successStory") {
-    this.Target = target;
-    if (data) {
-      this.Data = data;
-    } else {
-      this.Data = [
-        {
-          startup: "Startup 1",
-          postion: "Founder",
-          story:
-            "Startup 1 Story,Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse nemo magnam tempora perferendis eveniet doloremque labore nobis cum ullam blanditiis reiciendis vero est quaerat quas id atque, quibusdam ut nisi?",
-          image: "https://nsutiif.in/img/event/event3.png",
-        },
-        {
-          startup: "Startup 2",
-          postion: "Founder",
-          story:
-            "Startup 2 Story,Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse nemo magnam tempora perferendis eveniet doloremque labore nobis cum ullam blanditiis reiciendis vero est quaerat quas id atque, quibusdam ut nisi?",
-          image: "https://nsutiif.in/img/event/event3.png",
-        },
-        {
-          startup: "Startup 3",
-          postion: "Founder",
-          story:
-            "Startup 3 Story, Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse nemo magnam tempora perferendis eveniet doloremque labore nobis cum ullam blanditiis reiciendis vero est quaerat quas id atque, quibusdam ut nisi?",
-          image: "https://nsutiif.in/img/event/event3.png",
-        },
-        {
-          startup: "Startup 4",
-          postion: "Founder",
-          story:
-            "Startup 4 Story, Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse nemo magnam tempora perferendis eveniet doloremque labore nobis cum ullam blanditiis reiciendis vero est quaerat quas id atque, quibusdam ut nisi?",
-          image: "https://nsutiif.in/img/event/event3.png",
-        },
-        {
-          startup: "Startup 5",
-          postion: "Founder",
-          story:
-            "Startup 5 Story, Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse nemo magnam tempora perferendis eveniet doloremque labore nobis cum ullam blanditiis reiciendis vero est quaerat quas id atque, quibusdam ut nisi?",
-          image: "https://nsutiif.in/img/event/event3.png",
-        },
-        {
-          startup: "Startup 6",
-          postion: "Founder",
-          story:
-            "Startup 6 Story, Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse nemo magnam tempora perferendis eveniet doloremque labore nobis cum ullam blanditiis reiciendis vero est quaerat quas id atque, quibusdam ut nisi?",
-          image: "https://nsutiif.in/img/event/event3.png",
-        },
-      ];
+      `;
+      target.appendChild(div);
     }
   }
-  setData(elem) {
-    let content = `<div class="sCard-sudo">
-      <div class="card sCard">
-        <div class="sStory-header">
-          <div class="sStory-img">
-            <img
-              src="${elem.image}"
-              alt="${elem.startup}"
-              srcset=""
-              class=""
-            />
-          </div>
-          <h3>${elem.postion} of <span>${elem.startup}</span></h3>
+}
+
+/**
+ * Represents a class for managing Latest Events.
+ * @class
+ */
+class LatestEvents {
+  /**
+   * Creates an instance of LatestEvents.
+   * @param {JSON} data - JSON Object of Latest Events containing img, title, date, and desc.
+   * @param {String} target - Id of the target element.
+   * @param {String} sliderTarget - Id of the target element for slider.
+   */
+
+  constructor(data = null, target = "LE-List", sliderTarget = "LE-dot-slider") {
+    if (data === null) {
+      this.data = [
+        {
+          img: "https://nsutiif.in/img/gallery/1.jpeg",
+          title: "Startup Incubated",
+          date: "10/10/2021",
+          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+        },
+        {
+          img: "https://nsutiif.in/img/gallery/2.jpeg",
+          title: "Startup Incubated",
+          date: "10/10/2021",
+          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+        },
+        {
+          img: "https://nsutiif.in/img/gallery/3.jpeg",
+          title: "Startup Incubated",
+          date: "10/10/2021",
+          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+        },
+        {
+          img: "https://nsutiif.in/img/gallery/4.JPG",
+          title: "Startup Incubated",
+          date: "10/10/2021",
+          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+        },
+        {
+          img: "https://nsutiif.in/img/gallery/5.JPG",
+          title: "Startup Incubated",
+          date: "10/10/2021",
+          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+        },
+        {
+          img: "https://nsutiif.in/img/gallery/3.jpeg",
+          title: "Startup Incubated",
+          date: "10/10/2021",
+          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+        },
+        {
+          img: "https://nsutiif.in/img/gallery/4.JPG",
+          title: "Startup Incubated",
+          date: "10/10/2021",
+          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+        },
+        {
+          img: "https://nsutiif.in/img/gallery/1.jpeg",
+          title: "Startup Incubated",
+          date: "10/10/2021",
+          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+        },
+        {
+          img: "https://nsutiif.in/img/gallery/2.jpeg",
+          title: "Startup Incubated",
+          date: "10/10/2021",
+          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+        },
+        {
+          img: "https://nsutiif.in/img/gallery/5.JPG",
+          title: "Startup Incubated",
+          date: "10/10/2021",
+          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+        },
+        {
+          img: "https://nsutiif.in/img/gallery/3.jpeg",
+          title: "Startup Incubated",
+          date: "10/10/2021",
+          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+        },
+        {
+          img: "https://nsutiif.in/img/gallery/4.JPG",
+          title: "Startup Incubated",
+          date: "10/10/2021",
+          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+        },
+        {
+          img: "https://nsutiif.in/img/gallery/1.jpeg",
+          title: "Startup Incubated",
+          date: "10/10/2021",
+          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+        },
+        {
+          img: "https://nsutiif.in/img/gallery/2.jpeg",
+          title: "Startup Incubated",
+          date: "10/10/2021",
+          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+        },
+      ];
+    } else {
+      this.data = data;
+    }
+    this.target = target;
+    this.scoller_elem = null;
+    this.sliderTarget = sliderTarget;
+    this.next = true;
+    let esper = this;
+    $(".LE-ctr").click(function (e) {
+      if (esper.next === true) {
+        esper.next = false;
+        let LE_List = $(".LE-slider-items");
+        let dot_List = $(".LE-items-dot");
+        clearInterval(esper.scoller_elem);
+        if (e.target.classList.contains("LE-dr-lt")) {
+          let elem = LE_List[0];
+          LE_List[0].remove();
+          document.getElementById(esper.target).append(elem);
+          document.getElementById(esper.sliderTarget).append(dot_List[0]);
+          // console.log('Left');
+        } else if (e.target.classList.contains("LE-dr-rt")) {
+          let elem = LE_List[LE_List.length - 1];
+          LE_List[LE_List.length - 1].remove();
+          // console.log(esper)
+          document.getElementById(esper.target).prepend(elem);
+          document
+            .getElementById(esper.sliderTarget)
+            .prepend(dot_List[dot_List.length - 1]);
+          // console.log('Right');
+        }
+        setTimeout(() => {
+          esper.next = true;
+        }, 200);
+        setTimeout(() => {
+          clearInterval(esper.scoller_elem);
+          esper.setSlider();
+        }, 10000);
+      }
+    });
+  }
+
+  /**
+   * Adds an Latest Events to the target element.
+   * Imortant Note: The minimum no of element msut be 5.
+   * @param {JSON} elem - JSON Object of Latest Events containing img, count, title, date and desc.
+   * @returns {void}
+   * @example
+   * let LE = new LatestEvents();
+   * LE.addAchievement({
+   *   img: "https://nsutiif.in/img/gallery/2.jpeg",
+   *   title: "Startup Incubated",
+   *   date: "10/10/2021",
+   *   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+   * });
+   */
+  addElements(elem = null) {
+    if (elem === null) {
+      elem = this.data;
+    } else {
+      if (!Array.isArray(elem)) {
+        elem = [elem];
+      } else if (Object.prototype.toString.call(elem) === "[object Object]") {
+        elem = this.data;
+      }
+    }
+    for (let i = 0; i < elem.length; i++) {
+      let loderTarget = document.getElementById(this.sliderTarget);
+      let target = document.getElementById(this.target);
+      let div = document.createElement("div");
+      div.classList.add("LE-slider-items");
+      div.innerHTML = `
+      <div class="LE-items-contens">
+        <img src="${elem[i].img}" alt="" />
+        <div class="LE-text">
+          <h3>${elem[i].title}</h3>
+          <p>
+            ${elem[i].desc}
+          </p>
         </div>
-        <hr>
-        <p class="pt-0 card-body m-0">
-          ${elem.story}
-        </p>
       </div>
-    </div>`;
-    $(this.Target).append(content);
+      `;
+
+      let dot = document.createElement("div");
+      dot.classList.add("LE-items-dot");
+
+      target.appendChild(div);
+      loderTarget.appendChild(dot);
+    }
+  }
+
+  /**
+   * Adds an sliding effect to Latest Events section.
+   * @param {Number} delay - Delay in milliseconds.
+   * @returns {void}
+   * @example
+   * let LE = new LatestEvents();
+   * LE.setSlider(1000);
+   */
+  setSlider(delay = 5000) {
+    this.scoller_elem = setInterval(() => {
+      let LE_List = $(".LE-slider-items");
+      let dot_List = $(".LE-items-dot");
+      let elem = LE_List[0];
+      let dot = dot_List[0];
+      LE_List[0].remove();
+      dot_List[0].remove();
+      document.getElementById(this.target).append(elem);
+      document.getElementById(this.sliderTarget).append(dot);
+      // console.log("Sorry for the delay");
+    }, delay);
   }
 }
 
-// Do not modify the above following code
+/**
+ * Represents a class for managing Success Stories.
+ * @class
+ */
+class SuccessStories {
+  /**
+   * Creates an instance of SuccessStories.
+   * @param {JSON} data - JSON Object of Success Stories containing img, title, and desc.
+   * @param {String} target - Id of the target element.
+   * @returns {void}
+   * @example
+   * let SS = new SuccessStories();
+   * SS.addElements({
+   *  img: "https://nsutiif.in/img/gallery/2.jpeg",
+   * title: "Startup Incubated",
+   * desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+   * });
+   */
+  constructor(data = null, target = "SSS-List") {
+    if (data === null) {
+      this.data = [
+        {
+          img: "https://nsutiif.in/img/gallery/1.jpeg",
+          title: "From beginning to end",
+          desc: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel
+                non molestias excepturi repellendus fugiat esse voluptate totam
+                repellat eligendi et earum ipsam minus magni assumenda quod sed
+                maiores, expedita aperiam! Optio minima deserunt porro soluta
+                eaque reprehenderit quia expedita vel aspernatur placeat ut rem
+                culpa est voluptate fuga eius maxime sit, mollitia hic illum
+                voluptas, qui non tenetur. Atque, ab!`,
+        },
+        {
+          img: "https://nsutiif.in/img/gallery/2.jpeg",
+          title: "From beginning to end",
+          desc: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel
+                non molestias excepturi repellendus fugiat esse voluptate totam
+                repellat eligendi et earum ipsam minus magni assumenda quod sed
+                maiores, expedita aperiam! Optio minima deserunt porro soluta
+                eaque reprehenderit quia expedita vel aspernatur placeat ut rem
+                culpa est voluptate fuga eius maxime sit, mollitia hic illum
+                voluptas, qui non tenetur. Atque, ab!`,
+        },
+        {
+          img: "https://nsutiif.in/img/gallery/3.jpeg",
+          title: "From beginning to end",
+          desc: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel
+                non molestias excepturi repellendus fugiat esse voluptate totam
+                repellat eligendi et earum ipsam minus magni assumenda quod sed
+                maiores, expedita aperiam! Optio minima deserunt porro soluta
+                eaque reprehenderit quia expedita vel aspernatur placeat ut rem
+                culpa est voluptate fuga eius maxime sit, mollitia hic illum
+                voluptas, qui non tenetur. Atque, ab!`,
+        },
+        {
+          img: "https://nsutiif.in/img/gallery/4.JPG",
+          title: "From beginning to end",
+          desc: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel
+                non molestias excepturi repellendus fugiat esse voluptate totam
+                repellat eligendi et earum ipsam minus magni assumenda quod sed
+                maiores, expedita aperiam! Optio minima deserunt porro soluta
+                eaque reprehenderit quia expedita vel aspernatur placeat ut rem
+                culpa est voluptate fuga eius maxime sit, mollitia hic illum
+                voluptas, qui non tenetur. Atque, ab!`,
+        },
+        {
+          img: "https://nsutiif.in/img/gallery/5.JPG",
+          title: "From beginning to end",
+          desc: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel
+                non molestias excepturi repellendus fugiat esse voluptate totam
+                repellat eligendi et earum ipsam minus magni assumenda quod sed
+                maiores, expedita aperiam! Optio minima deserunt porro soluta
+                eaque reprehenderit quia expedita vel aspernatur placeat ut rem
+                culpa est voluptate fuga eius maxime sit, mollitia hic illum
+                voluptas, qui non tenetur. Atque, ab!`,
+        },
+      ];
+    } else {
+      this.data = data;
+    }
+    this.target = target;
+    this.pos = 0;
 
-// Please modify the following code according to your need at time of creating Class object
+    document.getElementById("SSS-add").addEventListener("click", (e) => {
+      this.addElements();
+    });
+  }
+
+  /**
+   * Adds an Success Stories to the target element.
+   * @param {JSON} elem - JSON Object of Success Stories containing img, title, and desc.
+   * @param {Number} no - Number of elements to be added.
+   * @returns {void}
+   * @example
+   * let SS = new SuccessStories();
+   * SS.addElements({
+   * img: "https://nsutiif.in/img/gallery/2.jpeg",
+   * title: "Startup Incubated",
+   * desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+   * }, 2);
+   */
+  addElements(elem = null, no = null) {
+    if (elem === null) {
+      elem = this.data;
+    } else {
+      if (!Array.isArray(elem)) {
+        elem = [elem];
+      } else if (Object.prototype.toString.call(elem) === "[object Object]") {
+        elem = this.data;
+      }
+    }
+
+    let window_width = $(window).width();
+    if (no == null || no == 0) {
+      if (window_width > 895) {
+        no = 4;
+      } else {
+        no = 2;
+      }
+    }
+
+    // console.log(elem);
+    let current_pos = this.pos;
+    for (
+      let i = current_pos;
+      i < Math.min(current_pos + no, elem.length);
+      i++
+    ) {
+      let target = document.getElementById(this.target);
+      let div = document.createElement("div");
+      div.classList.add("SSS-items");
+      div.innerHTML = `
+      <div class="sss-sudo-box">
+            <div class="SSS-items-img">
+              <img src="${elem[i].img}" alt="" />
+            </div>
+            <div class="SSS-items-data">
+              <h4>${elem[i].title}</h4>
+              <p>
+                ${elem[i].desc}
+              </p>
+            </div>
+          </div>
+      `;
+      target.appendChild(div);
+      this.pos += 1;
+    }
+  }
+}
+
 $(document).ready(function () {
-  // Push the data from here using data argument to pass json data
+  // Initialize the OurAchievements Class
+  let OA = new OurAchievements();
+  // Clear the hard Achievements List
+  $("#OA-List").empty();
+  // Adding the Achievements to the target element
+  OA.addElements();
 
-  let achivements = new Achivement();
-  $("#achivements").empty();
-  achivements.Data.forEach(function (elem) {
-    achivements.setData(elem);
-  });
-  let latestEvent = new LatestEvent();
-  $("#eventList").empty();
-  latestEvent.Data.forEach(function (elem) {
-    latestEvent.setData(elem);
-  });
+  // Initialize the LatestEvents Class
+  let LE = new LatestEvents();
+  // Clear the hard Latest Events List
+  $("#LE-List").empty();
+  // Adding the Latest Events to the target element
+  LE.addElements();
+  // Adding the sliding effect to Latest Events section
+  LE.setSlider();
 
-  let successStory = new SuccessStory();
-  $("#successStory").empty();
-  successStory.Data.forEach(function (elem) {
-    successStory.setData(elem);
-  });
-
-  $(".left").click(function () {
-    var leftPos = $("div#eventList").scrollLeft();
-    // console.log(leftPos);
-    $("div#eventList").animate(
-      {
-        scrollLeft: leftPos - 300,
-      },
-      800
-    );
-  });
-
-  $(".right").click(function () {
-    var leftPos = $("div#eventList").scrollLeft();
-    // console.log(leftPos);
-    $("div#eventList").animate(
-      {
-        scrollLeft: leftPos + 300,
-      },
-      800
-    );
-  });
+  // Initialize the SuccessStories Class
+  let SS = new SuccessStories();
+  // Clear the hard Success Stories List
+  $("#SSS-List").empty();
+  // Adding the Success Stories to the target element
+  SS.addElements();
 });
 
+// Secction 6,7,8 @DS End
 
 
 
