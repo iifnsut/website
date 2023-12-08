@@ -99,6 +99,58 @@ body {
   overflow-x: hidden;
 }
 
+#intro{
+    height: 18%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#i-img{
+    height: 30%;
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+}
+
+#i-about{
+    height: 8%;
+    width: 100%;
+}
+
+.line1{
+    font-weight: bold;
+}
+
+#i-about h3{
+    font-size: medium;
+    text-align: center;
+}
+
+#i-img img{
+    height: 70px;
+    width: 70px;
+    margin: 10px 16px;
+    border-radius: 50%;
+}
+
+@media screen and (max-width: 564px) {
+    #i-img img{
+        height: 40px;
+        width: 40px;
+    }
+
+    #i-about h3{
+        font-size: small;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #i-about h3{
+        font-size: x-small;
+    }
+}
+
 #top {
   height: 4.2vh;
   width: 100vw;
@@ -224,7 +276,8 @@ img {
 }
 
 #buttons {
-  float: right;
+  display: flex;
+  justify-content: center;
 }
 #log {
   padding: 10px 20px;
