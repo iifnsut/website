@@ -100,54 +100,56 @@ body {
 }
 
 #intro{
-    height: 18%;
+    height: 125px;
     width: 100%;
     display: flex;
-    flex-direction: column;
-}
-
-#i-img{
-    height: 30%;
-    width: 100%;
     justify-content: space-between;
-    display: flex;
+    align-items: center;
 }
 
-#i-about{
-    height: 8%;
-    width: 100%;
+#intro img{
+    height: 125px;
+    width: 125px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+#i-about h3{
+    text-align: center;
+    font-size: larger;
+}
+
+#i-about h5{
+    text-align: center;
+    font-size: small;
 }
 
 .line1{
     font-weight: bold;
 }
 
-#i-about h3{
-    font-size: medium;
-    text-align: center;
-}
-
-#i-img img{
-    height: 70px;
-    width: 70px;
-    margin: 10px 16px;
-    border-radius: 50%;
-}
-
-@media screen and (max-width: 564px) {
-    #i-img img{
-        height: 40px;
-        width: 40px;
-    }
-
+@media screen and (max-width: 710px) {
     #i-about h3{
         font-size: small;
     }
+    #i-about h5{
+        font-size: xx-small;
+    }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 565px) {
+    /* #intro img{
+        height: 65px;
+        width: 65px;
+    } */
+    #i-about h5{
+        font-size: xx-small;
+    }
+}
+
+@media screen and (max-width: 435px) {
     #i-about h3{
-        font-size: x-small;
+        font-size: xx-small;
     }
 }
 
