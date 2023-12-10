@@ -197,12 +197,17 @@
           method: "POST",
           body: data,
         }).then(() => {
+          alert("Your appointment has been booked");
           window.jsPDF = window.jspdf.jsPDF;
           var doc = new jsPDF();
-          doc.text(20, 20, "Name: " + document.getElementById("ContactUsName").value);
-          doc.text(20, 30, "Mobile: " + document.getElementById("ContactUsMobile").value);
-          doc.text(20, 40, "Email: " + document.getElementById("ContactUsEmail").value);
-          doc.text(20, 50, "Purpose: " + document.getElementById("ContactUsPurposeOfVisit").value);
+          var width = doc.internal.pageSize.width;
+          const image = new Image();
+          image.src = "../Assets/Header.jpg";
+          doc.addImage(image, "JPG", 0, 0, width, 30);
+          doc.text(20, 50, "Name: " + document.getElementById("ContactUsName").value);
+          doc.text(20, 60, "Mobile: " + document.getElementById("ContactUsMobile").value);
+          doc.text(20, 70, "Email: " + document.getElementById("ContactUsEmail").value);
+          doc.text(20, 80, "Purpose: " + document.getElementById("ContactUsPurposeOfVisit").value);
 
           // Save the PDF
           doc.save("pass.pdf");
