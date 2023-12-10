@@ -489,8 +489,12 @@ $(document).ready(function () {
 // Secction 6,7,8 @DS End
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------
 
-//Section 8(Offerings and Collaborations) JS
+
+
+
+//Offerings and Collaborations Script Start @Shivam Goswami
 //Collaboration Container
 const carousel1 = document.querySelector(".collaboration-carousel");
 firstImg = carousel1.querySelectorAll("img")[0];
@@ -579,6 +583,8 @@ carousel1.addEventListener("touchmove", dragging1);
 
 document.addEventListener("mouseup", dragStop1);
 carousel1.addEventListener("touchend", dragStop1);
+
+
 
 
 //---------------------------------------------------------------------------------------------------------------------
@@ -670,3 +676,4 @@ carousel.addEventListener("scroll", infiniteScroll);
 wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
 wrapper.addEventListener("mouseleave", autoPlay);
 
+//Offerings and Collaborations Script End @Shivam Goswami

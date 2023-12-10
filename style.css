@@ -450,6 +450,410 @@ body {
 
 
 
+
+/* ---------------------------------------------------------------------------------------------------- */
+
+/* Offerings and Collaborations Style Start @Shivam Goswami */
+
+.section3{
+display:flex;
+flex-direction: column;
+align-items:center;
+}
+
+/** Our Offering Section  **/
+.offering-container{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items: center;
+  padding:20px;
+  /* border:2px solid black; */
+  width:100vw;
+  margin:0 10px;
+}
+.section3-heading{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+  color:#374758;
+  font-size:3rem;
+  position:relative;
+  text-decoration: underline;
+}
+.offering-inner-container{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  padding:10px;
+  /* border:2px solid black; */
+  width:100vw;
+  margin:10px;
+}
+.offering-row{
+  display:flex;
+  flex-wrap:wrap;
+  /* border:2px solid black; */
+}
+.offering-box{
+  display:flex;
+  padding:0 10px;
+  width:fit-content;
+  border-radius:10px;
+  margin:10px;
+  flex:1;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.offering-box-image{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-left:30px;
+}
+.offering-box-image img{
+  height:120px;
+  width:120px;
+  border-radius: 50%;
+  border:5px solid  grey;
+}
+.offering-flip-card-front h3{
+  font-weight:700;
+  font-size:18pt;
+  line-height:1.2em;
+}
+.offering-flip-card-back p{
+  font-size:1rem;
+  font-weight:200;
+}
+
+/**Flip Card Animation**/
+.offering-flip-card {
+  perspective: 1000px;
+  width: 250px;
+  height: 150px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-left:50px;
+}
+
+.offering-flip-card-inner {
+  width: 100%;
+  height: 125px;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  border-radius:20px;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.offering-flip-card:hover .offering-flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.offering-flip-card-front, .offering-flip-card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.offering-flip-card-front{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1 ; 
+  padding:20px;
+}
+
+.offering-flip-card-back {
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0 ; 
+  padding:20px;
+} 
+
+.offering-flip-card:hover .offering-flip-card-front {
+  opacity: 0 ; 
+}
+.offering-flip-card:hover .offering-flip-card-back {
+  opacity: 1 ; 
+}
+.offering-wrapper{
+display:none;
+}
+
+
+@media (max-width: 1280px) {
+.offering-inner-container{
+  display:none;
+}
+
+.offering-wrapper{
+  display:grid;
+}
+.offering-box{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.offering-wrapper {
+  max-width: 1100px;
+  width: 100%;
+  position: relative;
+}
+.offering-wrapper i {
+  top: 50%;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  font-size: 1.25rem;
+  position: absolute;
+  text-align: center;
+  line-height: 50px;
+  background:grey;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.23);
+  transform: translateY(-50%);
+  transition: transform 0.1s linear;
+}
+.offering-wrapper i:active{
+  transform: translateY(-50%) scale(0.85);
+}
+.offering-wrapper i:first-child{
+  left: -22px;
+}
+.offering-wrapper i:last-child{
+  right: -22px;
+}
+.offering-wrapper .offering-carousel{
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% / 3));
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 16px;
+  border-radius: 8px;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.offering-carousel::-webkit-scrollbar {
+  display: none;
+}
+.offering-carousel.no-transition {
+  scroll-behavior: auto;
+}
+.offering-carousel.dragging {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+.offering-carousel.dragging .offering-box {
+  cursor: grab;
+  user-select: none;
+}
+.offering-carousel :where(.offering-box) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.offering-carousel .offering-box {
+  scroll-snap-align: start;
+  height: 342px;
+  list-style: none;
+  background: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+  flex-direction: column;
+  border-radius: 8px;
+}
+@media screen and (max-width:1024px)
+{
+  .offering-flip-card{
+    width:200px;
+  }
+  .section3-heading{
+    font-size:2rem;
+  }
+  .offering-box-image{
+    margin:0;
+  }
+  .offering-flip-card{
+    margin:0;
+  }
+  .offering-wrapper .offering-carousel {
+    grid-auto-columns: calc((100% / 2));
+  }
+}
+@media screen and (max-width:640px)
+{
+  .offering-flip-card{
+    width:200px;
+  }
+  .section3-heading{
+    font-size:1.5rem;
+  }
+  .offering-carousel{
+    padding:0 40px;
+  }
+  .offering-box-image{
+    margin:0;
+  }
+  .offering-flip-card{
+    margin:0;
+  }
+
+  .offering-wrapper .offering-carousel {
+    grid-auto-columns: calc((100% / 1));
+  }
+}
+}
+
+
+
+
+
+/* Collaboration and Supported By */
+/* Styles for the collaboration container */
+.collaboration-container {
+  display: flex;
+  flex-direction: column;
+  /* border: 2px solid black; */
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-top: 60px;
+  background-color: #f5f6f7;
+  width: 100vw;
+}
+
+/* Styles for the carousel wrapper */
+.collaboration-wrapper {
+  width: 100%;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 10px;
+  overflow: hidden; /* Ensure the overflow is hidden for the carousel */
+}
+
+/* Styles for the navigation buttons */
+.collaboration-wrapper i {
+  top: 50%;
+  height: 44px;
+  width: 44px;
+  color: black;
+  cursor: pointer;
+  font-size: 1.15rem;
+  position: absolute;
+  text-align: center;
+  line-height: 44px;
+  background: grey;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.1s linear;
+  z-index: 1; /* Ensure buttons appear above the images */
+}
+
+.collaboration-wrapper i:active {
+  transform: translateY(-50%) scale(0.9);
+}
+
+.collaboration-wrapper i:hover {
+  background: #f2f2f2;
+}
+
+.collaboration-wrapper i:first-child {
+  left: 0;
+}
+
+.collaboration-wrapper i:last-child {
+  right: 0;
+}
+
+/* Styles for the carousel content */
+.collaboration-wrapper .collaboration-carousel {
+  display: flex;
+  font-size: 0px;
+  cursor: grab;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  padding: 20px;
+  position: relative;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  scrollbar-width: none; /* Hide scrollbar for browsers */
+  -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+}
+
+.collaboration-wrapper .collaboration-carousel::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Webkit based browsers */
+}
+
+/* Styles for carousel images */
+.collaboration-image {
+  height: 300px; /* Increase image container height */
+  width: 300px; /* Increase image container width */
+}
+
+.collaboration-image img {
+  background-size: cover;
+  height: 200px; /* Increase image height */
+  width: 200px; /* Increase image width */
+}
+
+.collaboration-carousel img {
+  height: 200px; /* Increase image height */
+  width: 200px; /* Increase image width */
+  object-fit: contain;
+  user-select: none;
+  margin-left: 14px;
+  margin-right: 14px;
+}
+
+/* Responsive design for carousel images */
+@media screen and (max-width: 768px) {
+  .collaboration-image {
+    height: 250px; /* Adjust container height */
+    width: 250px; /* Adjust container width */
+  }
+
+  .collaboration-image img {
+    height: 150px; /* Adjust image height */
+    width: 150px; /* Adjust image width */
+  }
+
+  .collaboration-carousel img {
+    height: 150px; /* Adjust image height */
+    width: 150px; /* Adjust image width */
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .collaboration-image {
+    height: 200px; /* Adjust container height */
+    width: 200px; /* Adjust container width */
+  }
+
+  .collaboration-image img {
+    height: 120px; /* Adjust image height */
+    width: 120px; /* Adjust image width */
+  }
+
+  .collaboration-carousel img {
+    height: 120px; /* Adjust image height */
+    width: 120px; /* Adjust image width */
+  }
+}
+
+
+/* Offerings and Collaborations Style End @Shivam Goswami */
+
+
+/* --------------------------------------------------------------------------------------------------------------- */
+
 /* Our Achievements CSS Start @DS */
 .flext-center {
   display: flex;
@@ -850,358 +1254,3 @@ body {
 /* Success story of Start-up @NSUT IIF End @DS */
 
 
-/* Section 8(Offerings and Collaborations) Styling Start @Shivam Goswami */
-
-:root{
---color1:#62DBC5; /*bluish-green*/
---color2:#9DA2A1;/*grey*/
-}
-
-
-
-.section8{
-display:flex;
-flex-direction: column;
-align-items:center;
-}
-
-
-/** Our Offering Section  **/
-.offering-container{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items: center;
-  margin:20px 80px;
-  padding:20px;
-  /* border:2px solid black; */
-}
-.section8-heading{
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 600;
-  font-family: 'Playfair Display', sans-serif !important;
-  font-size:x-large;
-  position:relative;
-}
-.section8-heading:before{
-content:"";
-position:absolute;
-bottom:-5px;
-height:6px;
-width:100%;
-left:0;
-border-radius:5px;
-background:var(--color1);
-transition:0.3s;
-transition-timing-function: ease-in-out;
-transform:scaleX(0);
-}
-.section8-heading:hover:before{
-transform:scaleX(1);
-}
-.offering-inner-container{
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-  padding:20px;
-  /* border:2px solid black; */
-}
-.offering-row{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content: center;
-  align-items: center;
-}
-.offering-box{
-  display:flex;
-  padding:0 10px;
-  width:fit-content;
-  border-radius:10px;
-  margin:10px;
-  /* flex:1; */
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-}
-.offering-box-image{
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  margin-left:30px;
-}
-.offering-box-image img{
-  height:120px;
-  width:120px;
-  border-radius: 50%;
-  border:5px solid  var(--color2);
-}
-.offering-flip-card-front h3{
-  font-family: 'Playfair Display', sans-serif !important;
-  font-weight:700;
-  font-size:18pt;
-  line-height:1.2em;
-}
-.offering-flip-card-back p{
-  font-family:cursive;
-  font-weight:200;
-  line-height:1.8em;
-}
-
-/**Flip Card Animation**/
-.offering-flip-card {
-  perspective: 1000px;
-  width: 200px;
-  height: 150px;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  margin-left:20px;
-}
-
-.offering-flip-card-inner {
-  width: 100%;
-  height: 125px;
-  transition: transform 1s;
-  transform-style: preserve-3d;
-  border-radius:20px;
-  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-}
-
-.offering-flip-card:hover .offering-flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-.offering-flip-card-front, .offering-flip-card-back {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  backface-visibility: hidden;
-}
-
-.offering-flip-card-front{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 1 ; 
-  padding:0 20px;
-}
-
-.offering-flip-card-back {
-  transform: rotateY(180deg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0 ; 
-  padding:0 15px;
-} 
-
-.offering-flip-card:hover .offering-flip-card-front {
-  opacity: 0 ; 
-}
-.offering-flip-card:hover .offering-flip-card-back {
-  opacity: 1 ; 
-}
-.offering-wrapper{
-display:none;
-}
-
-
-@media (max-width: 1280px) {
-.offering-inner-container{
-  display:none;
-}
-
-.offering-wrapper{
-  display:grid;
-  grid-gap:20px;
-}
-.offering-box{
-  display:flex;
-  justify-content: center;
-  align-items: center;
-}
-.offering-wrapper {
-  max-width: 1100px;
-  width: 100%;
-  position: relative;
-}
-.offering-wrapper i {
-  top: 50%;
-  height: 50px;
-  width: 50px;
-  cursor: pointer;
-  font-size: 1.25rem;
-  position: absolute;
-  text-align: center;
-  line-height: 50px;
-  background:var(--color2);
-  border-radius: 50%;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.23);
-  transform: translateY(-50%);
-  transition: transform 0.1s linear;
-}
-.offering-wrapper i:active{
-  transform: translateY(-50%) scale(0.85);
-}
-.offering-wrapper i:first-child{
-  left: -22px;
-}
-.offering-wrapper i:last-child{
-  right: -22px;
-}
-.offering-wrapper .offering-carousel{
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: calc((100% / 3));
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 16px;
-  border-radius: 8px;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-}
-.offering-carousel::-webkit-scrollbar {
-  display: none;
-}
-.offering-carousel.no-transition {
-  scroll-behavior: auto;
-}
-.offering-carousel.dragging {
-  scroll-snap-type: none;
-  scroll-behavior: auto;
-}
-.offering-carousel.dragging .offering-box {
-  cursor: grab;
-  user-select: none;
-}
-.offering-carousel :where(.offering-box) {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.offering-carousel .offering-box {
-  scroll-snap-align: start;
-  height: 342px;
-  list-style: none;
-  background: #fff;
-  cursor: pointer;
-  padding: 10px 20px;
-  flex-direction: column;
-  border-radius: 8px;
-}
-@media screen and (max-width:1024px)
-{
-  .offering-wrapper .offering-carousel {
-    grid-auto-columns: calc((100% / 2));
-    gap:20px;
-  }
-
-  .offering-flip-card-back p{
-    font-size:small;
-  }
-}
-@media screen and (max-width:640px)
-{
-  .offering-wrapper .offering-carousel {
-    grid-auto-columns: calc((100% / 1));
-    gap:20px;
-  }
-}
-
-}
-
-
-
-
-
-/* Collaboration and Supported By */
-.collaboration-container{
-  display:flex;
-  flex-direction: column;
-  /* border:2px solid black; */
-  justify-content: center;
-  align-items: center;
-  padding:10px;
-  margin:20px 80px;
-}
-.collaboration-wrapper{
-  display: flex;
-  flex-direction: row;
-  max-width:2500px;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  padding:10px;
-  margin:20px 80px;
-  border-radius:10px;
-  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-}
-.collaboration-wrapper i{
-  top: 50%;
-  height: 44px;
-  width: 44px;
-  color:black;
-  cursor: pointer;
-  font-size: 1.15rem;
-  position: absolute;
-  text-align: center;
-  line-height: 44px;
-  background:var(--color2);
-  border-radius: 50%;
-  transform: translateY(-50%);
-  transition: transform 0.1s linear;
-}
-.collaboration-wrapper i:active{
-  transform: translateY(-50%) scale(0.9);
-}
-.collaboration-wrapper i:hover{
-  background: #f2f2f2;
-}
-.collaboration-wrapper i:first-child{
-  left: -22px;
-  display: none;
-}
-.collaboration-wrapper i:last-child{
-  right: -22px;
-}
-.collaboration-wrapper .collaboration-carousel{
-  display:flex;
-  font-size: 0px;
-  cursor: pointer;
-  overflow: hidden;
-  white-space: nowrap;
-  scroll-behavior: smooth;
-  /* border:2px solid black; */
-  padding:20px;
-  max-width:2500px; 
-}
-.collaboration-carousel.dragging{
-  cursor: grab;
-  scroll-behavior: auto;
-}
-.collaboration-carousel.dragging img{
-  pointer-events: none;
-}
-.collaboration-carousel img{
-  height: 100px;
-  width:100px;
-  object-fit: contain;
-  user-select: none;
-  margin-left: 14px;
-  margin-right:14px;
-  width: calc(100% / 3);
-}
-.collaboration-carousel img:first-child{
-  margin-left: 0px;
-}
-@media screen and (max-width: 768px) {
-  .collaboration-carousel img{
-    width: calc(100% / 2);
-  }
-}
-@media screen and (max-width: 640px) {
-  .collaboration-carousel img{
-    width: 100%;
-  }
-}
-/* Section 8(Offerings and Collaborations) End @Shivam Goswami */
