@@ -100,35 +100,78 @@ body {
 }
 
 #intro {
-  height: 125px;
+  padding: 0.5rem 0 0 0;
+  background-color: #f5f6f7;
+  /* height: 125px; */
+  height: 10vw;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 1.35vw;
 }
 
 #intro img {
-  height: 125px;
-  width: 125px;
+  /* height: 125px; */
+  /* width: 125px; */
+  width: 6.9em;
+  aspect-ratio: 1/1;
   border-radius: 50%;
   margin: 0 auto;
 }
 
 #i-about h3 {
   text-align: center;
-  font-size: larger;
+  font-size: 1.85em!important;
 }
 
 #i-about h5 {
   text-align: center;
-  font-size: small;
+  font-size: 1.25em!important;
 }
 
 .line1 {
   font-weight: bold;
 }
+@media screen and (max-width: 769px) {
+  #intro {
+    height: 15vw;
+    font-size: 1.55vw;
+    }
+    #i-about h3 {
+      font-size: 1.5em!important;
+    }
+    #i-about h5 {
+      font-size: 1.5em!important;
+    }
+}
+@media screen and (max-width: 565px) {
+  #intro {
+    height: 20vw;
+    font-size: 2vw;
+    }
+  #i-about h3 {
+    font-size: 1.5em!important;
+  }
+  #i-about h5 {
+    font-size: 1.25em!important;
+  }
+  
+}
+@media screen and (max-width: 435px) {
+  #intro {
+    height: 25vw;
+    font-size: 2vw;
+    }
+  #i-about h3 {
+    font-size: 1.75em!important;
+  }
+  #i-about h5 {
+    font-size: 1.40em!important;
+  }
+}
 
-@media screen and (max-width: 710px) {
+/* @media screen and (max-width: 710px) {
   #i-about h3 {
     font-size: small;
   }
@@ -138,10 +181,10 @@ body {
 }
 
 @media screen and (max-width: 565px) {
-  /* #intro img{
+  #intro img{
         height: 65px;
         width: 65px;
-    } */
+    }
   #i-about h5 {
     font-size: xx-small;
   }
@@ -151,7 +194,7 @@ body {
   #i-about h3 {
     font-size: xx-small;
   }
-}
+} */
 
 #top {
   height: 4.2vh;
@@ -201,6 +244,9 @@ body {
   position: sticky;
   top: 0;
   z-index: 10;
+}
+#navbar nav {
+  background-color: #f5f6f7!important;
 }
 .navbar-brand {
   font-weight: 800;
