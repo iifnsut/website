@@ -16,7 +16,7 @@ class OurAchievements {
       this.data = [
         {
           icon: "fa-solid fa-rocket",
-          count: 50,
+          count: 45,
           title: "Startup Incubated",
         },
         {
@@ -26,22 +26,22 @@ class OurAchievements {
         },
         {
           icon: "fas fa-hand-holding-usd",
-          count: "10Cr",
+          count: "18Cr",
           title: "Fund Raised",
         },
         {
           icon: "fa-solid fa-bullseye",
-          count: "10k",
+          count: "150",
           title: "Job Created",
         },
         {
           icon: "fa-solid fa-graduation-cap",
-          count: "500",
+          count: "12",
           title: "Graduated",
         },
         {
           icon: "fa-solid fa-arrow-up-right-dots",
-          count: "100Cr",
+          count: "50Cr",
           title: "Valuation",
         },
       ];
@@ -395,7 +395,26 @@ class SuccessStories {
     this.pos = 0;
 
     document.getElementById("SSS-add").addEventListener("click", (e) => {
-      this.addElements();
+      let arrow = document.querySelector("#SSS-add>i");
+      let no = 0;
+      if (arrow.classList.contains("fa-angle-down")) {
+        this.addElements();
+      } else {
+        let target = document.getElementById(this.target);
+        let window_width = $(window).width();
+        if (window_width > 895) {
+          no = 4;
+        } else {
+          no = 2;
+        }
+        let pos = target.childElementCount;
+        for (let i = no; i < pos; i++) {
+          target.removeChild(target.lastChild);
+          this.pos -= 1;
+        }
+        arrow.classList.remove("fa-angle-up");
+        arrow.classList.add("fa-angle-down");
+      }
     });
   }
 
@@ -434,6 +453,11 @@ class SuccessStories {
 
     // console.log(elem);
     let current_pos = this.pos;
+    if (current_pos + no >= elem.length) {
+      let arrow = document.querySelector("#SSS-add>i");
+      arrow.classList.remove("fa-angle-down");
+      arrow.classList.add("fa-angle-up");
+    }
     for (
       let i = current_pos;
       i < Math.min(current_pos + no, elem.length);
@@ -486,11 +510,21 @@ $(document).ready(function () {
   SS.addElements();
 });
 
+// function scrollright(){
+//   let LE_List = $('.LE-slider-items');
+//     let elem = LE_List[LE_List.length-1];
+//     $('#LE-List').prepend(elem);
+// }
+
 // Secction 6,7,8 @DS End
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------
 
-//Section 8(Offerings and Collaborations) JS
+
+
+
+//Offerings and Collaborations Script Start @Shivam Goswami
 //Collaboration Container
 const carousel1 = document.querySelector(".collaboration-carousel");
 firstImg = carousel1.querySelectorAll("img")[0];
@@ -581,6 +615,8 @@ document.addEventListener("mouseup", dragStop1);
 carousel1.addEventListener("touchend", dragStop1);
 
 
+
+
 //---------------------------------------------------------------------------------------------------------------------
 
 
@@ -669,4 +705,7 @@ document.addEventListener("mouseup", dragStop);
 carousel.addEventListener("scroll", infiniteScroll);
 wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
 wrapper.addEventListener("mouseleave", autoPlay);
+
+//Offerings and Collaborations Script End @Shivam Goswami
+
 
