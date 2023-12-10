@@ -13,6 +13,8 @@
 
 - [ ] Header
 - [ ] Update Favicon
+- [ ] Update footer
+- [ ] Upadte About Us page as UI for that is already shared in group
 
 ## PRACTICES TO FOLLOW
 
