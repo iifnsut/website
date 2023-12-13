@@ -333,60 +333,41 @@ class SuccessStories {
     if (data === null) {
       this.data = [
         {
-          img: "https://nsutiif.in/img/gallery/1.jpeg",
-          title: "From beginning to end",
-          desc: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel
-                non molestias excepturi repellendus fugiat esse voluptate totam
-                repellat eligendi et earum ipsam minus magni assumenda quod sed
-                maiores, expedita aperiam! Optio minima deserunt porro soluta
-                eaque reprehenderit quia expedita vel aspernatur placeat ut rem
-                culpa est voluptate fuga eius maxime sit, mollitia hic illum
-                voluptas, qui non tenetur. Atque, ab!`,
+          img: "/Assets/Startup/zalonin.jpeg",
+          title: "",
+          desc: `Zalonin received the first prize at Shark Tank, held at JMC on November 08 2019.`,
         },
         {
-          img: "https://nsutiif.in/img/gallery/2.jpeg",
-          title: "From beginning to end",
-          desc: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel
-                non molestias excepturi repellendus fugiat esse voluptate totam
-                repellat eligendi et earum ipsam minus magni assumenda quod sed
-                maiores, expedita aperiam! Optio minima deserunt porro soluta
-                eaque reprehenderit quia expedita vel aspernatur placeat ut rem
-                culpa est voluptate fuga eius maxime sit, mollitia hic illum
-                voluptas, qui non tenetur. Atque, ab!`,
+          img: "Assets/Startup/team-feet.jpg",
+          title: "",
+          desc: `NSUT IIF invested startup Feet Wings Pvt Ltd received investment of Rs. 1.1 Crore
+          from PadUp and Elina Capital.`,
         },
         {
-          img: "https://nsutiif.in/img/gallery/3.jpeg",
-          title: "From beginning to end",
-          desc: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel
-                non molestias excepturi repellendus fugiat esse voluptate totam
-                repellat eligendi et earum ipsam minus magni assumenda quod sed
-                maiores, expedita aperiam! Optio minima deserunt porro soluta
-                eaque reprehenderit quia expedita vel aspernatur placeat ut rem
-                culpa est voluptate fuga eius maxime sit, mollitia hic illum
-                voluptas, qui non tenetur. Atque, ab!`,
+          img: "Assets/Startup/Neem-Tree-Agro-Solution.jpg",
+          title: "",
+          desc: `One of our startup Neem Tree Agro Solution received funding of Rs. 5 Lakhs from
+          NASSCOM Foundation. Neem Tree also received first price in Agri hackathon
+          organized by IIT Delhi and received a grand of Rs. 7 Lakhs by Govt. of India.`,
         },
         {
-          img: "https://nsutiif.in/img/gallery/4.JPG",
-          title: "From beginning to end",
-          desc: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel
-                non molestias excepturi repellendus fugiat esse voluptate totam
-                repellat eligendi et earum ipsam minus magni assumenda quod sed
-                maiores, expedita aperiam! Optio minima deserunt porro soluta
-                eaque reprehenderit quia expedita vel aspernatur placeat ut rem
-                culpa est voluptate fuga eius maxime sit, mollitia hic illum
-                voluptas, qui non tenetur. Atque, ab!`,
+          img: "Assets/Startup/VivaFeet.jpeg",
+          title: "",
+          desc: `VivaFeet raised INR 10 lakhs from NIDHI Prayas scheme and INR 30 Lakhs from ASIIM.`,
         },
         {
-          img: "https://nsutiif.in/img/gallery/5.JPG",
-          title: "From beginning to end",
-          desc: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel
-                non molestias excepturi repellendus fugiat esse voluptate totam
-                repellat eligendi et earum ipsam minus magni assumenda quod sed
-                maiores, expedita aperiam! Optio minima deserunt porro soluta
-                eaque reprehenderit quia expedita vel aspernatur placeat ut rem
-                culpa est voluptate fuga eius maxime sit, mollitia hic illum
-                voluptas, qui non tenetur. Atque, ab!`,
+          img: "Assets/Startup/the-healthy-company.jpg",
+          title: "",
+          desc: `AlNourish (The Healthy Company), which provides super foods and consultation received a funding of USD 350,000 from
+          Gurgaon based accelerator, Huddle and has raised another confidential amount from DSG Consumer Partners and Get
+          Vantage.`,
         },
+        // {
+        //   img: "Assets/Startup/Bonfarmo.jpg",
+        //   title: "",
+        //   desc: `Bonfarmo, an agri-tech company incubated at NSUT IIF has received funding of Rs.
+        //   25 Lakhs from PUSA Incubator, IARI and another grant of INR 5,00,000.`,
+        // },
       ];
     } else {
       this.data = data;
@@ -509,12 +490,6 @@ $(document).ready(function () {
   // Adding the Success Stories to the target element
   SS.addElements();
 });
-
-// function scrollright(){
-//   let LE_List = $('.LE-slider-items');
-//     let elem = LE_List[LE_List.length-1];
-//     $('#LE-List').prepend(elem);
-// }
 
 // Secction 6,7,8 @DS End
 
