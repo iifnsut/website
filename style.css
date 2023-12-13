@@ -1598,3 +1598,360 @@ body {
     }
 }
 
+/*  section 7 social media and footer */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3&family=Ubuntu&display=swap');
+
+
+.box-social{
+    background-size: 1880px 490px ;
+    margin: 15px;
+    font-family: 'Ubuntu', source-sans-3;
+}
+
+.social_head{
+    text-align: center;
+}
+
+.socialsubhead{
+    text-align: center;
+    margin-top:-15px; 
+    margin-bottom: 18px;
+    padding-top: none;
+}
+
+.social-content{
+    display: flex;
+    margin-top: 10px;
+    padding-top: none;
+    
+}
+
+.box-social iframe{
+    border-color: #9da2a1;
+    border-radius: 13px;
+}
+
+.tweet1{
+    text-align: center;
+    border: 2px;
+    border-right-style: solid  ;
+    border-color: #9da2a1;
+    width: 33.33%;
+    height: auto;
+    align-content:center;
+    padding: 30px;
+
+}
+
+.yt2{
+    text-align: center;
+    border: 2px;
+    border-right-style: solid;
+    border-color: #9da2a1;
+    width: 33.33%;
+    height:auto;
+    padding: 30px;
+}
+
+.postcol{
+    padding-top: 30px;
+    margin-left: 30px;
+    width: 33.33%; 
+    height: auto;
+    text-align: center;
+}
+.post{
+    width: 400px;
+}
+
+.newletter{
+    text-align:center;
+    height: 300px;
+    background: url("social-nd-foot/newsletter-bg.jpg");
+    /* margin: 20px; */
+}
+
+.newsform{
+    padding-top:30px;
+}
+
+.newsformhead{
+    color: white;
+    /* font-size: 30px; */
+    font-family: 'Ubuntu', source-sans-3;
+    margin-bottom: 25px ;
+}
+
+.newsforminput{
+    padding: 10px;
+    padding-left: 20px;
+    width: 1000px;
+    height: 40px;
+    margin-top: 15px;
+}
+
+.newsformsubmit{
+    height:30px;
+    width: 80px;
+    margin-top: 20px;
+    color: white;
+    background-color: rgb(14, 180, 14);
+    border: none;
+}
+
+.newsformsubmit:hover{
+    opacity: 0.8;
+}
+
+.foot{
+    display:flex;
+    background-color: #374758;
+    height: 400px;
+    font-family: 'Ubuntu', source-sans-3;
+    color: whitesmoke;
+}
+
+.foot1{
+    float: left;
+    width: 33.33%;
+    padding: 25px;
+    padding-left: 60px;
+    text-align: left;
+    margin-top: 25px;
+    margin-left: 25px;
+    
+}  
+
+.footicon{
+    border-radius: 50%;
+    width: 120px;
+}
+
+.foot1head{
+    border-left: 4px solid white;
+    padding-left: 6px;
+}
+
+.foot1 .fa-brands{
+    padding:8px;
+    width: auto;
+    text-align: center;
+    text-decoration: none;
+    margin: 8px 3px;
+    font-size: 25px;
+    color: #374758;
+    background-color: white;
+    border-radius: 50%;  
+}
+
+  
+.foot1 .fa-brands:hover {
+    opacity: 0.7;
+}
+
+.foot2{
+    float: left;
+    width: 33.33%;
+    padding: 25px;
+    padding-left: 80px;
+    margin:20px;
+    text-align: left;  
+}
+
+.foot2head{
+    border-left: 4px solid white;
+    padding-left: 6px;
+}
+ .addressfoot{
+    width: 200px;
+ }
+
+.foot2-2{
+    margin-top: none;
+    padding-top: 2px;
+    padding-left: 60px;
+}
+
+.footsubhead{
+    text-align: left;
+    margin-top: -20px;
+}
+
+
+
+.phone1{
+    color: rgb(40, 155, 250);
+    /* color: rgb(29, 77, 190); */
+    font-size: 15px;
+    
+}
+
+.mail1{
+    color:rgb(40, 155, 250);
+    font-size: 15px;
+    
+}
+
+.ft2-2{
+    color: whitesmoke;
+    background-color: #374758;
+    text-align: center;
+    margin-top: none;
+    margin-bottom: 0px;
+} 
+
+.foot3{
+    float: left;
+    width: 33.33%;
+    padding: 25px;
+    padding-left: 80px;
+    margin:20px;
+    text-align: left;     
+}
+
+.foot3head{
+    border-left: 4px solid white;
+    padding-left: 6px;
+}
+
+.foot3-2{
+    padding-top: 20px;
+    padding-left: 60px;
+}
+
+.foot3-2 li{
+    height: 6px;
+}
+
+.footlist{
+    text-align: left;
+    color:whitesmoke;
+    text-decoration: none;
+    margin: none;
+}
+
+.foot3head-2{
+    border-left: 4px solid white;
+    padding-left: 6px;
+    width: 250px;
+}
+
+@media only screen and (max-width:1080px){
+    .tweet1{
+        width: 50%;
+    }
+    .yt2{
+       width: 50%;
+       border: none;
+
+    }
+    .postcol{
+        display: none;
+    }
+    .newsforminput{
+        width: 400px;
+    }
+    .foot{
+        height: auto;
+        margin-bottom: none;
+    }
+    .foot1 {
+        float: left;
+        width: 33.33%;
+        padding: 0;
+        padding-left: 10px;
+        text-align: left;
+        margin-top: 25px;
+        margin-left: 10px;
+    }
+    .fa-brands{
+        font-size: 8px;
+        margin: 2px 2px;
+    }
+    .foot2 {
+        float: left;
+        width: 33.33%;
+        padding: 25px;
+        padding-left: 30px;
+        margin: 10px;
+        text-align: left;
+    }
+    .foot3 {
+        float: left;
+        width: 33.33%;
+        padding: 25px;
+        padding-left: 40px;
+        margin: 10px;
+        text-align: left;
+    }
+    .foot3head-2{
+        width: auto;
+    }
+    .foot2-2 {
+        padding-top: 8px;
+        padding-left: 40px;
+    }
+
+}
+
+@media only screen and (max-width:680px){
+    .tweet1{
+        width: 100%;
+        border: none;
+    }
+    .tweet1 a{
+        width: 200px;
+        height: 350px;
+    }
+    .yt2{
+        display: none;
+    }
+    .foot2 {
+        float: left;
+        width: 33.33%;
+        padding: 25px;
+        padding-left: 10px;
+        margin: 10px;
+        text-align: left;
+    }
+    .foot2-2 {
+        padding-top: 8px;
+        padding-left: 20px;
+    }
+    .foot3 {
+        float: left;
+        width: 33.33%;
+        padding: 25px;
+        padding-left: 15px;
+        margin: 10px;
+        text-align: left;
+    }
+    .foot3-2 {
+        padding-top: 20px;
+        padding-left: 30px;
+    }
+
+}
+
+@media only  screen and (max-width:500px) {
+    .newsforminput{
+        width: 200px
+    }
+    .foot{
+        font-size: small;
+    }
+
+    .foot2-2{
+        padding-left: 7px;
+    }
+    .addressfoot{
+        width: 100px;
+    }
+    .footsubhead  {
+        width:80px;
+    }
+    .foot3{
+        padding-left: 5px;
+    }
+    
+}
