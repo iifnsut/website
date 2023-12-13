@@ -333,7 +333,7 @@ class SuccessStories {
     if (data === null) {
       this.data = [
         {
-          img: "/Assets/Startup/zalonin.jpeg",
+          img: "/Assets/Startup/Zalonin.jpeg",
           title: "",
           desc: `Zalonin received the first prize at Shark Tank, held at JMC on November 08 2019.`,
         },
