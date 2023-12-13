@@ -1,5 +1,4 @@
 // Section 6,7, 8 @DS
-
 // Do not modify the below following code
 /**
  * Represents a class for managing achievements.
@@ -114,88 +113,88 @@ class LatestEvents {
     if (data === null) {
       this.data = [
         {
-          img: "https://nsutiif.in/img/gallery/1.jpeg",
-          title: "Startup Incubated",
+          img: "/Assets/Events/LE10.jpg",
+          title: "",
           date: "10/10/2021",
-          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+          desc: "",
         },
         {
-          img: "https://nsutiif.in/img/gallery/2.jpeg",
-          title: "Startup Incubated",
+          img: "/Assets/Events/LE04.jpg",
+          title: "",
           date: "10/10/2021",
-          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+          desc: "",
         },
         {
-          img: "https://nsutiif.in/img/gallery/3.jpeg",
-          title: "Startup Incubated",
+          img: "/Assets/Events/LE07.jpg",
+          title: "",
           date: "10/10/2021",
-          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+          desc: "",
         },
         {
-          img: "https://nsutiif.in/img/gallery/4.JPG",
-          title: "Startup Incubated",
+          img: "/Assets/Events/LE14.jpg",
+          title: "",
           date: "10/10/2021",
-          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+          desc: "",
         },
         {
-          img: "https://nsutiif.in/img/gallery/5.JPG",
-          title: "Startup Incubated",
+          img: "/Assets/Events/LE05.jpg",
+          title: "",
           date: "10/10/2021",
-          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+          desc: "",
         },
         {
-          img: "https://nsutiif.in/img/gallery/3.jpeg",
-          title: "Startup Incubated",
+          img: "/Assets/Events/LE11.jpg",
+          title: "",
           date: "10/10/2021",
-          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+          desc: "",
         },
         {
-          img: "https://nsutiif.in/img/gallery/4.JPG",
-          title: "Startup Incubated",
+          img: "/Assets/Events/LE03.jpg",
+          title: "",
           date: "10/10/2021",
-          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+          desc: "",
         },
         {
-          img: "https://nsutiif.in/img/gallery/1.jpeg",
-          title: "Startup Incubated",
+          img: "/Assets/Events/LE01.jpg",
+          title: "",
           date: "10/10/2021",
-          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+          desc: "",
         },
         {
-          img: "https://nsutiif.in/img/gallery/2.jpeg",
-          title: "Startup Incubated",
+          img: "/Assets/Events/LE09.jpg",
+          title: "",
           date: "10/10/2021",
-          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+          desc: "",
         },
         {
-          img: "https://nsutiif.in/img/gallery/5.JPG",
-          title: "Startup Incubated",
+          img: "/Assets/Events/LE06.jpg",
+          title: "",
           date: "10/10/2021",
-          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+          desc: "",
         },
         {
-          img: "https://nsutiif.in/img/gallery/3.jpeg",
-          title: "Startup Incubated",
+          img: "/Assets/Events/LE08.jpg",
+          title: "",
           date: "10/10/2021",
-          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+          desc: "",
         },
         {
-          img: "https://nsutiif.in/img/gallery/4.JPG",
-          title: "Startup Incubated",
+          img: "/Assets/Events/LE12.jpg",
+          title: "",
           date: "10/10/2021",
-          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+          desc: "",
         },
         {
-          img: "https://nsutiif.in/img/gallery/1.jpeg",
-          title: "Startup Incubated",
+          img: "/Assets/Events/LE13.jpg",
+          title: "",
           date: "10/10/2021",
-          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+          desc: "",
         },
         {
-          img: "https://nsutiif.in/img/gallery/2.jpeg",
-          title: "Startup Incubated",
+          img: "/Assets/Events/LE01.jpg",
+          title: "",
           date: "10/10/2021",
-          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum.",
+          desc: "",
         },
       ];
     } else {
@@ -270,7 +269,7 @@ class LatestEvents {
       div.classList.add("LE-slider-items");
       div.innerHTML = `
       <div class="LE-items-contens">
-        <img src="${elem[i].img}" alt="" />
+        <img src="${elem[i].img}" alt=""  loading="lazy" />
         <div class="LE-text">
           <h3>${elem[i].title}</h3>
           <p>
@@ -448,9 +447,9 @@ class SuccessStories {
       let div = document.createElement("div");
       div.classList.add("SSS-items");
       div.innerHTML = `
-      <div class="sss-sudo-box">
+      <div class="SSS-sudo-box">
             <div class="SSS-items-img">
-              <img src="${elem[i].img}" alt="" />
+              <img src="${elem[i].img}" alt=""  loading="lazy" />
             </div>
             <div class="SSS-items-data">
               <h4>${elem[i].title}</h4>
@@ -461,34 +460,39 @@ class SuccessStories {
           </div>
       `;
       target.appendChild(div);
+      
       this.pos += 1;
     }
   }
 }
 
 $(document).ready(function () {
+  let delElem = null;
   // Initialize the OurAchievements Class
   let OA = new OurAchievements();
-  // Clear the hard Achievements List
-  $("#OA-List").empty();
-  // Adding the Achievements to the target element
+  // // Clear the hard Achievements List
+  delElem = $("#OA-List").children();
+  // // Adding the Achievements to the target element
   OA.addElements();
+  delElem.remove();
 
   // Initialize the LatestEvents Class
   let LE = new LatestEvents();
   // Clear the hard Latest Events List
-  $("#LE-List").empty();
+  delElem = $("#LE-List").children();
   // Adding the Latest Events to the target element
   LE.addElements();
+  delElem.remove();
   // Adding the sliding effect to Latest Events section
   LE.setSlider();
 
   // Initialize the SuccessStories Class
   let SS = new SuccessStories();
-  // Clear the hard Success Stories List
-  $("#SSS-List").empty();
-  // Adding the Success Stories to the target element
+  // // Clear the hard Success Stories List
+  delElem = $("#SSS-List").children();
+  // // Adding the Success Stories to the target element
   SS.addElements();
+  delElem.remove();
 });
 
 // Secction 6,7,8 @DS End
