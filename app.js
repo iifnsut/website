@@ -113,85 +113,85 @@ class LatestEvents {
     if (data === null) {
       this.data = [
         {
-          img: "/Assets/Events/LE10.jpg",
+          img: "Assets/Events/LE10.jpg",
           title: "",
           date: "10/10/2021",
           desc: "",
         },
         {
-          img: "/Assets/Events/LE04.jpg",
+          img: "Assets/Events/LE04.jpg",
           title: "",
           date: "10/10/2021",
           desc: "",
         },
         {
-          img: "/Assets/Events/LE07.jpg",
+          img: "Assets/Events/LE07.jpg",
           title: "",
           date: "10/10/2021",
           desc: "",
         },
         {
-          img: "/Assets/Events/LE14.jpg",
+          img: "Assets/Events/LE14.jpg",
           title: "",
           date: "10/10/2021",
           desc: "",
         },
         {
-          img: "/Assets/Events/LE05.jpg",
+          img: "Assets/Events/LE05.jpg",
           title: "",
           date: "10/10/2021",
           desc: "",
         },
         {
-          img: "/Assets/Events/LE11.jpg",
+          img: "Assets/Events/LE11.jpg",
           title: "",
           date: "10/10/2021",
           desc: "",
         },
         {
-          img: "/Assets/Events/LE03.jpg",
+          img: "Assets/Events/LE03.jpg",
           title: "",
           date: "10/10/2021",
           desc: "",
         },
         {
-          img: "/Assets/Events/LE01.jpg",
+          img: "Assets/Events/LE01.jpg",
           title: "",
           date: "10/10/2021",
           desc: "",
         },
         {
-          img: "/Assets/Events/LE09.jpg",
+          img: "Assets/Events/LE09.jpg",
           title: "",
           date: "10/10/2021",
           desc: "",
         },
         {
-          img: "/Assets/Events/LE06.jpg",
+          img: "Assets/Events/LE06.jpg",
           title: "",
           date: "10/10/2021",
           desc: "",
         },
         {
-          img: "/Assets/Events/LE08.jpg",
+          img: "Assets/Events/LE08.jpg",
           title: "",
           date: "10/10/2021",
           desc: "",
         },
         {
-          img: "/Assets/Events/LE12.jpg",
+          img: "Assets/Events/LE12.jpg",
           title: "",
           date: "10/10/2021",
           desc: "",
         },
         {
-          img: "/Assets/Events/LE13.jpg",
+          img: "Assets/Events/LE13.jpg",
           title: "",
           date: "10/10/2021",
           desc: "",
         },
         {
-          img: "/Assets/Events/LE01.jpg",
+          img: "Assets/Events/LE01.jpg",
           title: "",
           date: "10/10/2021",
           desc: "",
@@ -332,7 +332,7 @@ class SuccessStories {
     if (data === null) {
       this.data = [
         {
-          img: "/Assets/Startup/Zalonin.jpeg",
+          img: "Assets/Startup/Zalonin.jpeg",
           title: "",
           desc: `Zalonin received the first prize at Shark Tank, held at JMC on November 08 2019.`,
         },
