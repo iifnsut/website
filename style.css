@@ -1732,7 +1732,7 @@ body {
     padding-left: 6px;
 }
 
-.foot1 fa-brands{
+.foot1 .fa-brands{
     padding:8px;
     width: auto;
     text-align: center;
@@ -1745,7 +1745,7 @@ body {
 }
 
   
-.foot1 fa-brands:hover {
+.foot1 .fa-brands:hover {
     opacity: 0.7;
 }
 
