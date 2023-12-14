@@ -144,6 +144,27 @@ html,body{
     text-align: justify;
 }
 
+@media screen and (max-width: 900px){
+    #about h1{
+        font-size: 3.5rem;
+    }
+    #only-text{
+        width: 100%;
+    }
+
+    #only-text h3{
+        font-size: 1.3rem;
+    }
+    #about-text{
+        display: flex;
+        flex-direction: column;
+    }
+    .col-lg-7{
+        width: 100%;
+        padding: 10%;
+    }
+}
+
 #page1{
     /* height: 70%; */
     width: 100%;
@@ -167,7 +188,7 @@ html,body{
     display: flex;
     flex-direction: column;
     margin-bottom: 40px;
-    margin:0 15px;
+    margin:1rem 15px;
 }
 
 .team{
@@ -219,11 +240,11 @@ html,body{
 }
 
 .cards2{
-    margin: 0 3%;
+    margin: 1rem 3%;
 }
 
 .cards3{
-    margin: 0 4%;
+    margin: 1rem 4%;
 }
 
 #page3{
