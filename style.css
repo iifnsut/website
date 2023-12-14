@@ -32,6 +32,9 @@ a:visited {
   text-decoration: none;
   color: unset;
 }
+i{
+  font-style: normal;
+}
 /* </> */
 
 /* <> VARIABLES */
@@ -1824,7 +1827,11 @@ body {
 
 .footsubhead{
     text-align: left;
+    font-size: 1.5rem;
     margin-top: -20px;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
 }
 
 
