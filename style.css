@@ -1224,14 +1224,26 @@ body {
   border: #bcc7ce solid 0.1rem;
   cursor: pointer;
 }
+.SSS-sudo-box{
+  height: 100%;
+  width: 100%;
+}
 .SSS-items-img {
   padding-bottom: 4.8rem;
   border-radius: 0 !important;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.5s linear;
+
 }
 .SSS-items-img img {
   /* height: 100%; */
+  display: block;
   width: 100%;
   aspect-ratio: 16/9;
+  object-position: center;
   object-fit: cover;
   border-radius: 0 !important;
   /* margin-bottom: 4rem; */
@@ -1273,6 +1285,7 @@ body {
   -webkit-box-orient: vertical;
   transition: inherit;
   height: 4.8rem;
+  font-weight: 600;
 }
 /* 
 .SSS-items:hover .SSS-items-data h4 {
