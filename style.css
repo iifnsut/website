@@ -233,7 +233,10 @@ h1,h2,h3,h4,h5,h6{
   align-items: center;
   text-align: center;
 }
-
+#top-right h3{
+  margin-bottom: 0;
+  display: flex;
+}
 #top-right h3 a {
   font-size: x-large;
   font-weight: 500;
