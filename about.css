@@ -265,6 +265,24 @@ html,body{
     background-color: #ffffff;
 }
 
+@media screen and (max-width: 500px){
+    #page1 h1{
+        font-size: 4rem;
+    }
+    #page2 h1{
+        font-size: 4rem;
+    }
+    #page3 h1{
+        font-size: 4rem;
+    }
+}
+
+@media screen and (max-width: 380px){
+    #only-text h3{
+        font-size: 1.1rem;
+    }
+}
+
 /* #page4 h1{
     font-size: 80px;
     font-weight: 800;
