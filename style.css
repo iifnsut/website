@@ -962,9 +962,10 @@ body {
 
 /* Our Acchivement Secton CSS Start*/
 #OurAchievements {
-  margin-top: 2rem;
+  padding: 1.5em 0 1.5em 0;
   color: #374758;
   font-size: 1.15vw;
+  background-color: #f5f6f7;
 }
 
 .DS-headingText {
@@ -1031,15 +1032,19 @@ body {
   justify-content: center;
   /* color: inherit; */
 }
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 648px) {
+  #OA-List {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
   .OA-items-logo i {
-    font-size: 7em;
+    font-size: 10em;
   }
   .OA-items-data-num {
-    font-size: 4em;
+    font-size: 6.5em;
   }
   .OA-items-data-text {
-    font-size: 3em;
+    font-size: 4em;
   }
 }
 
@@ -1108,7 +1113,7 @@ body {
   align-items: center;
   height: 100%;
   width: 100%;
-  /* border-radius: 3%; */
+  border-radius: 5px;
   transition: inherit;
 }
 .LE-items-contens {
@@ -1273,6 +1278,8 @@ body {
   justify-self: center;
   border: #bcc7ce solid 0.1rem;
   cursor: pointer;
+  overflow: hidden;
+  border-radius: 5px;
 }
 .SSS-sudo-box{
   height: 100%;

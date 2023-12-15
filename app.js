@@ -78,7 +78,6 @@ class OurAchievements {
       let div = document.createElement("div");
       div.classList.add("OA-items");
       div.innerHTML = `
-        <div class="OA-items">
           <div class="OA-items-logo flext-center">
             <i class="flext-center ${elem[i].icon}"></i>
           </div>
@@ -90,7 +89,6 @@ class OurAchievements {
               <span>${elem[i].title}</span>
             </div>
           </div>
-        </div>
       `;
       target.appendChild(div);
     }
@@ -269,7 +267,7 @@ class LatestEvents {
       div.classList.add("LE-slider-items");
       div.innerHTML = `
       <div class="LE-items-contens">
-        <img src="${elem[i].img}" alt=""  loading="lazy" />
+        <img src="${elem[i].img}" alt=""/>
         <div class="LE-text">
           <h3>${elem[i].title}</h3>
           <p>
