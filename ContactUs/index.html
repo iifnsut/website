@@ -139,16 +139,24 @@
           action="https://script.google.com/macros/s/AKfycbwDLNpqN4lBE8OA56MybXDQiuqfsU4AD-j7vl2ECpk5SYMOqe3Ro312a65JhijqS02eiA/exec"
           id="ContactUsForm"
           class="contact-us-form">
-          <h2>Book Your Visit</h2>
+          <div class="button-wrapper">
+            <input type="radio" id="visit" name="form-type" checked>
+            <label for="visit" onclick="do_visit()">Book your Visit</label>
+            <input type="radio" id="feedback" name="form-type">
+            <label for="feedback" onclick="do_feedback()">Feedback</label>
+            <!-- <button>Book your Visit</button><button>Feedback</button> -->
+          </div>
+          <!-- <h2>Book Your Visit</h2> -->
           <input type="text" name="Name" id="ContactUsName" placeholder="Your Full Name" required />
           <input type="tel" name="Mobile" id="ContactUsMobile" placeholder="Your Mobile No." required />
           <input type="email" name="Email" id="ContactUsEmail" placeholder="Your Email" required />
           <select name="PurposeOfVisit" id="ContactUsPurposeOfVisit" required>
-            <option selected disabled>Purpose Of Visit</option>
-            <option>Enquiry</option>
+            <option value="false">Purpose Of Visit</option>
+            <option value="Enquiry">Enquiry</option>
           </select>
           <textarea name="Query" id="ContactUsQuery" cols="30" rows="12" placeholder="Your Query" required></textarea>
-          <input type="submit" value="Get your visit pass" />
+          <!-- <input type="submit" value="Get your visit pass" /> -->
+          <button type="submit" id="ContactUsSubmit">Get your visit pass</button>
         </form>
       </div>
     </main>
@@ -202,28 +210,54 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
       const form = document.getElementById("ContactUsForm");
+      const selectPurpose = document.getElementById("ContactUsPurposeOfVisit");
+      const options = selectPurpose.innerHTML;
+      const contactUsSubmit = document.getElementById("ContactUsSubmit");
+      const contactUsQuery =  document.getElementById("ContactUsQuery");
+      function do_visit(){
+        contactUsSubmit.innerText = "Get your visit pass";
+        contactUsQuery.setAttribute("placeholder", "Your Query");
+        selectPurpose.innerHTML = options;
+      }
+      function do_feedback(){
+        contactUsSubmit.innerText = "Submit";
+        contactUsQuery.setAttribute("placeholder", "Your Feedback");
+        selectPurpose.innerHTML = "<option>Feedback</option>";
+      }
+
       form.addEventListener("submit", (e) => {
         e.preventDefault();
+        if (selectPurpose.value == "false"){
+          alert("Select a Purpose first");
+          return;
+        }
+        contactUsSubmit.disabled = true;
         const data = new FormData(form);
         const action = e.target.action;
         fetch(action, {
           method: "POST",
           body: data,
         }).then(() => {
-          alert("Your appointment has been booked");
-          window.jsPDF = window.jspdf.jsPDF;
-          var doc = new jsPDF();
-          var width = doc.internal.pageSize.width;
-          const image = new Image();
-          image.src = "../Assets/Header.jpg";
-          doc.addImage(image, "JPG", 0, 0, width, 30);
-          doc.text(20, 50, "Name: " + document.getElementById("ContactUsName").value);
-          doc.text(20, 60, "Mobile: " + document.getElementById("ContactUsMobile").value);
-          doc.text(20, 70, "Email: " + document.getElementById("ContactUsEmail").value);
-          doc.text(20, 80, "Purpose: " + document.getElementById("ContactUsPurposeOfVisit").value);
+          if (document.getElementById("visit").checked) {
+            alert("Your appointment has been booked");
+            window.jsPDF = window.jspdf.jsPDF;
+            var doc = new jsPDF();
+            var width = doc.internal.pageSize.width;
+            const image = new Image();
+            image.src = "../Assets/Header.jpg";
+            doc.addImage(image, "JPG", 0, 0, width, 30);
+            doc.text(20, 50, "Name: " + document.getElementById("ContactUsName").value);
+            doc.text(20, 60, "Mobile: " + document.getElementById("ContactUsMobile").value);
+            doc.text(20, 70, "Email: " + document.getElementById("ContactUsEmail").value);
+            doc.text(20, 80, "Purpose: " + document.getElementById("ContactUsPurposeOfVisit").value);
 
-          // Save the PDF
-          doc.save("pass.pdf");
+            // Save the PDF
+            doc.save("pass.pdf");
+          }
+          else if (document.getElementById("feedback").checked) {
+            alert("Your feedback has been submitted");
+          }
+          contactUsSubmit.disabled = false;
         });
       });
     </script>

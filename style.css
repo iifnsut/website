@@ -270,11 +270,11 @@ h1,h2,h3,h4,h5,h6{
 .navbar-brand {
   font-weight: 800;
 }
-.nav-link{
+.navbar .nav-link{
   /* display: inline-block; */
   position: relative;
 }
-.nav-link::after{
+.navbar .nav-link::after{
   transition: transform 250ms ease-in-out;
   transform: scaleX(0);
   content: '';
@@ -293,7 +293,7 @@ h1,h2,h3,h4,h5,h6{
   -ms-transition: transform 250ms ease-in-out;
   -o-transition: transform 250ms ease-in-out;
 }
-.nav-link:hover::after, .nav-link:focus::after{
+.navbar .nav-link:hover::after, .navbar .nav-link:focus::after{
   transform: scaleX(1);
   -webkit-transform: scaleX(1);
   -moz-transform: scaleX(1);
@@ -1457,7 +1457,8 @@ body {
   width: 100%;
   min-height: 100%;
 }
-.contact-us-map-wrapper form {
+.contact-us-form {
+  font-size: 1.1em;
   min-width: 30%;
   display: flex;
   padding: 1em;
@@ -1466,17 +1467,52 @@ body {
   align-items: stretch;
   justify-content: center;
 }
-.contact-us-map-wrapper form > *:not(h2) {
+.contact-us-map-wrapper form > *:not(div) {
   border: 1px solid #374758;
   color: inherit;
   padding: 0 0.2em;
-  border-radius: 0.1em;
-  -webkit-border-radius: 0.1em;
-  -moz-border-radius: 0.1em;
-  -ms-border-radius: 0.1em;
-  -o-border-radius: 0.1em;
+  border-radius: 0.2em;
+  -webkit-border-radius: 0.2em;
+  -moz-border-radius: 0.2em;
+  -ms-border-radius: 0.2em;
+  -o-border-radius: 0.2em;
 }
-.contact-us-map-wrapper form input[type="submit"] {
+.contact-us-map-wrapper form button[type="submit"]{
+  border: 0.1em solid #374758;
+}
+.contact-us-map-wrapper form button[type="submit"], input[type="radio"]+label{
+  font-size: 1.3em;
+  color: #374758;
+  background-color: #fff;
+  border-radius: 0.2em;
+  -webkit-border-radius: 0.2em;
+  -moz-border-radius: 0.2em;
+  -ms-border-radius: 0.2em;
+  -o-border-radius: 0.2em;
+  transition: color 100ms ease-in-out, background-color 100ms ease-in-out;
+  -webkit-transition: color 100ms ease-in-out, background-color 100ms ease-in-out;
+  -moz-transition: color 100ms ease-in-out, background-color 100ms ease-in-out;
+  -ms-transition: color 100ms ease-in-out, background-color 100ms ease-in-out;
+  -o-transition: color 100ms ease-in-out, background-color 100ms ease-in-out;
+}
+.contact-us-form .button-wrapper{
+  display: flex;
+  align-items: center;
+}
+input[type="radio"]{
+  display: none;
+}
+input[type="radio"]+label{
+  width: 50%;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  /* padding: 0.5em 1em; */
+}
+input[type="radio"]:checked+label, .contact-us-map-wrapper form button[type="submit"]:hover{
   background-color: #374758;
   color: #fff;
 }
