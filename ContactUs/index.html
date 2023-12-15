@@ -222,7 +222,7 @@
       function do_feedback(){
         contactUsSubmit.innerText = "Submit";
         contactUsQuery.setAttribute("placeholder", "Your Feedback");
-        selectPurpose.innerHTML = "<option>Feedback</option>";
+        selectPurpose.innerHTML = "<option value='feedback'>Feedback</option>";
       }
 
       form.addEventListener("submit", (e) => {
@@ -238,7 +238,10 @@
           method: "POST",
           body: data,
         }).then(() => {
-          if (document.getElementById("visit").checked) {
+          if (selectPurpose.value == "feedback") {
+            alert("Your feedback has been submitted");
+          }
+          else {
             alert("Your appointment has been booked");
             window.jsPDF = window.jspdf.jsPDF;
             var doc = new jsPDF();
@@ -250,12 +253,7 @@
             doc.text(20, 60, "Mobile: " + document.getElementById("ContactUsMobile").value);
             doc.text(20, 70, "Email: " + document.getElementById("ContactUsEmail").value);
             doc.text(20, 80, "Purpose: " + document.getElementById("ContactUsPurposeOfVisit").value);
-
-            // Save the PDF
             doc.save("pass.pdf");
-          }
-          else if (document.getElementById("feedback").checked) {
-            alert("Your feedback has been submitted");
           }
           contactUsSubmit.disabled = false;
         });
