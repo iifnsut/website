@@ -1936,6 +1936,28 @@ input[type="radio"]:checked+label, .contact-us-map-wrapper form button[type="sub
     width: 250px;
 }
 
+.mbfoot{
+  display: none;
+  }
+
+
+.mbfoot .fa-brands{
+      padding:8px;
+      width: auto;
+      text-align: center;
+      text-decoration: none;
+      margin: 8px 3px;
+      font-size: 25px;
+      color: #374758;
+      background-color: white;
+      border-radius: 50%;  
+    }
+    
+.mbft2 .fa-brands:hover{
+  opacity: 0.7;
+}
+ 
+
 @media only screen and (max-width:1080px){
     .tweet1{
         width: 50%;
@@ -2033,25 +2055,138 @@ input[type="radio"]:checked+label, .contact-us-map-wrapper form button[type="sub
 
 }
 
-@media only  screen and (max-width:500px) {
-    .newsforminput{
-        width: 200px
-    }
-    .foot{
-        font-size: small;
-    }
+@media only  screen and (max-width:600px) {
+  .tweet1{
+      padding-left:0px;
+      margin-left: none;
+  }
+  .foot{
+      display: none;
+  }
+  .mbfoot{
+      display:flex;
+      color: whitesmoke;
+      background-color: #374758;
+      
+  }
+  .mbft1{
+      float: left;
+      width: 50%;
+      text-align: left;
+      padding: 10px;
+  }
+  .footicon {
+      border-radius: 50%;
+      width: 90px;
+  }
+  .quote{
+      width: 180px;
+      font-size: 12px;
+  }
+  .mbft2{
+      float: left;
+      width: 50%;
+      text-align: left;
+      padding: 10px;;
+  }
+  .foot3head-2{
+      margin-top: 12px;
+  }
+  .foot1head{
+      margin-top: 12px;
+  }
+  .newsforminput{
+      width: 200px
+  }
+  .foot2-2{
+      padding-left: 5px;
+      padding-top: 5px;
+  }
+  .footsubhead{
+      margin-top: -12px;
+  }
+  .addressfoot {
+      width: 160px;
+      font-size: 12px;
+  }
+  .fa-phone{
+    font-size: 10px;
+  }
+  .fa-envelope{
+    font-size: 10px;
+  } 
+  .phone1{
+    font-size: 10px;
+  }
+  .mail1{
+    font-size: 10px;
+  }
+}
 
-    .foot2-2{
-        padding-left: 7px;
-    }
-    .addressfoot{
-        width: 100px;
-    }
-    .footsubhead  {
-        width:80px;
-    }
-    .foot3{
-        padding-left: 5px;
-    }
-    
+@media only  screen and (max-width:380px) {
+  .foot{
+      display: none;
+  }
+  .mbfoot{
+      display:flex;
+      color: whitesmoke;
+      background-color: #374758;
+      
+  }
+  .mbfoot h4{
+    font-size: 20px;
+  }
+  .mbft1{
+      float: left;
+      width: 50%;
+      text-align: left;
+      padding: 10px;
+  }
+  .footicon {
+      border-radius: 50%;
+      width: 70px;
+  }
+  .quote{
+      width: 130px;
+      font-size: 11px;
+  }
+  .phone1{
+      font-size: 10px;
+  }
+  .mail1{
+      font-size: 7px;
+  }
+  .mbft2{
+      float: left;
+      width: 50%;
+      text-align: left;
+      padding: 10px;;
+  }
+  .mbft2 h4 {
+      font-size: 14px;
+  }
+  .foot3head-2{
+      margin-top: 12px;
+  }
+  .foot1head{
+      margin-top: 12px;
+  }
+  .newsforminput{
+      width: 150px
+  }
+  .foot2-2{
+      padding-left: 5px;
+      padding-top: 5px;
+  }
+  .footsubhead{
+      margin-top: -12px;
+  }
+  .addressfoot {
+      width: 100px;
+      font-size: 11px;
+  }
+  .mbft2 .fa-brands{
+    font-size: 15px;
+  }
+ 
 }
