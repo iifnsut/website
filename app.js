@@ -135,6 +135,18 @@ class LatestEvents {
           desc: "",
         },
         {
+          img: "Assets/Events/LE15.jpg",
+          title: "",
+          date: "16/12/2023",
+          desc: "",
+        },
+        {
+          img: "Assets/Events/LE16.jpg",
+          title: "",
+          date: "16/12/2023",
+          desc: "",
+        },
+        {
           img: "Assets/Events/LE05.jpg",
           title: "",
           date: "10/10/2021",
