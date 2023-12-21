@@ -182,12 +182,12 @@ html,body{
     height: 260px;
     width: 220px;
     border: #000 solid 1px;
-    margin: auto;
+    /* margin: auto; */
     background-color: #f5f5f5;
     display: flex;
     flex-direction: column;
     margin-bottom: 40px;
-    margin:1rem 15px;
+    margin:1rem 18px;
 }
 
 .team{
@@ -240,10 +240,6 @@ html,body{
 
 .cards2{
     margin: 1rem 3%;
-}
-
-.cards3{
-    margin: 1rem 4%;
 }
 
 #page3{
