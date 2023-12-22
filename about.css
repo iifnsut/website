@@ -187,7 +187,7 @@ html,body{
     display: flex;
     flex-direction: column;
     margin-bottom: 40px;
-    margin:1rem 18px;
+    margin:1rem 22px;
 }
 
 .team{
@@ -205,7 +205,7 @@ html,body{
     border-radius: 50%;
     background-color: #fff;
     margin: auto;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .name{
