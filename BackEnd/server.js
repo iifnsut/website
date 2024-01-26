@@ -9,6 +9,11 @@ const connectDB = require('./config/dbConn');
 
 const PORT = process.env.PORT || 3500;
 
+// For parsing the URL encoded and JSON data in request body
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
+
+
 
 // Connect to MongoDB
 connectDB();
@@ -19,10 +24,6 @@ app.use('/', express.static(path.join(__dirname, '/public')));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-
-// For parsing the URL encoded and JSON data in request body
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
 
 
 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <h1>Create Company: <%= rd %> </h1>
+    <form action="/company" method="POST"
+    
+    
+    >
+      <label for="name">Company Name</label>
+      <input type="text" name="name" id="name" value="Test <%= rd %>" />
+
+
+
+      <label for="email">Email</label>
+      <input type="text" name="email" id="email" value="Test <%= rd %>" />
+
+
+
+      <br /><br /><br /><br />
+      <label for="phone">phone no</label>
+      <input type="text" name="phone" id="phone" value="0528652<%= rd %>"/>
+
+
+      <br /><br /><br /><br />
+
+      <label for="created_by">Created By</label>
+      <input type="text" name="created_by" id="created_by" value="Test<%= rd %>" />
+
+      <br /><br /><br /><br />
+
+      <label for="discription">Description</label>
+      <textarea id="discription">This is Test Company <%= rd %></textarea>
+
+
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
