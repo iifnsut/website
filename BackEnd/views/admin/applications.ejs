@@ -1,0 +1,177 @@
+<% layout('./layouts/indexLayout.ejs') -%>
+
+   <% 
+    function textCapitalize(text) { 
+    return text.charAt(0).toUpperCase() + text.slice(1);
+   }
+   %>
+<div class="w-100 mt-3 d-flex">
+    <div class="ms-4">
+        <h2>Applications</h2>
+    </div>
+  <div class="dropdown ms-auto me-4 w-">
+    <button
+      class="btn btn-light dropdown-toggle"
+      type="button"
+      id="status-dropdown"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      <%= textCapitalize(page.status.currentStatus) %>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="status-dropdown">
+      <% for( const items of page.status.validStatus ){ %>
+      <li>
+        <a class="dropdown-item" href="/admin/applications?status=<%= items %>"
+          ><%= textCapitalize(items) %></a
+        >
+      </li>
+      <% } %>
+    </ul>
+  </div>
+</div>
+<div class="">
+  <% if(page.data && page.data.length!==0){ %> <% for (const items of
+  page.data){ %>
+  <div class="company-item rounded bg-color-<%= items.status %>">
+    <div class="company-item-header d-flex align-items-center flex-wrap">
+      <div class="company-item-logo">
+        <img src="<%= items.logo %>" alt="Logo" srcset="" />
+      </div>
+      <div class="company-item-name">
+        <h3><%= items.name %></h3>
+      </div>
+      <div class="ms-auto text-end">
+        <div>
+          <a href="" class="">#<%= items.applicationNo %></a>
+          <p><%= new Date(items.updatedAt).toLocaleString() %></p>
+        </div>
+        <div></div>
+      </div>
+    </div>
+    <hr
+      style="width: 100%; color: black; height: 1px; background-color: black"
+    />
+    <div>
+      <h5>Description:</h5>
+      <p class="text-justify"><%= items.description %></p>
+    </div>
+    <div class="company-item-detail">
+      <div>
+        <div>
+          <h5>Details:</h5>
+        </div>
+        <ul class="list-unstyled">
+          <li>
+            Applied By : <a href="/in-progress"><%= items.applicant %></a>
+          </li>
+          <li>
+            Email: <a href="mailto:<%= items.email %>"><%= items.email %></a>
+          </li>
+          <li>
+            Phone No. :
+            <a href="tel:+91<%= items.phone %>"><%= items.phone %></a>
+          </li>
+          <li>Address : <%= items.address %></li>
+        </ul>
+      </div>
+      <div>
+        <div>
+          <h5>Document:</h5>
+        </div>
+        <ul class="">
+          <% for (const key in items.document){ %>
+          <li>
+            <a href="/file/<%= items.document[key] %>"><%= textCapitalize(key) %></a>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+      <div>
+        <div>
+          <h5>Team:</h5>
+        </div>
+        <ul class="">
+          <% for (const elem of items.team){ %>
+          <li>
+            <a href=""><%= textCapitalize(elem) %></a>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+    <% if (items.userResponse !=='pending' ) { %>
+    <div>
+      <h5>Applicant Response:</h5>
+      <p class="text-justify"><%= items.userResponse %></p>
+    </div>
+    <% } %>
+    <% if (items.adminResponse !=='pending' ) { %>
+    <div>
+      <h5> Reply :</h5>
+      <p class="text-justify"><%= items.adminResponse %></p>
+    </div>
+    <% } %>
+    <% if (items.status=='applied'  ) { %>
+    <div class="">
+      <form
+        action="/admin/applications/<%= items.applicationNo %>?_method=PATCH"
+        method="post"
+      >
+        <h5>Response:</h5>
+        <div class="form-floating">
+          <textarea
+            class="form-control"
+            placeholder="Leave a comment here"
+            name="response"
+            id="response-data"
+            style="height: 100px; resize: none"
+          ></textarea>
+          <label for="response-data">Enter the Response</label>
+        </div>
+        <input type="hidden" name="type" value="none" />
+        <!-- <input type="submit" value="Comment"> -->
+        <div class="mt-2" data-applicationNo="">
+          <button
+            type="submit"
+            class="btn btn-primary m-1 respond-btn"
+            name="responseType"
+            value="approved"
+          >
+            Accept
+          </button>
+          <button
+            type="submit"
+            class="btn btn-danger m-1 respond-btn"
+            name="responseType"
+            value="rejected"
+          >
+            Reject
+          </button>
+          <button
+            type="submit"
+            class="btn btn-secondary m-1 respond-btn"
+            name="responseType"
+            value="discrepancy"
+          >
+            Discrepancy
+          </button>
+        </div>
+      </form>
+    </div>
+    <% } %>
+
+    <hr
+      style="width: 100%; color: black; height: 1px; background-color: black"
+    />
+  </div>
+
+  <% } %> <% } else { %>
+  <div class="text-center m-4">
+    <div class="d-flex justify-content-center align-items-center">
+      <h1 class="not-found-color">!</h1>
+    </div>
+    <h1>No Applications Found</h1>
+  </div>
+  <% } %>
+</div>

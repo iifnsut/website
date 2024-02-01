@@ -1,0 +1,412 @@
+<% layout('./layouts/indexLayout.ejs') -%>
+<section class="top">
+    <img src="../Assets/Startup/top.jpg" alt="" class="topimage">
+    <br><br>
+    <h2 class="pageheading">Startup</h2>
+</section>
+<section class="main">
+    <ul class="divselector" id="divselector">
+        <li onclick="filterWidgets(this)" data-filter="incubated" class="incubated-button list-options active">Incubated</li>
+        <li onclick="filterWidgets(this)" data-filter="graduated" class="graduated-button list-options">Graduated</li>
+        <li onclick="filterWidgets(this)" data-filter="funded" class="funded-button list-options">Funded</li>
+    </ul>
+    <div class="dropdown">
+        <button class="btn btn-secondary divselect-button dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <span id="dropdownSelection">Incubated</span>
+        </button>
+        <ul class="dropdown-menu">
+            <li onclick="filterWidgets(this)" data-filter="incubated" class="incubated-button dropdown-options active">Incubated</li>
+            <li onclick="filterWidgets(this)" data-filter="graduated" class="graduated-button dropdown-options">Graduated</li>
+            <li onclick="filterWidgets(this)" data-filter="funded" class="funded-button dropdown-options">Funded</li>
+        </ul>
+      </div>
+    <div class="widgets incubated-filter" id="widgets">
+        <div class="incubated">
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/xerocodee.svg" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>Xero Codee</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>XeroCodee streamlines Kubernetes platforms, saving valuable coder hours. Empowering businesses with cloud-native solutions, they modernize infrastructure for resilience and scalability.</p>
+                    </div>
+                    <div class="companylink">
+                        <a href="https://www.xerocodee.com/" target="_blank"><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/glowrious.png" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>Glorious Green</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>GlowriousGreen pioneers affordable, organic fertilizers, revolutionizing agriculture. We offer eco-conscious corporate gifting, promoting sustainability in farming practices.</p>
+                    </div>
+                    <div class="companylink">
+                        <a href="https://instagram.com/glowriousgreen?igshid=OGQ5ZDc2ODk2ZA==" target="_blank"><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/urverdure.png" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>Urverdure</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>Urverdure pioneers hydroponics, providing economical solutions for soil-less farming. They envision a greener future by addressing global issues creatively by offering economical and one-step solutions.</p>
+                    </div>
+                    <div class="companylink">
+                        <a href="https://urverdure.in/home" target="_blank"><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/feetwings.png" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>Feet Wings</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>FeetWings innovates with a user-friendly smart healthcare assistant in easy wearable socks, utilizing Bluetooth to monitor activity levels, ensuring affordability and proven recovery results.</p>
+                    </div>
+                    <div class="companylink">
+                        <a href="https://feetwings.in/" target="_blank"><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/tapanddraw.png" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>Tap and Draw</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>TAP & DRAW is Delhi Governments Business Blasters Program's initiative who deals in art and craft industry.</p>
+                    </div>
+                    <div class="companylink">
+                        <a href="https://tapanddraw.com/" target="_blank"><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/made2automate.jpeg" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>Made 2 Automate</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>Made 2 Automate address Indian manufacturers' challenges by leveraging technology, establishing a digital presence, and facilitating direct problem-solving and connections with customers.</p>
+                    </div>
+                    <div class="companylink">
+                        <a href="https://made2automate.com/" target="_blank"><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/neemtreeagro.jpg" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>Neem Tree Agro</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>
+                          Neem Tree Agro Solutions, an agritech company, prioritizes delivering economical and adaptable technological solutions tailored for farmers' needs.</p>
+                    </div>
+                    <div class="companylink">
+                        <a href="https://neemtreeagrico.in/" target="_blank"><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/techswarm.jpg" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>Tech Swarm</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>Tech Swarm operates as a Drone-as-a-Service platform, leveraging AI for end-to-end automation, proficiently handling intricate engineering tasks.</p>
+                    </div>
+                    <div class="companylink">
+                        <a href="https://www.linkedin.com/company/tech-swarm/?originalSubdomain=in" target="_blank"><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/bonfarmo.png" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>BonFarmo</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>Bonfarmo Captech specializes in precision technology. Their groundbreaking machine boosts sugarcane bud collection efficiency eightfold, ensuring cost savings and increased productivity.</p>
+                    </div>
+                    <div class="companylink">
+                        <a href="https://www.bonfarmo.com" target="_blank"><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="graduated">
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/readercrib.png" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>Readers crib Pvt Ltd</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>
+                          Readerscrib Pvt. Ltd. operates an e-commerce portal specializing in college books, catering to institutions like Netaji Subhas Institute of Technology (NSIT) and Delhi Technological University (DTU).</p>
+                    </div>
+                    <div class="companylink">
+                        <a href="https://readerscrib.com/" target="_blank"><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/vivafeet.png" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>Viva Feet</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>VivaFeet, a health-focused company, leverages biotechnological solutions to address podiatric ailments. Their intelligent healthcare assistant, utilizing IoT-based smart socks, enhances recovery and reduces pain.</p>
+                    </div>
+                    <div class="companylink">
+                        <a href="https://www.linkedin.com/company/vivafeet/?originalSubdomain=in"><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/Alnourish.jpg" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>Alnourish</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>AlNourish, a pioneering initiative, introduces algae into the human food chain, offering home kits for easy cultivation, consumption, and selling.</p>
+                    </div>
+                    <div class="companylink">
+                        <a href="https://alnourish.in/" target="_blank"><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/zalonin.jpg" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>Zalonin</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>Zalonin, a beauty & wellness hub, simplifies beauty shopping, hairstyling, and salon bookings, addressing the unorganized beauty sector with excellence.</p>
+                    </div>
+                    <div class="companylink">
+                        <a href="https://www.linkedin.com/company/zalonin/" target="_blank"><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/vikrama.png" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>Vikarma Edutech</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>
+                          Vikramas is dedicated to accessible education, prioritizing affordability for learners globally. Their mission focuses on empowerment, particularly in India, over profits.</p>
+                    </div>
+                    <div class="companylink">
+                        <a href="https://vikramas.com/" target="_blank"><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/socteamup.jpg" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>SoCTeamup</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>SoCTeamup, a premier provider of IC design services, boasts a global clientele spanning continents, offering transparent business models, cost-effective designs, and expertise-driven solutions.</p>
+                    </div>
+                    <div class="companylink">
+                        <a href="https://www.socteamup.com/" target="_blank"><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/ethimo.png" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>Ethimo Ethnics</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>Ethimo Ethnics, a go-to for ethnic wear, offers curated collections reflecting diverse cultural styles. High-quality clothing, accessories, and excellent customer service define their commitment to style and satisfaction.</p>
+                    </div>
+                    <div class="companylink">
+                        <a href="https://ethimo-ethnics.company.site/" target="_blank"><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/darkchocobitz.png" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>DarkChocobitz</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>DarkChocoBitz specializes in affordable, customized chocolates. Offering a delightful range, they ensure a sweet experience for every customer.</p>
+                    </div>
+                    <div class="companylink">
+                        <a href="https://darkchocobitz.mini.store/?path=%2F" target="_blank"><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/hanufit.jpg" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>Hanufit</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>Hanufit commits to elevating health with premium, convenient protein products. They aim to nurture a balanced, active lifestyle with top-quality nutrition</p>
+                    </div>
+                    <div class="companylink">
+                        <a href="https://www.linkedin.com/company/hanufit/" target="_blank"><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="funded">
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/marqueeImage.png" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>CampusX</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, laborum illo! Alias iusto totam recusandae itaque commodi possimus inventore numquam delectus at non aliquam voluptate, a, nisi modi placeat ab!</p>
+                    </div>
+                    <div class="companylink">
+                        <a href=""><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/marqueeImage.png" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>CampusX</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, laborum illo! Alias iusto totam recusandae itaque commodi possimus inventore numquam delectus at non aliquam voluptate, a, nisi modi placeat ab!</p>
+                    </div>
+                    <div class="companylink">
+                        <a href=""><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/marqueeImage.png" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>CampusX</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, laborum illo! Alias iusto totam recusandae itaque commodi possimus inventore numquam delectus at non aliquam voluptate, a, nisi modi placeat ab!</p>
+                    </div>
+                    <div class="companylink">
+                        <a href=""><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/marqueeImage.png" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>CampusX</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, laborum illo! Alias iusto totam recusandae itaque commodi possimus inventore numquam delectus at non aliquam voluptate, a, nisi modi placeat ab!</p>
+                    </div>
+                    <div class="companylink">
+                        <a href=""><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/marqueeImage.png" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>CampusX</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, laborum illo! Alias iusto totam recusandae itaque commodi possimus inventore numquam delectus at non aliquam voluptate, a, nisi modi placeat ab!</p>
+                    </div>
+                    <div class="companylink">
+                        <a href=""><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/marqueeImage.png" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>CampusX</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, laborum illo! Alias iusto totam recusandae itaque commodi possimus inventore numquam delectus at non aliquam voluptate, a, nisi modi placeat ab!</p>
+                    </div>
+                    <div class="companylink">
+                        <a href=""><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/marqueeImage.png" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>CampusX</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, laborum illo! Alias iusto totam recusandae itaque commodi possimus inventore numquam delectus at non aliquam voluptate, a, nisi modi placeat ab!</p>
+                    </div>
+                    <div class="companylink">
+                        <a href=""><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/marqueeImage.png" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>CampusX</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, laborum illo! Alias iusto totam recusandae itaque commodi possimus inventore numquam delectus at non aliquam voluptate, a, nisi modi placeat ab!</p>
+                    </div>
+                    <div class="companylink">
+                        <a href=""><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="logohover">
+                <img class="logos" src="../Assets/Startup/marqueeImage.png" alt="img">
+                <div class="innertext">
+                    <div class="companyname">
+                        <h3>CampusX</h3>
+                    </div>
+                    <div class="companyabt">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, laborum illo! Alias iusto totam recusandae itaque commodi possimus inventore numquam delectus at non aliquam voluptate, a, nisi modi placeat ab!</p>
+                    </div>
+                    <div class="companylink">
+                        <a href=""><span><i class="fa-solid fa-link"></i></span></a>
+                    </div>
+                </div>
+            </div>
+    </div>
+</section>

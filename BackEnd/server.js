@@ -1,13 +1,23 @@
 require('dotenv').config()
 const path = require('path');
+
 const express = require('express');
+const ejsMate = require('ejs-mate');
 const app = express();
+
+
+const methodOverride = require('method-override')
+
+
 const mongoose = require("mongoose");
 const { addAbortListener } = require('events');
 const connectDB = require('./config/dbConn');
 
 
 const PORT = process.env.PORT || 3500;
+
+// handling the method override to use the patch and delete request
+app.use(methodOverride('_method'))
 
 // For parsing the URL encoded and JSON data in request body
 app.use(express.urlencoded({extended: false}));
@@ -20,9 +30,10 @@ connectDB();
 
 
 //serve static files
-app.use('/', express.static(path.join(__dirname, '/public')));
+app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+app.use('/', express.static(path.join(__dirname, '/public')));
 
 
 
