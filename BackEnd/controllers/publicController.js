@@ -50,14 +50,14 @@ const contact = (req, res) => {
   });
 }
 const startUPs = (req, res ) => {
-    res.render(path.join("public", "startups.ejs"), {
+    res.render(path.join("public", "startup.ejs"), {
         page: {
-        title: "Startups",
+        title: "Startups at NSUT IIF",
         name: "Startups",
         description: "Startups",
         path: "/startups",
         type: "public",
-        scripts : ['startUPs.js']
+        scripts : ['startups.js']
         },
     });
     }
