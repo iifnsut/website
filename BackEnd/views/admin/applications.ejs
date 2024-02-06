@@ -1,14 +1,10 @@
-<% layout('./layouts/indexLayout.ejs') -%>
-
-   <% 
-    function textCapitalize(text) { 
-    return text.charAt(0).toUpperCase() + text.slice(1);
-   }
-   %>
+<% layout('./layouts/indexLayout.ejs') -%> <% function textCapitalize(text) {
+return text.charAt(0).toUpperCase() + text.slice(1); } %>
 <div class="w-100 mt-3 d-flex">
-    <div class="ms-4">
-        <h2>Applications</h2>
-    </div>
+  <div class="ms-5">
+    <h3>Applications</h3>
+    <%- include("./../includes/breadcrumb.ejs") %>
+  </div>
   <div class="dropdown ms-auto me-4 w-">
     <button
       class="btn btn-light dropdown-toggle"
@@ -33,7 +29,7 @@
 <div class="">
   <% if(page.data && page.data.length!==0){ %> <% for (const items of
   page.data){ %>
-  <div class="company-item rounded bg-color-<%= items.status %>">
+  <div class="company-item rounded bg-color-<%= items.status %> p-3 mx-4 mb-3">
     <div class="company-item-header d-flex align-items-center flex-wrap">
       <div class="company-item-logo">
         <img src="<%= items.logo %>" alt="Logo" srcset="" />
@@ -80,9 +76,11 @@
           <h5>Document:</h5>
         </div>
         <ul class="">
-          <% for (const key in items.document){ %>
+          <% for (const document of items.document){ %>
           <li>
-            <a href="/file/<%= items.document[key] %>"><%= textCapitalize(key) %></a>
+            <a href="/file/<%= document._id %>"
+              ><%= textCapitalize(document.name) %></a
+            >
           </li>
           <% } %>
         </ul>
@@ -105,14 +103,12 @@
       <h5>Applicant Response:</h5>
       <p class="text-justify"><%= items.userResponse %></p>
     </div>
-    <% } %>
-    <% if (items.adminResponse !=='pending' ) { %>
+    <% } %> <% if (items.adminResponse !=='pending' ) { %>
     <div>
-      <h5> Reply :</h5>
+      <h5>Reply :</h5>
       <p class="text-justify"><%= items.adminResponse %></p>
     </div>
-    <% } %>
-    <% if (items.status=='applied'  ) { %>
+    <% } %> <% if (items.status=='applied' ) { %>
     <div class="">
       <form
         action="/admin/applications/<%= items.applicationNo %>?_method=PATCH"
@@ -130,32 +126,43 @@
           <label for="response-data">Enter the Response</label>
         </div>
         <input type="hidden" name="type" value="none" />
-        <!-- <input type="submit" value="Comment"> -->
-        <div class="mt-2" data-applicationNo="">
-          <button
-            type="submit"
-            class="btn btn-primary m-1 respond-btn"
-            name="responseType"
-            value="approved"
-          >
-            Accept
-          </button>
-          <button
-            type="submit"
-            class="btn btn-danger m-1 respond-btn"
-            name="responseType"
-            value="rejected"
-          >
-            Reject
-          </button>
-          <button
-            type="submit"
-            class="btn btn-secondary m-1 respond-btn"
-            name="responseType"
-            value="discrepancy"
-          >
-            Discrepancy
-          </button>
+        <div class="d-flex">
+          <div class="mt-2" data-applicationNo="">
+            <button
+              type="submit"
+              class="btn btn-primary m-1 respond-btn"
+              name="responseType"
+              value="approved"
+            >
+              Accept
+            </button>
+            <button
+              type="submit"
+              class="btn btn-danger m-1 respond-btn"
+              name="responseType"
+              value="rejected"
+            >
+              Reject
+            </button>
+            <button
+              type="submit"
+              class="btn btn-secondary m-1 respond-btn"
+              name="responseType"
+              value="discrepancy"
+            >
+              Discrepancy
+            </button>
+          </div>
+          <div class="ms-auto d-flex">
+            <input
+              class="form-control mt-2"
+              name="pitchDate"
+              id="pitchDate"
+              placeholder="Select the date for pitch"
+              onfocus="(this.type='date')"
+              onblur="(this.type='text')"
+            />
+          </div>
         </div>
       </form>
     </div>
@@ -172,6 +179,12 @@
       <h1 class="not-found-color">!</h1>
     </div>
     <h1>No Applications Found</h1>
+    <a
+      class="btn btn-primary my-2 text-light"
+      href="/admin/applications?status=all"
+      role="button"
+      >Click here to view applied applications</a
+    >
   </div>
   <% } %>
 </div>

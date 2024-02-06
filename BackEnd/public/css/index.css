@@ -2195,3 +2195,13 @@ input[type="radio"]:checked+label, .contact-us-map-wrapper form button[type="sub
   }
  
 }
+
+.not-found-color{
+  color: #f7ac6c;
+  font-size: 6rem!important;
+  font-weight: 700;
+  border: #f7ac6c 0.4rem solid;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+}

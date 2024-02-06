@@ -1,0 +1,22 @@
+<% layout('./layouts/indexLayout.ejs') -%>
+<div class="container">
+  <div class="text-center m-4">
+    <div class="d-flex justify-content-center align-items-center">
+      <h1 class="not-found-color">!</h1>
+    </div>
+    <% if(page.data?.title) {%>
+    <h1><%= page.data.title %></h1>
+    <% } %>
+    <% if(page.data?.message) {%>
+    <p class="fs-5"><%= page.data.message %></p>
+    <% } %>
+    <% if(page.data?.link) {%>
+    <a
+      class="btn btn-primary my-2 text-light"
+      href="<%= page.data.link.url %>"
+      role="button"
+      ><%= page.data.link.text %></a
+    >
+    <% } %>
+  </div>
+</div>

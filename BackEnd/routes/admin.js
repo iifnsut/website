@@ -3,9 +3,7 @@ const router = express.Router();
 const path = require('path');
 const adminController = require('../controllers/adminController');
 
-router.get('^/$', (req, res) => {
-    res.send('Welcome to the Admin page');
-});
+router.get('^/$', adminController.indexPage);
 
 
 router.get('^/application(s)?', adminController.viewALLApplications);

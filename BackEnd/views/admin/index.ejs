@@ -1,0 +1,31 @@
+<% layout('./layouts/indexLayout.ejs') -%>
+<% 
+    function textCapitalize(text) { 
+    return text.charAt(0).toUpperCase() + text.slice(1);
+   }
+%>
+<h1>
+    Welcome to Admin Dashboard!
+</h1>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+      <div class="card">
+        <div class="card-body">
+        <p class="card-text">No of Application</p>
+          <h5 class="card-title">78</h5>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

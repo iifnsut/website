@@ -1,4 +1,4 @@
-const Company = require('../model/companyModel');
+const Company = require('../models/companyModel');
 // const User = require('../model/user');
 
 // Create and Save a new Company

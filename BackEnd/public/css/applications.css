@@ -7,13 +7,7 @@
     display: flex;
     align-items: center;
 } */
-.company-item{
-    margin: 1rem;
-    /* background-color: aliceblue; */
-    padding: 2rem;
-    /* display: grid; */
-    /* background-color: chartreuse; */
-}
+
 .company-item-detail{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

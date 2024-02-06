@@ -1,0 +1,18 @@
+<% layout('./layouts/indexLayout.ejs') -%>
+
+<div>
+    <h1>Blog</h1>
+    <p>Welcome to my blog
+    </p>
+    <p>Here you will find all the latest news and updates from my blog</p>
+    <p>Enjoy!</p>
+    <p>Here are the latest posts:</p>
+    <ul>
+        <% for (var i = 0; i < posts.length; i++) { %>
+            <li>
+                <a href="/blog/<%= posts[i].id %>"><%= posts[i].title %></a>
+            </li>
+        <% } %>
+    </ul>
+    <p>Want to write your own posts? <a href="/compose">Compose</a> a new post!</p>
+</div>

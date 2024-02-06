@@ -25,6 +25,7 @@ app.use(express.json());
 
 
 
+
 // Connect to MongoDB
 connectDB();
 
@@ -34,7 +35,6 @@ app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use('/', express.static(path.join(__dirname, '/public')));
-
 
 
 
@@ -48,6 +48,9 @@ app.use('/user', require('./routes/user'));
 app.use('/admin', require('./routes/admin'));
 
 
+// For serving the protected documents files
+app.use('/file(s)?', require('./routes/documents'));
+
 
 
 // Ignore the below routes
@@ -58,16 +61,30 @@ app.use('/company', require('./routes/company'));
 app.use('/api', require('./routes/api'));
 
 
-
-
 // Not Found Route
 app.all('*', (req, res) => {
     res.status(404);
-    res.send("404 Not Found");
+    res.render(path.join("public", "error.ejs"), {
+        page: {
+          title: "Page Not Found",
+          name: "Error",
+          description: "Error",
+          path: "/error",
+          type: "public",
+          data : {
+              title : "Page Not Found",
+              message : "The page you are looking for is not found",
+              link :{
+                    url : "/",
+                    text : "Go to Home"
+              }
+            },
+        },
+      });
 });
 
 
-// Start the server
+// Start the server 
 
 mongoose.connection.once('open', () => {
     console.log('Connected to MongoDB');
