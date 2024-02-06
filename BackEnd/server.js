@@ -1,78 +1,76 @@
-require('dotenv').config()
-const path = require('path');
+require("dotenv").config();
+const path = require("path");
+var passport = require("passport");
 
-const express = require('express');
-const ejsMate = require('ejs-mate');
+const express = require("express");
+const session = require("express-session");
+const ejsMate = require("ejs-mate");
 const app = express();
 
-
-const methodOverride = require('method-override')
-
+const methodOverride = require("method-override");
 
 const mongoose = require("mongoose");
-const { addAbortListener } = require('events');
-const connectDB = require('./config/dbConn');
+const { addAbortListener } = require("events");
+const connectDB = require("./config/dbConn");
 
-
-const PORT = process.env.PORT || 3500;
+const PORT = process.env.PORT || 5050;
 
 // handling the method override to use the patch and delete request
-app.use(methodOverride('_method'))
+app.use(methodOverride("_method"));
 
 // For parsing the URL encoded and JSON data in request body
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
-
 
 // Connect to MongoDB
 connectDB();
-
 
 //serve static files
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-app.use('/', express.static(path.join(__dirname, '/public')));
+app.use("/", express.static(path.join(__dirname, "/public")));
 
+// Session
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: false,
+    // store: new SQLiteStore({ db: 'sessions.db', dir: './var/db' })
+  })
+);
+app.use(passport.authenticate("session"));
 
-
+// User object available at req.session.passport.user
+// Information in the user object can be changed at routes/api/auth.js:43:14 in passport.serializeUser
 
 // Public Routes
-app.use('/', require('./routes/root'));
-
-
+app.use("/", require("./routes/root"));
+app.use("/", require("./routes/api/auth"));
 
 // Protected Routes
-app.use('/user', require('./routes/user'));
-app.use('/admin', require('./routes/admin'));
-
-
-
+app.use("/user", require("./routes/user"));
+app.use("/admin", require("./routes/admin"));
 
 // Ignore the below routes
 // StartUp Routes
-app.use('/company', require('./routes/company'));
+app.use("/company", require("./routes/company"));
 
 // Route for API in future uses.
-app.use('/api', require('./routes/api'));
-
-
-
+app.use("/api", require("./routes/api"));
 
 // Not Found Route
-app.all('*', (req, res) => {
-    res.status(404);
-    res.send("404 Not Found");
+app.all("*", (req, res) => {
+  res.status(404);
+  res.send("404 Not Found");
 });
-
 
 // Start the server
 
-mongoose.connection.once('open', () => {
-    console.log('Connected to MongoDB');
-    app.listen(PORT, () => console.log(`Server started on port http://localhost:${PORT}/`));
+mongoose.connection.once("open", () => {
+  console.log("Connected to MongoDB");
+  app.listen(PORT, () => console.log(`Server started on port http://localhost:${PORT}/`));
 });
-
 
 // Initial Skeleton file structure for the backed is Created
