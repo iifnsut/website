@@ -8,10 +8,10 @@ const index = (req, res) => {
       description: "Home",
       path: "/",
       type: "public",
-      scripts : ['index.js']
+      scripts: ["index.js"],
     },
   });
-}
+};
 
 const about = (req, res) => {
   res.render(path.join("public", "about.ejs"), {
@@ -21,10 +21,10 @@ const about = (req, res) => {
       description: "About",
       path: "/about",
       type: "public",
-      styles : ['about.css']
+      styles: ["about.css"],
     },
   });
-}
+};
 
 const event = (req, res) => {
   res.render(path.join("public", "event.ejs"), {
@@ -36,7 +36,7 @@ const event = (req, res) => {
       type: "public",
     },
   });
-}
+};
 
 const contact = (req, res) => {
   res.render(path.join("public", "contact.ejs"), {
@@ -48,25 +48,36 @@ const contact = (req, res) => {
       type: "public",
     },
   });
-}
-const startUPs = (req, res ) => {
-    res.render(path.join("public", "startup.ejs"), {
-        page: {
-        title: "Startups at NSUT IIF",
-        name: "Startups",
-        description: "Startups",
-        path: "/startups",
-        type: "public",
-        scripts : ['startups.js']
-        },
-    });
-    }
-
+};
+const startUPs = (req, res) => {
+  res.render(path.join("public", "startup.ejs"), {
+    page: {
+      title: "Startups at NSUT IIF",
+      name: "Startups",
+      description: "Startups",
+      path: "/startups",
+      type: "public",
+      scripts: ["startups.js"],
+    },
+  });
+};
+const login = (req, res) => {
+  res.render(path.join("public", "login.ejs"), {
+    page: {
+      title: "login at NSUT IIF",
+      name: "login",
+      description: "login",
+      path: "/login",
+      type: "public",
+    },
+  });
+};
 
 module.exports = {
   index,
   about,
   event,
   contact,
-  startUPs
+  startUPs,
+  login,
 };
