@@ -1,0 +1,193 @@
+<% layout('./layouts/indexLayout.ejs') -%>
+<h1 class="text-center my-5">Application Form</h1>
+<div class="m-5">
+  <form
+    action=""
+    id="applicationForm"
+    class="needs-validation"
+    method="post"
+    novalidate
+  >
+  <div class="row">
+    <div class="col-md-8 col-sm-8">
+      <div class="form-group">
+        <label for="applicationName">Name of Application:</label>
+        <input
+          class="form-control"
+          type="text"
+          id="applicationName"
+          name="applicationName"
+          required
+        />
+        <div class="valid-feedback">
+          Please enter the name of the application.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          class="form-control"
+          type="email"
+          id="email"
+          name="email"
+          
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number:</label>
+        <input
+          class="form-control"
+          type="tel"
+          id="phone"
+          name="phone"
+          
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <input
+          class="form-control"
+          type="text"
+          id="address"
+          name="address"
+          
+          required
+        />
+      </div>
+    </div>
+
+    <div class="ms-auto my-3 me-4 col-md-2 col-sm-2">
+      <div class="">
+        <div class="btn btn-rounded p-0 pb-0"></div>
+        <label class="form-label p-0 m-0" for="applicationLogo">
+          <div class="d-flex justify-content-center flex-column">
+            <img
+              id="applicationLogoPreview"
+              src="/Assets/nologo.png"
+              alt="Please Upload the Logo"
+              style="width: 100px; height: 100px"
+            />
+            <div class="text-center">
+              <i class="fa-solid fa-upload"></i> Logo
+            </div>
+          </div>
+        </label>
+        
+      </div>
+      <div>
+
+        <input
+        type="file"
+        class="form-control d-none"
+        id="applicationLogo"
+        name="logo"
+        accept="image/*"
+        onchange="displaySelectedImage(event, 'applicationLogoPreview')"
+        required
+        />
+        <div class="invalid-feedback">
+          Please upload the logo of the application.
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+  <div class="row">
+    <div class="form-group col-md-6 col-sm-12 my-3">
+      <h3>Document List:</h3>
+      <div class="d-flex">
+        <ol class="list-group list-group-numbered" id="documentList"></ol>
+      </div>
+
+      <div>
+        <!-- <h5>Add Document:</h5> -->
+        <div class="d-flex">
+          <div>
+            <div class="form-floating my-2">
+              <input
+                type="text"
+                class="form-control"
+                id="applicationFileName"
+                form="addDocument"
+                required
+                placeholder=""
+                name="name"
+              />
+              <label for="applicationFileName">Document Name</label>
+            </div>
+            <div class="input-group my-2">
+              <input
+                type="file"
+                class="form-control"
+                id="AddNewDocoment"
+                name="file"
+                form="addDocument"
+                accept=".pdf,.doc,.docx"
+                required
+              />
+              <label class="input-group-text" for="AddNewDocoment"
+                >Upload</label
+              >
+            </div>
+            <button type="submit" class="btn btn-primary px-4 my-2 w-100" form="addDocument">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-md-6 col-sm-12 my-3">
+      <h3>Team List:</h3>
+      <div class="d-flex">
+        <ol class="list-group list-group-numbered my-2" id="teamList"></ol>
+      </div>
+      <div class="form-group d-flex">
+        <div class="row row-cols-lg-auto align-items-center">
+          <div class="col-12 my-2">
+            <label class="visually-hidden" for="AddNewMember">Username</label>
+            <div class="input-group">
+              <div class="input-group-text">@</div>
+              <input
+                type="text"
+                class="form-control"
+                id="AddNewMember"
+                name="name"
+                placeholder="Add New Members"
+                form="addMember"
+                required
+              />
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary my-2" form="addMember">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group my-3">
+    <label for="applicationDescription">Description:</label>
+    <textarea
+      class="form-control nonresi"
+      id="applicationDescription"
+      name="description"
+      form="applicationForm"
+      rows="5"
+      required
+      style="resize: none"
+    ></textarea>
+  </div>
+  <div>
+    <a href="/user" class="btn btn-danger">Cancel</a>
+    <button type="submit" class="btn btn-success" form="applicationForm">
+      Preview
+    </button>
+  </div>
+
+<form id="addDocument" class="needs-validation" novalidate></form>
+<form id="addMember" class="needs-validation" novalidate></form>
+</div>

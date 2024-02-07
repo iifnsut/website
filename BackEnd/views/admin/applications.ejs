@@ -98,12 +98,12 @@ return text.charAt(0).toUpperCase() + text.slice(1); } %>
         </ul>
       </div>
     </div>
-    <% if (items.userResponse !=='pending' ) { %>
+    <% if (items.userResponse !=='pending' && items.userResponse !=='') { %>
     <div>
       <h5>Applicant Response:</h5>
       <p class="text-justify"><%= items.userResponse %></p>
     </div>
-    <% } %> <% if (items.adminResponse !=='pending' ) { %>
+    <% } %> <% if (items.adminResponse !=='pending' && items.adminResponse !=='' ) { %>
     <div>
       <h5>Reply :</h5>
       <p class="text-justify"><%= items.adminResponse %></p>

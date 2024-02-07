@@ -495,10 +495,13 @@ a:visited {
 /* <> GENERAL STYLES */
 html {
   scroll-behavior: smooth;
+  height: 100%;
+  overflow: hidden;
 }
 body {
   width: 100%;
   min-height: 100vh;
+  height: 100%;
 }
 .fade-in {
   opacity: 0;
