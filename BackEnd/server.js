@@ -1,7 +1,13 @@
 require("dotenv").config();
 const path = require("path");
 var passport = require("passport");
+require("dotenv").config();
+const path = require("path");
+var passport = require("passport");
 
+const express = require("express");
+const session = require("express-session");
+const ejsMate = require("ejs-mate");
 const express = require("express");
 const session = require("express-session");
 const ejsMate = require("ejs-mate");
@@ -40,8 +46,10 @@ const PORT = process.env.PORT || 5050;
 
 // handling the method override to use the patch and delete request
 app.use(methodOverride("_method"));
+app.use(methodOverride("_method"));
 
 // For parsing the URL encoded and JSON data in request body
+app.use(express.urlencoded({ extended: false }));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -74,6 +82,8 @@ app.use(passport.authenticate("session"));
 // Public Routes
 app.use("/", require("./routes/root"));
 app.use("/", require("./routes/api/auth"));
+app.use("/", require("./routes/root"));
+app.use("/", require("./routes/api/auth"));
 
 // Protected Routes
 app.use('/user', require('./routes/user'));
@@ -88,8 +98,10 @@ app.use('/file(s)?', require('./routes/documents'));
 // Ignore the below routes
 // StartUp Routes
 app.use("/company", require("./routes/company"));
+app.use("/company", require("./routes/company"));
 
 // Route for API in future uses.
+app.use("/api", require("./routes/api"));
 app.use("/api", require("./routes/api"));
 
 // Not Found Route
@@ -119,6 +131,10 @@ app.all('*', (req, res) => {
 mongoose.connection.once("open", () => {
   console.log("Connected to MongoDB");
   app.listen(PORT, () => console.log(`Server started on port http://localhost:${PORT}/`));
+mongoose.connection.once("open", () => {
+  console.log("Connected to MongoDB");
+  app.listen(PORT, () => console.log(`Server started on port http://localhost:${PORT}/`));
 });
 
 // Initial Skeleton file structure for the backed is Created
+
