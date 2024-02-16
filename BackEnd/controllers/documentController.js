@@ -32,29 +32,26 @@ const getDocument = async (req, res) => {
         // Send file to the user using streams
         switch (document.type) {
             case "pdf":
+                // Remove the content type header
                 res.contentType("application/pdf");
                 break;
-            case "doc":
+            case "application/pdf":
+                res.contentType("application/pdf");
+                break;
+            case "text/plain":
+                res.contentType("text/plain");
+                break;
+            case "application/msword":
                 res.contentType("application/msword");
                 break;
-            case "docx":
+            case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
                 res.contentType("application/vnd.openxmlformats-officedocument.wordprocessingml.document");
-                break;
-            case "xls":
-                res.contentType("application/vnd.ms-excel");
-                break;
-            case "xlsx":
-                res.contentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-                break;
-            case "ppt":
-                res.contentType("application/vnd.ms-powerpoint");
-                break;
-            case "pptx":
-                res.contentType("application/vnd.openxmlformats-officedocument.presentationml.presentation");
                 break;
             default:
                 res.contentType("application/octet-stream");
+                break;
         }
+
         fs.createReadStream(filePath).pipe(res);
     }
     catch (error) {

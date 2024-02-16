@@ -7,11 +7,34 @@ const session = require("express-session");
 const ejsMate = require("ejs-mate");
 const app = express();
 
+// Adding the security headers
+
+const helmet = require("helmet");
+app.use(helmet(
+  {
+    contentSecurityPolicy: false,
+  }
+
+));
+
+
 const methodOverride = require("method-override");
 
 const mongoose = require("mongoose");
 const { addAbortListener } = require("events");
+
+// Adding mongoDB Sanitize
+const mongoSanitize = require("express-mongo-sanitize");
+app.use(mongoSanitize());
+
+// Adding the XSS
+const xss = require("xss-clean");
+app.use(xss());
+
 const connectDB = require("./config/dbConn");
+
+
+
 
 const PORT = process.env.PORT || 5050;
 
@@ -30,6 +53,7 @@ app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use("/", express.static(path.join(__dirname, "/public")));
+app.use("/logo", express.static(path.join(__dirname, "/files/logo")));
 
 // Session
 app.use(
@@ -41,9 +65,11 @@ app.use(
   })
 );
 app.use(passport.authenticate("session"));
-
+``
 // User object available at req.session.passport.user
 // Information in the user object can be changed at routes/api/auth.js:43:14 in passport.serializeUser
+
+
 
 // Public Routes
 app.use("/", require("./routes/root"));

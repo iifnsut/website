@@ -15,12 +15,19 @@ passport.use(
         var user = await User.findOne({ googleId: profile.id });
         if (!user) {
           console.log("no user");
-          const checkEmail = await User.findOneAndUpdate({ email: profile.emails[0].value }, { googleId: profile.id });
+          const checkEmail = await User.findOneAndUpdate(
+            { email: profile.emails[0].value },
+            { googleId: profile.id }
+          );
           if (checkEmail) {
             console.log("found email");
           } else {
             console.log("not found email");
-            console.log(profile.emails[0].value, profile.displayName, profile.id);
+            console.log(
+              profile.emails[0].value,
+              profile.displayName,
+              profile.id
+            );
             await User.create({
               name: profile.displayName,
               googleId: profile.id,
@@ -40,7 +47,11 @@ passport.use(
 
 passport.serializeUser(function (user, cb) {
   process.nextTick(function () {
-    cb(null, { name: user.name, email: user.email });
+    cb(null, { 
+      name: user.name, 
+      id : user._id,
+      roles : user.roles
+  });
   });
 });
 
@@ -53,10 +64,18 @@ passport.deserializeUser(function (user, cb) {
 var router = express.Router();
 
 router.get("/login(.html)?", login);
-router.get("/login/federated/google", passport.authenticate("google", { scope: ["email", "profile"] }));
-router.get("/auth/google/callback", passport.authenticate("google", { failureRedirect: "/login" }), function (req, res) {
-  res.redirect("/");
-});
+router.get(
+  "/login/federated/google",
+  passport.authenticate("google", { scope: ["email", "profile"] })
+);
+router.get(
+  "/auth/google/callback",
+  passport.authenticate("google", { failureRedirect: "/login" }),
+  function (req, res) {
+    res.redirect("/");
+  }
+);
+
 router.post("/logout", function (req, res, next) {
   req.logout(function (err) {
     if (err) {
@@ -65,5 +84,14 @@ router.post("/logout", function (req, res, next) {
     res.redirect("/");
   });
 });
+
+// router.get("/logout", function (req, res, next) {
+//   req.logout(function (err) {
+//     if (err) {
+//       return next(err);
+//     }
+//     res.redirect("/");
+//   });
+// });
 
 module.exports = router;

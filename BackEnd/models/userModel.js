@@ -1,5 +1,10 @@
 const mongoose = require("mongoose");
 
+const Document = require("./documentModel");
+const Application = require("./applicationModel");
+
+const { roleConfig } = require("../config/roleConfig");
+
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -48,10 +53,12 @@ const userSchema = new Schema({
 
     // required: true,
   },
-  role: {
-    type: String,
+  roles: {
+    type: Number,
     // required: true,
-    enum: ["admin", "user"],
+    enum: [Object.values(roleConfig)],
+    default: roleConfig.user,
+    require: true,
   },
   status: {
     type: Number,
@@ -60,12 +67,32 @@ const userSchema = new Schema({
 
   //  Public information
 
-  equationalQualification: {
-    type: Array,
-  },
-  college: {
-    type: Array,
-  },
+  equationalQualification: [{
+    instituteName: {
+      type: String,
+      // required: true,
+    },
+    degree: {
+      type: String,
+      // required: true,
+    },
+    branch: {
+      type: String,
+      // required: true,
+    },
+    year: {
+      type: Number,
+      // required: true,
+    },
+    percentage: {
+      type: Number,
+      min: 0,
+      max: 100,
+      // required: true,
+    }
+  }
+  ],
+  
 
   avatar: {
     type: String,
@@ -76,9 +103,13 @@ const userSchema = new Schema({
     // required: true,
   },
   document: {
-    type: Array,
-    // required: true,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: Document,
   },
+  applications: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: Application,
+  }],
   created_at: {
     type: Date,
     default: Date.now,

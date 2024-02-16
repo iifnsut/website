@@ -7,7 +7,7 @@ const validStatus = ["all","applied","approved","rejected","withdrawn","discrepa
 const viewALLApplications = async (req, res) => {
   const status = req.query.status||"applied";
   if(validStatus.indexOf(status)!=-1){
-    const query =  status=='all'?{}:{status : status};
+    const query =  status=='all'?{status: {$ne : "pending"}}:{status : status};
     try {
       const applications = await Application.find(query).populate('document').exec();
       // res.status(200).json(applications);
@@ -21,6 +21,7 @@ const viewALLApplications = async (req, res) => {
           data: applications,
           status: {currentStatus: status,validStatus},
           styles : ["applications.css"],
+          scripts: ["applications.js"],
         },
       });
     } catch (error) {
@@ -54,7 +55,7 @@ const updateApplication = async (req, res) => {
   const { id } = req.params;
   const { responseType, response,pitchDate } = req.body;
   try {
-    const application = await Application.findOne({applicationNo : id});
+    const application = await Application.findOne({applicationNo : id}).exec();
     if (!application) {
       return res.status(404).render(path.join("public", "error.ejs"), {
         page: {
@@ -74,13 +75,15 @@ const updateApplication = async (req, res) => {
         },
       });;
     }
-    if (application.adminResponse !="pending" ) {
+    if (application.adminResponse !="pending" && application.status!="applied") {
       return res.status(400).json({ message: "Application already reviewed" });
     }
     application.status = responseType;
     application.adminResponse = response;
+    console.log(responseType);
     if(responseType=="approved"){
       application.pitch.pitchStatus = "pending";
+      console.log(pitchDate);
       application.pitch.date = pitchDate;
     }
     await application.save();

@@ -32,7 +32,7 @@ return text.charAt(0).toUpperCase() + text.slice(1); } %>
   <div class="company-item rounded bg-color-<%= items.status %> p-3 mx-4 mb-3">
     <div class="company-item-header d-flex align-items-center flex-wrap">
       <div class="company-item-logo">
-        <img src="<%= items.logo %>" alt="Logo" srcset="" />
+        <img src="/logo/<%= items.logo %>" alt="Logo" srcset="" />
       </div>
       <div class="company-item-name">
         <h3><%= items.name %></h3>
@@ -42,7 +42,6 @@ return text.charAt(0).toUpperCase() + text.slice(1); } %>
           <a href="" class="">#<%= items.applicationNo %></a>
           <p><%= new Date(items.updatedAt).toLocaleString() %></p>
         </div>
-        <div></div>
       </div>
     </div>
     <hr
@@ -79,8 +78,9 @@ return text.charAt(0).toUpperCase() + text.slice(1); } %>
           <% for (const document of items.document){ %>
           <li>
             <a href="/file/<%= document._id %>"
-              ><%= textCapitalize(document.name) %></a
-            >
+              target="_blank"
+              ><%= textCapitalize(document.name) %>
+              </a>
           </li>
           <% } %>
         </ul>
@@ -103,7 +103,8 @@ return text.charAt(0).toUpperCase() + text.slice(1); } %>
       <h5>Applicant Response:</h5>
       <p class="text-justify"><%= items.userResponse %></p>
     </div>
-    <% } %> <% if (items.adminResponse !=='pending' && items.adminResponse !=='' ) { %>
+    <% } %> <% if (items.adminResponse !=='pending' && items.adminResponse !==''
+    ) { %>
     <div>
       <h5>Reply :</h5>
       <p class="text-justify"><%= items.adminResponse %></p>
@@ -113,6 +114,8 @@ return text.charAt(0).toUpperCase() + text.slice(1); } %>
       <form
         action="/admin/applications/<%= items.applicationNo %>?_method=PATCH"
         method="post"
+        class="needs-validation"
+        novalidate
       >
         <h5>Response:</h5>
         <div class="form-floating">
@@ -122,10 +125,11 @@ return text.charAt(0).toUpperCase() + text.slice(1); } %>
             name="response"
             id="response-data"
             style="height: 100px; resize: none"
+            required
           ></textarea>
           <label for="response-data">Enter the Response</label>
+          <div class="invalid-feedback">Please enter the response.</div>
         </div>
-        <input type="hidden" name="type" value="none" />
         <div class="d-flex">
           <div class="mt-2" data-applicationNo="">
             <button
@@ -154,20 +158,39 @@ return text.charAt(0).toUpperCase() + text.slice(1); } %>
             </button>
           </div>
           <div class="ms-auto d-flex">
-            <input
-              class="form-control mt-2"
-              name="pitchDate"
-              id="pitchDate"
-              placeholder="Select the date for pitch"
-              onfocus="(this.type='date')"
-              onblur="(this.type='text')"
-            />
+            <div class="d-flex flex-row">
+                <div>
+                  <input
+                  class="form-control mt-2 pitchDate"
+                  name="pitchDate"
+                  placeholder="Select the date for pitch"
+                  onfocus="(this.type='date')"
+                  onblur="(this.type='text')"
+                  min="<%= new Date().toLocaleDateString('sv') %>"
+
+                  />
+                  <div class="invalid-feedback">Please enter the date.</div>
+                  </div>
+            </div>
           </div>
         </div>
       </form>
     </div>
-    <% } %>
 
+    <% } else { %>
+    <div class="row">
+      <div class="col">
+        <h5>Status:</h5>
+        <p><%= textCapitalize(items.status) %></p>
+      </div>
+      <% if (items.status=='approved' ) { %>
+      <div class="col">
+        <h5>Pitch Date:</h5>
+        <p><%= new Date(items.pitch.date).toLocaleDateString() %></p>
+      </div>
+      <%} %>
+    </div>
+    <% } %>
     <hr
       style="width: 100%; color: black; height: 1px; background-color: black"
     />

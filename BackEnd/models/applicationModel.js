@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const AutoIncrement = require('mongoose-sequence')(mongoose);
 const Documents = require('./documentModel');
-
+const User = require('./userModel');
 
 
 const applicationSchema = new mongoose.Schema(
@@ -21,9 +21,7 @@ const applicationSchema = new mongoose.Schema(
         applicant: {
             type: String,
             // type : mongoose.Schema.Types.ObjectId,
-            // ref: 'User',
-            required: true,
-
+            // ref: User,
         },
         email: {
             type: String,
@@ -80,6 +78,28 @@ const applicationSchema = new mongoose.Schema(
             type: String,
             default: "pending"
         },
+        logs: [{
+            date: {
+                type: Date,
+                default: Date.now,
+            },
+            status: {
+                type: String,
+                enum: [
+                    "pending","applied" ,"approved", "rejected", 
+                    "withdrawn", "discrepancy", "resubmitted"
+                ]
+            },
+            user: {
+                type: String,
+                enum: [
+                    "applicant", "admin"
+                ]
+            },
+            message: {
+                type: String,
+            },
+        }],
 
     },
     { timestamps: true }

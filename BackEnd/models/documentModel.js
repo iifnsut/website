@@ -8,7 +8,12 @@ const documentSchema = new mongoose.Schema(
         },
         type: {
             type: String,
-            enum: ["pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx"]
+            enum: [
+                'application/pdf',
+                'application/msword',
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                'text/plain',
+            ]
         },
         path: {
             type: String,

@@ -1,29 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
+const { fileUpload } = require('../middleware/fileUpload');
+const { newApplication, formApplication } = require('../controllers/userController');
 
 router.get('^/$', (req, res) => {
     res.send('Welcome to the User page');
+    console.log(req.user);
 });
 
-router.get('/application(s)?', (req, res) => {
-    res.render(path.join("user", "applicationForm.ejs"), {
-        page: {
-            title: "Applications",
-            name: "Applications",
-            description: "Applications",
-            path: "/user/applications",
-            type: "user",
-            styles: ["applications.css"],
-            scripts: ["applicationForm.js"],
-        },
-    });
-});
+router.get('/application(s)?', formApplication);
 
-router.post('/application(s)?', (req, res) => {
-    console.log(req.body);
-    res.status(400).json({ message: "Invalid request" });
-});
-
-
+router.post('/application(s)?', fileUpload, newApplication);
 module.exports = router;
