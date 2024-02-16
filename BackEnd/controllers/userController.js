@@ -83,8 +83,8 @@ const formApplication = async (req, res) => {
             description: "Applications",
             path: "/user/applications",
             type: "user",
-            styles: ["applications.css"],
-            scripts: ["applications.js"],
+            // styles: ["applicationForm.css"],
+            scripts: ["applicationForm.js"],
         },
     });
 }

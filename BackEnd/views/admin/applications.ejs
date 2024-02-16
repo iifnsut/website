@@ -183,7 +183,7 @@ return text.charAt(0).toUpperCase() + text.slice(1); } %>
         <h5>Status:</h5>
         <p><%= textCapitalize(items.status) %></p>
       </div>
-      <% if (items.status=='approved' ) { %>
+      <% if (items.status=='approved' && items.pitch.date) { %>
       <div class="col">
         <h5>Pitch Date:</h5>
         <p><%= new Date(items.pitch.date).toLocaleDateString() %></p>

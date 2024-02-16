@@ -34,32 +34,6 @@ const userSchema = new Schema({
     type: String,
     // required: true,
   },
-  // Geneal information
-  name: {
-    type: String,
-    // required: true,
-  },
-  gender: {
-    type: String,
-    // required: true,
-    enum: ["male", "female", "other"],
-  },
-  dob: {
-    type: Date,
-    // required: true,
-  },
-  address: {
-    type: String,
-    // required: true,
-  },
-  phone: {
-    type: String,
-    // required: true,
-  },
-  email: {
-    type: String,
-    // required: true,
-  },
 
   //  Private information
   googleId: {
@@ -77,6 +51,7 @@ const userSchema = new Schema({
   password: {
     type: String,
   //  Private information
+  },
   googleId: {
     type: String,
     // required: true,
@@ -150,14 +125,9 @@ const userSchema = new Schema({
   applications: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: Application,
-  }],
-  created_at: {
-    type: Date,
-    default: Date.now,
-  },
-});
+  }]},
+  { timestamps: true });
 
-const User = mongoose.model("User", userSchema);
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;

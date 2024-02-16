@@ -1,13 +1,7 @@
 require("dotenv").config();
 const path = require("path");
 var passport = require("passport");
-require("dotenv").config();
-const path = require("path");
-var passport = require("passport");
-
-const express = require("express");
-const session = require("express-session");
-const ejsMate = require("ejs-mate");
+;
 const express = require("express");
 const session = require("express-session");
 const ejsMate = require("ejs-mate");
@@ -128,9 +122,6 @@ app.all('*', (req, res) => {
 
 // Start the server 
 
-mongoose.connection.once("open", () => {
-  console.log("Connected to MongoDB");
-  app.listen(PORT, () => console.log(`Server started on port http://localhost:${PORT}/`));
 mongoose.connection.once("open", () => {
   console.log("Connected to MongoDB");
   app.listen(PORT, () => console.log(`Server started on port http://localhost:${PORT}/`));
