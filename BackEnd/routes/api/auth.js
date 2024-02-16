@@ -1,7 +1,7 @@
 var express = require("express");
 const { login } = require("../../controllers/publicController");
 var passport = require("passport");
-const User = require("../../model/userModel");
+const User = require("../../models/userModel");
 var GoogleStrategy = require("passport-google-oauth20").Strategy;
 passport.use(
   new GoogleStrategy(
