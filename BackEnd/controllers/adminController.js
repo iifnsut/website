@@ -22,6 +22,7 @@ const viewALLApplications = async (req, res) => {
           status: {currentStatus: status,validStatus},
           styles : ["applications.css"],
           scripts: ["applications.js"],
+          logggedIn: req.isAuthenticated(),
         },
       });
     } catch (error) {

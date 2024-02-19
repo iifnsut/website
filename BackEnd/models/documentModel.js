@@ -25,7 +25,9 @@ const documentSchema = new mongoose.Schema(
             enum: ["pending", "approved", "rejected"]
         },
         uploadedBy: {
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+            required: true,
         },
     },
     { timestamps: true }

@@ -9,6 +9,7 @@ const index = (req, res) => {
       path: "/",
       type: "public",
       scripts: ["index.js"],
+      loggedIn: req.isAuthenticated(),
     },
   });
 };
@@ -22,6 +23,7 @@ const about = (req, res) => {
       path: "/about",
       type: "public",
       styles: ["about.css"],
+      loggedIn: req.isAuthenticated(),
     },
   });
 };
@@ -34,6 +36,7 @@ const event = (req, res) => {
       description: "Event",
       path: "/event",
       type: "public",
+      loggedIn: req.isAuthenticated(),
     },
   });
 };
@@ -46,6 +49,7 @@ const contact = (req, res) => {
       description: "Contact",
       path: "/contact",
       type: "public",
+      loggedIn: req.isAuthenticated(),
     },
   });
 };
@@ -58,6 +62,7 @@ const startUPs = (req, res) => {
       path: "/startups",
       type: "public",
       scripts: ["startups.js"],
+      loggedIn: req.isAuthenticated(),
     },
   });
 };
@@ -69,6 +74,7 @@ const login = (req, res) => {
       description: "login",
       path: "/login",
       type: "public",
+      loggedIn: req.isAuthenticated(),
     },
   });
 };

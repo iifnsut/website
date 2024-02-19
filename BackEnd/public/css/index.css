@@ -120,13 +120,19 @@ h1,h2,h3,h4,h5,h6{
   font-size: 1.35vw;
 }
 
-#intro img {
+#intro a {
   /* height: 125px; */
   /* width: 125px; */
   width: 6.9em;
   aspect-ratio: 1/1;
   border-radius: 50%;
   margin: 0 auto;
+}
+#intro img {
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+  object-fit: cover;
 }
 
 #i-about h3 {
@@ -1573,6 +1579,7 @@ input[type="radio"]:checked+label, .contact-us-map-wrapper form button[type="sub
 }
 .main {
     padding:40px 0px;
+
 }
 .divselector{
     display: flex;
@@ -2208,3 +2215,14 @@ input[type="radio"]:checked+label, .contact-us-map-wrapper form button[type="sub
   height: 8rem;
   border-radius: 50%;
 }
+
+.fa-google {
+  background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+/* main{
+  min-height: 70vh;
+} */

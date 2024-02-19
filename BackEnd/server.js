@@ -120,6 +120,32 @@ app.all('*', (req, res) => {
       });
 });
 
+
+// Error Handler
+app.use((err, req, res, next) => {
+  err.status = err.status || 500;
+  err.message = err.message || "Internal Server Error";
+  res.status(err.status);
+  console.log(err);
+  res.render(path.join("public", "error.ejs"), {
+    page: {
+      title: "Error",
+      name: "Error",
+      description: "Error",
+      path: "/error",
+      type: "public",
+      data : {
+          title : err.status,
+          message : err.message,
+          link :{
+                url : "/",
+                text : "Go to Home"
+          }
+        },
+    },
+  });
+});
+
 // Start the server 
 
 mongoose.connection.once("open", () => {

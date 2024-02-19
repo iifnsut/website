@@ -10,17 +10,20 @@ const validStatus = ["all","applied","approved","rejected","withdrawn","discrepa
 
 
 const newApplication = async (req, res) => {
-    // console.log(req.files);
-    // if(!req.user && !req.user.id ){
-    //     res.status(403).json({ message: "Forbidden" });
-    // }
-    const id = "65cf542f4e5a2ca71152a7e5";
-    // const User = await User.findById(req.user._id).exec();
+
+    const { id } = req.user;
     const user = await User.findById(id);
     if(!user){
-        res.status(404).json({ message: "User not found" });
+        return res.status(404).json({ message: "User not found" });
     }
-    
+    if (user.status === roleConfig.blocked) {
+        return res.status(403).json({ message: "Your account is blocked" });
+    }
+
+    if(req.user.name !== user.name){
+        return res.status(403).json({ message: "You are not allowed to access this page" });
+    }
+
     const { applicationName, description, email, phone, address, team } = req.body;
     console.log(applicationName, description, email, phone, address);
     const application = new Application({
@@ -41,6 +44,7 @@ const newApplication = async (req, res) => {
             console.log(req.files.logo);
             application.logo = req.files.logo[0].filename;
         }
+        
         if (req.files?.document) {
             for (let file of req.files.document) {
                 console.log(file);
@@ -50,6 +54,7 @@ const newApplication = async (req, res) => {
                         // path: file.path,
                         path: file.filename,
                         type: file.mimetype,
+                        uploadedBy: user
                     });
                     const newDocument = await document.save();
                     application.document.push(newDocument);
@@ -67,7 +72,7 @@ const newApplication = async (req, res) => {
         console.log(newApplication);
         user.applications.push(newApplication);
         await user.save();
-        res.status(201).json("Application submitted successfully");
+        res.status(201).json("Application submitted successfully #" + newApplication.applicationNo );
     }
     catch (error) {
         res.status(400).json({ message: error.message });
@@ -85,6 +90,7 @@ const formApplication = async (req, res) => {
             type: "user",
             // styles: ["applicationForm.css"],
             scripts: ["applicationForm.js"],
+            logggedIn: req.isAuthenticated(),
         },
     });
 }

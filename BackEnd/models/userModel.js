@@ -70,10 +70,9 @@ const userSchema = new Schema({
     // required: true,
   },
   roles: {
-    type: Number,
+    type: Array,
     // required: true,
-    enum: [Object.values(roleConfig)],
-    default: roleConfig.user,
+    default: [roleConfig.user],
     require: true,
   },
   status: {

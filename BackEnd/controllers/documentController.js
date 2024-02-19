@@ -2,12 +2,14 @@
 const path = require('path');
 const fs = require('fs');
 const Document = require('../models/documentModel');
-
+const User = require('../models/userModel');
+const { roleConfig } = require('../config/roleConfig');
 
 const validExtensions = ["pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx"];
 
 const getDocument = async (req, res) => {
     const { id } = req.params;
+        
     // verify the extension of the file
     try {
         if (!id.match(/^[0-9a-fA-F]{24}$/)) {
@@ -18,6 +20,19 @@ const getDocument = async (req, res) => {
         if (!document) {
             throw Error("Whoops! File not found");
         }
+        const user = await User.findById(req.user.id).exec();
+        if (!user) {
+            throw Error("Whoops! File not found");
+        }
+        if (user.status === roleConfig.blocked) {
+            throw Error("Your account is blocked");
+        }
+        if(!(user.roles.includes(roleConfig.admin))){
+            if(document.uploadedBy.toString() !== req.user.id.toString() || req.user.name !== user.name){
+                throw Error("You are not allowed to access this page");
+            }
+        }
+           
         // const extension = document.name.split(".").pop();
         // if (!validExtensions.includes(extension)) {
         //     return res.status(400).json({ message: "Invalid file extension" });
@@ -70,6 +85,7 @@ const getDocument = async (req, res) => {
                         text : "Go to Applications"
                   }
                 },
+            logggedIn : req.isAuthenticated(),
             },
           });;
     }
