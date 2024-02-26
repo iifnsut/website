@@ -27,7 +27,7 @@
   
 
 
-const addData = (id, data, name, type = "hidden") => {
+const addData = async (id, data, name, type = "hidden") => {
   const list = document.getElementById(id);
   const li = document.createElement("li");
   li.setAttribute("class", "list-group-item d-flex align-items-center");
@@ -51,6 +51,7 @@ const addData = (id, data, name, type = "hidden") => {
   nameInput.setAttribute("readonly", "readonly");
   nameInput.setAttribute("required", true);
   if (type === "file") {
+  
     nameInput.setAttribute("name", "");
     nameInput.setAttribute("form", "");
     const fileInput = document.createElement("input");
@@ -70,6 +71,17 @@ const addData = (id, data, name, type = "hidden") => {
     fileInput.files = fileList.files;
     console.log(fileInput.files[0].size);
     div.appendChild(fileInput);
+    const form = new FormData();
+    form.append("document", fileInput.files[0]);
+    const response = await fetch("/files", {
+      method: "POST",
+      body: form,
+      headers: {
+        "Accept": "application/json",
+      }, 
+    });
+    const result = await response.json();
+    console.log(result);
   } else {
     nameInput.setAttribute("form", "applicationForm");
     nameInput.setAttribute("name", `${name}`);

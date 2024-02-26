@@ -9,7 +9,16 @@ const viewALLApplications = async (req, res) => {
   if(validStatus.indexOf(status)!=-1){
     const query =  status=='all'?{status: {$ne : "pending"}}:{status : status};
     try {
-      const applications = await Application.find(query).populate('document').exec();
+      const applications = await Application.find(query).populate([
+        {
+          path: "document",
+          select: "name path",
+      },
+      {
+          path: "applicant",
+          select: "name  _id",
+      }
+      ]).lean();
       // res.status(200).json(applications);
       res.render(path.join("admin", "applications.ejs"), {
         page: {
@@ -22,7 +31,7 @@ const viewALLApplications = async (req, res) => {
           status: {currentStatus: status,validStatus},
           styles : ["applications.css"],
           scripts: ["applications.js"],
-          logggedIn: req.isAuthenticated(),
+          loggedIn: req.isAuthenticated(),
         },
       });
     } catch (error) {
@@ -42,6 +51,8 @@ const viewALLApplications = async (req, res) => {
                     text : "Go to Applications"
               }
             },
+          
+      loggedIn: req.isAuthenticated(),
         },
       });
     }  
@@ -56,7 +67,7 @@ const updateApplication = async (req, res) => {
   const { id } = req.params;
   const { responseType, response,pitchDate } = req.body;
   try {
-    const application = await Application.findOne({applicationNo : id}).exec();
+    const application = await Application.findOne({no : id}).exec();
     if (!application) {
       return res.status(404).render(path.join("public", "error.ejs"), {
         page: {

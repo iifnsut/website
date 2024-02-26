@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const documentSchema = new mongoose.Schema(
     {
         name: {
@@ -29,6 +28,12 @@ const documentSchema = new mongoose.Schema(
             ref: 'User',
             required: true,
         },
+        isLinked : [
+            {
+                type : mongoose.Schema.Types.ObjectId,
+                ref : 'Application'
+            }
+        ]
     },
     { timestamps: true }
 );

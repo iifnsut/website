@@ -39,7 +39,7 @@ return text.charAt(0).toUpperCase() + text.slice(1); } %>
       </div>
       <div class="ms-auto text-end">
         <div>
-          <a href="" class="">#<%= items.applicationNo %></a>
+          <a href="" class="">#<%= items.no %></a>
           <p><%= new Date(items.updatedAt).toLocaleString() %></p>
         </div>
       </div>
@@ -58,7 +58,8 @@ return text.charAt(0).toUpperCase() + text.slice(1); } %>
         </div>
         <ul class="list-unstyled">
           <li>
-            Applied By : <a href="/in-progress"><%= items.applicant %></a>
+            <% // Don't forget to remove ? %>
+            Applied By : <a href="/user/<%= items.applicant?._id %>"><%= items.applicant?.name %></a>
           </li>
           <li>
             Email: <a href="mailto:<%= items.email %>"><%= items.email %></a>
@@ -112,7 +113,7 @@ return text.charAt(0).toUpperCase() + text.slice(1); } %>
     <% } %> <% if (items.status=='applied' ) { %>
     <div class="">
       <form
-        action="/admin/applications/<%= items.applicationNo %>?_method=PATCH"
+        action="/admin/applications/<%= items.no %>?_method=PATCH"
         method="post"
         class="needs-validation"
         novalidate

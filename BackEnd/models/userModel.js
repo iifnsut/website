@@ -11,64 +11,72 @@ const userSchema = new Schema({
   // Geneal information
   name: {
     type: String,
-    // required: true,
+    required: true,
   },
   gender: {
     type: String,
-    // required: true,
     enum: ["male", "female", "other"],
   },
   dob: {
     type: Date,
-    // required: true,
   },
-  address: {
-    type: String,
-    // required: true,
-  },
+  address: [{
+    houseNo: {
+      type: String,
+    },
+    street: {
+      type: String,
+    },
+    city: {
+      type: String,
+    },
+    state: {
+      type: String,
+    },
+    pincode: {
+      type: Number,
+    },
+    country: {
+      type: String,
+    },
+  
+  }],
   phone: {
     type: String,
-    // required: true,
   },
   email: {
     type: String,
-    // required: true,
+    required: true,
   },
 
   //  Private information
   googleId: {
     type: String,
-    // required: true,
+    required: true,
   },
   AdharaNo: {
     type: Number,
-    // required: true,
   },
   panNo: {
     type: String,
-    // required: true,
   },
   password: {
     type: String,
   //  Private information
   },
-  googleId: {
+  avatar: {
     type: String,
     // required: true,
   },
-  AdharaNo: {
-    type: Number,
-    // required: true,
-  },
-  panNo: {
+  description: {
     type: String,
     // required: true,
   },
-  password: {
-    type: String,
-
-    // required: true,
+  isComplete: {
+    type: Boolean,
+    default: false,
   },
+  
   roles: {
     type: Array,
     // required: true,
@@ -107,16 +115,9 @@ const userSchema = new Schema({
     }
   }
   ],
-  
 
-  avatar: {
-    type: String,
-    // required: true,
-  },
-  description: {
-    type: String,
-    // required: true,
-  },
+
+  // Private information
   document: {
     type: mongoose.Schema.Types.ObjectId,
     ref: Document,
@@ -127,7 +128,6 @@ const userSchema = new Schema({
   }]},
   { timestamps: true });
 
-const User = mongoose.model("User", userSchema);
 
-module.exports = User;
+module.exports = mongoose.model("User", userSchema);
 

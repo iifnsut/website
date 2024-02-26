@@ -1,7 +1,6 @@
 require("dotenv").config();
 const path = require("path");
 var passport = require("passport");
-;
 const express = require("express");
 const session = require("express-session");
 const ejsMate = require("ejs-mate");
@@ -10,13 +9,11 @@ const app = express();
 // Adding the security headers
 
 const helmet = require("helmet");
-app.use(helmet(
-  {
+app.use(
+  helmet({
     contentSecurityPolicy: false,
-  }
-
-));
-
+  })
+);
 
 const methodOverride = require("method-override");
 
@@ -32,9 +29,6 @@ const xss = require("xss-clean");
 app.use(xss());
 
 const connectDB = require("./config/dbConn");
-
-
-
 
 const PORT = process.env.PORT || 5050;
 
@@ -67,11 +61,9 @@ app.use(
   })
 );
 app.use(passport.authenticate("session"));
-``
+``;
 // User object available at req.session.passport.user
 // Information in the user object can be changed at routes/api/auth.js:43:14 in passport.serializeUser
-
-
 
 // Public Routes
 app.use("/", require("./routes/root"));
@@ -80,14 +72,11 @@ app.use("/", require("./routes/root"));
 app.use("/", require("./routes/api/auth"));
 
 // Protected Routes
-app.use('/user', require('./routes/user'));
-app.use('/admin', require('./routes/admin'));
-
+app.use("/user", require("./routes/user"));
+app.use("/admin", require("./routes/admin"));
 
 // For serving the protected documents files
-app.use('/file(s)?', require('./routes/documents'));
-
-
+app.use("/file(s)?", require("./routes/documents"));
 
 // Ignore the below routes
 // StartUp Routes
@@ -99,27 +88,26 @@ app.use("/api", require("./routes/api"));
 app.use("/api", require("./routes/api"));
 
 // Not Found Route
-app.all('*', (req, res) => {
-    res.status(404);
-    res.render(path.join("public", "error.ejs"), {
-        page: {
-          title: "Page Not Found",
-          name: "Error",
-          description: "Error",
-          path: "/error",
-          type: "public",
-          data : {
-              title : "Page Not Found",
-              message : "The page you are looking for is not found",
-              link :{
-                    url : "/",
-                    text : "Go to Home"
-              }
-            },
+app.all("*", (req, res) => {
+  res.status(404);
+  res.render(path.join("public", "error.ejs"), {
+    page: {
+      title: "Page Not Found",
+      name: "Error",
+      description: "Error",
+      path: "/error",
+      type: "public",
+      data: {
+        title: "Page Not Found",
+        message: "The page you are looking for is not found",
+        link: {
+          url: "/",
+          text: "Go to Home",
         },
-      });
+      },
+    },
+  });
 });
-
 
 // Error Handler
 app.use((err, req, res, next) => {
@@ -127,31 +115,37 @@ app.use((err, req, res, next) => {
   err.message = err.message || "Internal Server Error";
   res.status(err.status);
   console.log(err);
-  res.render(path.join("public", "error.ejs"), {
-    page: {
-      title: "Error",
-      name: "Error",
-      description: "Error",
-      path: "/error",
-      type: "public",
-      data : {
-          title : err.status,
-          message : err.message,
-          link :{
-                url : "/",
-                text : "Go to Home"
-          }
+  const query = req.query;
+  if (query && query.format === "json") {
+    return res.send(err);
+  } else {
+    res.render(path.join("public", "error.ejs"), {
+      page: {
+        title: "Error",
+        name: "Error",
+        description: "Error",
+        path: "/error",
+        type: "public",
+        data: {
+          title: err.status,
+          message: err.message,
+          link: {
+            url: "/",
+            text: "Go to Home",
+          },
         },
-    },
-  });
+      },
+    });
+  }
 });
 
-// Start the server 
+// Start the server
 
 mongoose.connection.once("open", () => {
   console.log("Connected to MongoDB");
-  app.listen(PORT, () => console.log(`Server started on port http://localhost:${PORT}/`));
+  app.listen(PORT, () =>
+    console.log(`Server started on port http://localhost:${PORT}/`)
+  );
 });
 
 // Initial Skeleton file structure for the backed is Created
-

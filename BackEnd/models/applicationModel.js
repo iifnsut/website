@@ -4,6 +4,8 @@ const Documents = require('./documentModel');
 const User = require('./userModel');
 
 
+
+
 const applicationSchema = new mongoose.Schema(
     {
         // General Information of the Applicant
@@ -19,9 +21,8 @@ const applicationSchema = new mongoose.Schema(
         },
         // Details of the Applicant
         applicant: {
-            type: String,
-            // type : mongoose.Schema.Types.ObjectId,
-            // ref: User,
+            type : mongoose.Schema.Types.ObjectId,
+            ref: 'User',
         },
         email: {
             type: String,
@@ -109,7 +110,7 @@ const applicationSchema = new mongoose.Schema(
 
 
 applicationSchema.plugin(AutoIncrement, { 
-    inc_field: 'applicationNo',
+    inc_field: 'no',
     id : 'application_seq',
     start_seq: 1000 
 });

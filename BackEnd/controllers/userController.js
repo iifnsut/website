@@ -30,7 +30,7 @@ const newApplication = async (req, res) => {
         name : applicationName,
         // logo,
         description,
-        applicant: user.name,
+        applicant: user,
         email,
         phone,
         address,
@@ -72,7 +72,7 @@ const newApplication = async (req, res) => {
         console.log(newApplication);
         user.applications.push(newApplication);
         await user.save();
-        res.status(201).json("Application submitted successfully #" + newApplication.applicationNo );
+        res.status(201).json("Application submitted successfully #" + newApplication.no );
     }
     catch (error) {
         res.status(400).json({ message: error.message });
@@ -90,14 +90,23 @@ const formApplication = async (req, res) => {
             type: "user",
             // styles: ["applicationForm.css"],
             scripts: ["applicationForm.js"],
-            logggedIn: req.isAuthenticated(),
+            loggedIn: req.isAuthenticated(),
         },
     });
 }
 
 const viewApplications = async (req, res) => {
     try {
-        const applications = await Application.find({applicant : req.user.name}).populate('document').exec();
+        const applications = await Application.find({applicant : req.user.name}).populate([
+            {
+                path: "document",
+                select: "name path",
+            },
+            {
+                path: "applicant",
+                select: "name  _id",
+            }
+        ]).exec();
         res.status(200).json(applications);
     } catch (error) {
         res.status(500).json({ message: error.message });
