@@ -103,7 +103,12 @@
     <!--Important Note: Custom js Must be always after importing all the libraries -->
     <% if (typeof page.scripts !== 'undefined') { %> <% if (page.scripts.length
     > 0) { %> <% for (let script of page.scripts) { %>
+
+      <% if (script.includes("http")) { %>
+      <script src="<%= script %>"></script>
+      <% } else { %>
+          
     <script src="/js/<%= script %>"></script>
-    <% } %> <% } %> <% } %>
+    <% } %> <% } %> <% } %> <% } %>
   </body>
 </html>

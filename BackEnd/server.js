@@ -34,11 +34,9 @@ const PORT = process.env.PORT || 5050;
 
 // handling the method override to use the patch and delete request
 app.use(methodOverride("_method"));
-app.use(methodOverride("_method"));
 
 // For parsing the URL encoded and JSON data in request body
-app.use(express.urlencoded({ extended: false }));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Connect to MongoDB

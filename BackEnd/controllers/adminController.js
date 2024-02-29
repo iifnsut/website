@@ -1,8 +1,11 @@
 const path = require("path");
 const Application = require("../models/applicationModel");
 const { query } = require("express");
-
+const { roleConfig } = require("../config/roleConfig");
+const User = require("../models/userModel");  
+const openApplicants = require("../models/openApplicantModel");
 const validStatus = ["all","applied","approved","rejected","withdrawn","discrepancy"];
+const mongoose = require("mongoose");
 
 const viewALLApplications = async (req, res) => {
   const status = req.query.status||"applied";
@@ -132,13 +135,120 @@ const indexPage = (req, res ) => {
       description: "Admin",
       path: "/admin",
       type: "admin",
+      scripts : ["adminindex.js"],
     },
   });
 }
+
+
+
+// Add and Remove Admin Access and Permissions along with blocking and unblocking users
+const getAccessDetails = async (req, res) => {
+  if (!req.body.email) {
+    return res.status(400).json({ message: "Email not provided" });
+  }
+  const { email } = req.body;
+  console.log(email);
+  try {
+    const user = await User.findOne({ email }).select("name email roles status _id").lean();
+    console.log(user);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // changing roles to keyname
+    user.roles = user.roles.map((role) => {
+      const key = Object.keys(roleConfig).find((key) => roleConfig[key] === role);
+      return key;
+    });
+
+    res.status(200).json(user);
+  }
+  catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
+const updateUsersAccess = async (req, res) => {
+  const { email, roles, status } = req.body;
+  console.log(email, roles, status, "update access");
+  try {
+    const user = await User.findOne({ email }).exec();
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    user.roles = roles.map((role) => roleConfig[role]);
+    user.status = status?status: 0;
+    await user.save();
+    res.status(200).json({ message: "User roles and status updated" });
+  }
+  catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
+// Form for creating new Open Applicants
+const newApplicationForm = (req, res) => {
+  res.render(path.join("admin", "newApplicationForm.ejs"), {
+    page: {
+      title: "New Applicants",
+      name: "New Applicants",
+      description: "new Applicants",
+      path: "/admin/newApplicants",
+      type: "admin",
+      scripts: [
+        "https://cdn.ckeditor.com/ckeditor5/41.1.0/decoupled-document/ckeditor.js",
+        "newopenApplicarionform.js"
+    ],
+      loggedIn: req.isAuthenticated(),
+    },
+  });
+}
+
+// fetching and creating new Open Applicants
+const getOpenApplicants = async (req, res) => {
+  try {
+    const openApplicants = await openApplicants.find({}).exec();
+    res.status(200).json(openApplicants);
+  }
+  catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
+
+const createOpenApplicant = async (req, res) => {
+  const { name, description, link, start, deadline } = req.body;
+  try {
+    const newOpenApplicant = new openApplicants({
+      name,
+      description,
+      website : link,
+      start : new Date(start),
+      deadline : new Date(deadline),
+      applicant :  new mongoose.Types.ObjectId(req.user._id),
+    });
+    await newOpenApplicant.save();
+    console.log(newOpenApplicant);
+    res.status(201).json({ message: "New Open Applicant created" });
+  }
+  catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
+
+
+
 
 module.exports = {
   viewALLApplications,
   updateApplication,
   indexPage,
+  getAccessDetails,
+  updateUsersAccess,
+  newApplicationForm,
+  getOpenApplicants,
+  createOpenApplicant,
 };
 

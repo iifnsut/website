@@ -1,4 +1,6 @@
 const path = require("path");
+const openApplicantModel = require("../models/openApplicantModel");
+
 
 const index = (req, res) => {
   res.render(path.join("public", "index.ejs"), {
@@ -79,6 +81,29 @@ const login = (req, res) => {
   });
 };
 
+const apply = async (req, res) => {  
+  const today = new Date().toLocaleDateString('sv');
+  try {
+    const applications = await openApplicantModel.find({deadline : {$gte : today}}).lean();
+    res.render(path.join("public", "apply.ejs"), {
+      page: {
+        title: "Apply at NSUT IIF",
+        name: "Apply",
+        description: "Apply",
+        path: "/apply",
+        type: "public",
+        data: applications,
+        loggedIn: req.isAuthenticated(),
+      },
+    });
+  }
+  catch (error) {
+    // next(error)
+    const x = 0;
+  }
+}
+
+
 module.exports = {
   index,
   about,
@@ -86,4 +111,5 @@ module.exports = {
   contact,
   startUPs,
   login,
+  apply
 };

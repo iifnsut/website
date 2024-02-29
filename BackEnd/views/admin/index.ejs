@@ -1,29 +1,57 @@
-<% layout('./layouts/indexLayout.ejs') -%>
-<% 
-    function textCapitalize(text) { 
-    return text.charAt(0).toUpperCase() + text.slice(1);
-   }
-%>
-<h1>
-    Welcome to Admin Dashboard!
-</h1>
-<div class="container mt-3">
+<% layout('./layouts/indexLayout.ejs') -%> <% function textCapitalize(text) {
+return text.charAt(0).toUpperCase() + text.slice(1); } %>
+<div class="h-100 w-100">
+  <div class="container mb-3">
     <div class="row">
-        <div class="col-sm-6 mb-3 mb-sm-0">
-      <div class="card">
-        <div class="card-body">
-        <p class="card-text">No of Application</p>
-          <h5 class="card-title">78</h5>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
+      <div class="col-12">
+        <h1 class="text-center">Admin Panel</h1>
       </div>
     </div>
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-center">Welcome, <%= textCapitalize("Admin") %></h2>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-auto bg-light rounded border border-1 m-2 p-3">
+        <h3 class="">18</h3>
+        <h4 class="">Open Applications</h4>
+        <a href="/admin/openApplication" class="btn btn-primary">Manage</a>
+      </div>
+      <div class="col-auto bg-light rounded border border-1 m-2 p-3">
+        <h3 class="">512</h3>
+        <h4 class="">Recived Applications</h4>
+        <a href="/admin/applications" class="btn btn-primary">Manage</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="bg-light p-3 rounded border-1 border">
+          <div>
+            <h3>Access Manager</h3>
+            <form action="/admin/access" method="post" id="accessSearch">
+              <div class="col-sm-3">
+                <label class="visually-hidden" for="accessemail"
+                  >Username</label
+                >
+                <div class="input-group">
+                  <div class="input-group-text">@</div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="accessemail"
+                    placeholder="Email"
+                    name="email"
+                  />
+                  <button type="submit btn btn-primary">
+                    <i class="fa fa-search mx-2"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div id="accessuserdata" class="my-3" style=""></div>
         </div>
       </div>
     </div>

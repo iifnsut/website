@@ -13,6 +13,8 @@ router.get('/contact(.html)?', publicController.contact);
 
 router.get('/startups(.html)?', publicController.startUPs);
 
+router.get("/apply(.html)?", publicController.apply);
+
 
 
 

@@ -25,13 +25,13 @@ img {
 :focus:not(:focus-visible) {
   outline: none;
 }
-a,
+/* a,
 a:hover,
 a:focus,
 a:visited {
   text-decoration: none;
   color: unset;
-}
+} */
 i{
   font-style: normal;
 }
@@ -464,13 +464,13 @@ img {
 :focus:not(:focus-visible) {
   outline: none;
 }
-a,
+/* a,
 a:hover,
 a:focus,
 a:visited {
   text-decoration: none;
   color: unset;
-}
+} */
 /* </> */
 
 /* <> VARIABLES */

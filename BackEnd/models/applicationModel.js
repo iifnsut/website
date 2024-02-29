@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const AutoIncrement = require('mongoose-sequence')(mongoose);
 const Documents = require('./documentModel');
 const User = require('./userModel');
+const OpenApplicant = require('./openApplicantModel');
 
 
 
@@ -9,6 +10,10 @@ const User = require('./userModel');
 const applicationSchema = new mongoose.Schema(
     {
         // General Information of the Applicant
+        form: {
+            type : mongoose.Schema.Types.ObjectId,
+            ref: 'OpenApplicant',
+        },
         name: {
             type: String,
             required: true,

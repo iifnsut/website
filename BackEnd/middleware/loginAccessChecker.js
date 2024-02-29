@@ -23,17 +23,21 @@ const loginAccessChecker = (role) => {
       }
         if (user.roles.some((r) => role.includes(r)) && req.user.roles.some((r) => role.includes(r))){
           return next();
-        }else{
+        }else{  
+          if(req.xhr || req.query.format === "json" || req.headers.accept.indexOf('json') > -1){
+            return res.status(403).json({ message: "You are not allowed to access this page" });
+          }else{
           err = new Error("You are not allowed to access this page");
 
           err.status = 403;
         throw err;
+          }
         }
       } catch (err) {
         next(err);
       }
     }else{
-      console.log(req.xhr)
+      // console.log(req.xhr)
       if(req.xhr || req.query.format === "json" || req.headers.accept.indexOf('json') > -1){
         return res.status(401).json({ message: "Unauthorized" });
       }
@@ -41,5 +45,9 @@ const loginAccessChecker = (role) => {
     }
   };
 };
+
+
+
+
 
 module.exports = loginAccessChecker ;

@@ -1,0 +1,37 @@
+<% layout('./layouts/indexLayout.ejs') -%>
+
+<div class="container my-4">
+  <h1>
+    Apply for Incubation
+  </h1>
+  <div class="accordion" id="ApplicationBox">
+    <% for(const item of page.data){ %>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="<%= "heading"+item._id %>">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<%= "control"+item._id %>" aria-expanded="false" aria-controls="<%= "heading"+item._id %>">
+            <%= item.name  %>
+          </button>
+        </h2>
+        <div id="<%= "control"+item._id %>" class="accordion-collapse collapse" aria-labelledby="<%= "heading"+item._id %>" data-bs-parent="#ApplicationBox">
+          <div class="accordion-body">
+            <%- item.description %>
+            <ul>
+              <li>
+                <strong>
+                  Application Opens: <%= new Date( item.start).toLocaleDateString('sv') %>
+                </strong>
+              </li>
+              <li>
+                <strong>
+                  Application Closes: <%=  new Date(item.deadline).toLocaleDateString('sv') %>
+                </strong>
+              </li>
+            </ul>
+            <a href="/user/application/new?id=<%= item._id %>" class="btn btn-primary">Apply</a>
+          </div>
+        </div>
+      </div>
+    <% } %>
+  </div>
+
+</div>

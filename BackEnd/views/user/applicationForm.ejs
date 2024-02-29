@@ -1,6 +1,26 @@
 <% layout('./layouts/indexLayout.ejs') -%>
 <h1 class="text-center m-1 m-md-3">Application Form</h1>
 <div class="mx-4 mx-md-5 my-1">
+  <div class="">
+    <p class="h5">
+      <strong> Application Name : </strong>
+      <%= page.data.name %>
+    </p>
+    <ul class="h6">
+      <li>
+        <strong>Application Opens:</strong>
+        <span id="applicationOpen">
+          <%= new Date(page.data.start).toLocaleDateString('sv') %>
+        </span>
+      </li>
+      <li>
+        <strong>Application Closes:</strong>
+        <span id="applicationClose">
+          <%= new Date(page.data.deadline).toLocaleDateString('sv') %>
+        </span>
+      </li>
+    </ul>
+  </div>
   <div class="row">
     <div class="col-md-8 col-sm-8">
       <div class="form-group">
@@ -56,7 +76,7 @@
       </div>
     </div>
 
-    <div class="ms-auto me-4 col-md-2 col-sm-2 my-2  order-first order-md-last">
+    <div class="ms-auto me-4 col-md-2 col-sm-2 my-2 order-first order-md-last">
       <div class="d-flex justify-content-center align-items-center">
         <div class="btn btn-rounded p-0 pb-0"></div>
         <label class="form-label p-0 m-0" for="applicationLogo">
@@ -198,7 +218,17 @@
       Submit
     </button>
   </div>
-  <form action="" id="applicationForm" class="needs-validation" method="post" novalidate enctype="multipart/form-data"></form>
+  <form
+    action="/user/application?id=<%= page.data._id %>"
+    id="applicationForm"
+    class="needs-validation"
+    method="post"
+    novalidate
+    enctype="multipart/form-data"
+  >
+
+  </form>
+  <input type="hidden" name="formid" value="<%= page.data._id %>" form="applicationForm" />
   <form id="addDocument" class="needs-validation" novalidate></form>
   <form id="addMember" class="needs-validation" novalidate></form>
 </div>

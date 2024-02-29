@@ -10,43 +10,29 @@ const applicationSchema = new mongoose.Schema(
         },
         organization: {
             type: String,
-            required: true,
+            // required: true,
         },
-        openDate: {
+        start: {
             type: Date,
             required: true,
         },
-        closeDate: {
+        deadline: {
             type: Date,
             required: true,
         },
         description: {
             type: String,
+            required: true,
         },
         applicant: {
             type : mongoose.Schema.Types.ObjectId,
             ref: 'User',
+            required: true,
         },
         website : {
             type: String,
         },
-        requiredDocuments: {
-            type: Array,
-        },
-        logo : {
-            type: String,
-        },
-        logs : {
-            type: Array,
-        },
-
-        // document: [
-        //     {
-        //         type: mongoose.Schema.Types.ObjectId,
-        //         ref: 'Document',
-        //     }
-        // ],
-
+        
 
     },
     {
