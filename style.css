@@ -755,7 +755,7 @@ body {
     align-items: center;
   }
   .offering-carousel .offering-box {
-    scroll-snap-align: start;
+    scroll-snap-align: center;
     height: 342px;
     list-style: none;
     background: #fff;
