@@ -507,6 +507,16 @@ $(document).ready(function () {
 
 // Secction 6,7,8 @DS End
 
+//marquee start - stop
+function stopMarquee() {
+  var marquee = document.getElementById("marquee");
+  marquee.stop();
+}
+
+function startMarquee() {
+  var marquee = document.getElementById("marquee");
+  marquee.start();
+}
 
 //------------------------------------------------------------------------------------------------------------------------------------------
 
