@@ -139,6 +139,24 @@ h1,h2,h3,h4,h5,h6{
   font-size: 1.25em!important;
 }
 
+/* marquee of events */
+marquee{
+  background-color:rgb(30, 48, 80);
+  color:white;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+marquee a{
+  margin:5px 20px 5px 20px;
+}
+
+marquee a:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .line1 {
   font-weight: bold;
 }
@@ -755,7 +773,7 @@ body {
     align-items: center;
   }
   .offering-carousel .offering-box {
-    scroll-snap-align: center;
+    scroll-snap-align: start;
     height: 342px;
     list-style: none;
     background: #fff;
