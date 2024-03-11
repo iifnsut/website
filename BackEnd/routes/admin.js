@@ -13,15 +13,17 @@ router.use(loginAccessChecker([roleConfig.admin]));
 router.get('^/$', adminController.indexPage);
 
 
-router.get('^/application(s)?', adminController.viewALLApplications);
-router.patch('^/application(s)?/:id', adminController.updateApplication);
+// router.get('^/application(s)?', adminController.viewALLApplications);
+// router.patch('^/application(s)?/:id', adminController.updateApplication);
 
 router.post('^/access', adminController.getAccessDetails);
 router.patch('^/access', adminController.updateUsersAccess);
 
-router.get('^/newApplicants', adminController.newApplicationForm);
-// router.get('^/openApplicants', adminController.getOpenApplicants);
-router.post('^/newApplicants', fileUpload, adminController.createOpenApplicant);
+// router.get('^/newApplicants', adminController.newApplicationForm);
+// router.get('^/forms', adminController.getforms);
+// router.post('^/newApplicants', fileUpload, adminController.createform);
+
+// router.get('^/newEvent', adminController.newEventForm);
 
 
 module.exports = router;

@@ -6,7 +6,7 @@ const { query } = require("express");
 const { roleConfig } = require("../config/roleConfig");
 const { default: mongoose } = require("mongoose");
 const validStatus = ["all","applied","approved","rejected","withdrawn","discrepancy"];
-const openApplicantModel = require("../models/openApplicantModel");
+const formModel = require("../models/formModel");
 
 
 
@@ -22,7 +22,7 @@ const newApplication = async (req, res) => {
     
     const { applicationName, description, email, phone, address, team } = req.body;
     console.log(formid);
-    const form  = await openApplicantModel.findOne({"_id" : new mongoose.Types.ObjectId(formid)}).exec();
+    const form  = await formModel.findOne({"_id" : new mongoose.Types.ObjectId(formid)}).exec();
     if(!form){
         return res.status(404).json({ message: "Application not found" });
     }
@@ -93,7 +93,7 @@ const formApplication = async (req, res) => {
     const id = req.query.id;
     console.log(id);
     if (id && mongoose.Types.ObjectId.isValid(id)) {
-        const application = await openApplicantModel.findById(id).select("name _id start deadline").lean();
+        const application = await formModel.findById(id).select("name _id start deadline").lean();
         if (!application) {
             return res.status(404).json({ message: "Application not found" });
         }

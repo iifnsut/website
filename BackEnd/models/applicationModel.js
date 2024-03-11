@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const AutoIncrement = require('mongoose-sequence')(mongoose);
 const Documents = require('./documentModel');
 const User = require('./userModel');
-const OpenApplicant = require('./openApplicantModel');
+const form = require('./formModel');
 
 
 
@@ -12,7 +12,7 @@ const applicationSchema = new mongoose.Schema(
         // General Information of the Applicant
         form: {
             type : mongoose.Schema.Types.ObjectId,
-            ref: 'OpenApplicant',
+            ref: 'form',
         },
         name: {
             type: String,
@@ -117,7 +117,8 @@ const applicationSchema = new mongoose.Schema(
 applicationSchema.plugin(AutoIncrement, { 
     inc_field: 'no',
     id : 'application_seq',
-    start_seq: 1000 
+    start_seq: 1000,
+    prefix: 'A-'
 });
 
 module.exports = mongoose.model('Application', applicationSchema);

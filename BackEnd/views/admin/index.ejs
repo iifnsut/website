@@ -9,20 +9,18 @@ return text.charAt(0).toUpperCase() + text.slice(1); } %>
     </div>
     <div class="row">
       <div class="col-12">
-        <h2 class="text-center">Welcome, <%= textCapitalize("Admin") %></h2>
+        <h2 class="text-center">Welcome, <%= textCapitalize(page.data.name) %></h2>
       </div>
     </div>
     <div class="row justify-content-center">
       <div class="col-auto bg-light rounded border border-1 m-2 p-3">
-        <h3 class="">18</h3>
+        <h3 class=""><%= page.data.openApplicationNo %></h3>
         <h4 class="">Open Applications</h4>
-        <a href="/admin/openApplication" class="btn btn-primary">Manage</a>
+        <a href="/event" class="btn btn-primary m-2">Manage</a>
+        <a href="/event/new" class="btn btn-primary m-2">Create</a>
       </div>
-      <div class="col-auto bg-light rounded border border-1 m-2 p-3">
-        <h3 class="">512</h3>
-        <h4 class="">Recived Applications</h4>
-        <a href="/admin/applications" class="btn btn-primary">Manage</a>
-      </div>
+   
+
     </div>
     <div class="row">
       <div class="col-12">

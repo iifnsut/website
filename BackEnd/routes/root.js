@@ -7,7 +7,7 @@ router.get('^/$|/index(.html)?', publicController.index);
 
 router.get('/about(.html)?', publicController.about);
 
-router.get('/event(.html)?', publicController.event);
+// router.get('/event(.html)?', publicController.event);
 
 router.get('/contact(.html)?', publicController.contact);
 

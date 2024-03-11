@@ -1,5 +1,5 @@
 const path = require("path");
-const openApplicantModel = require("../models/openApplicantModel");
+const formModel = require("../models/formModel");
 
 
 const index = (req, res) => {
@@ -84,7 +84,7 @@ const login = (req, res) => {
 const apply = async (req, res) => {  
   const today = new Date().toLocaleDateString('sv');
   try {
-    const applications = await openApplicantModel.find({deadline : {$gte : today}}).lean();
+    const applications = await formModel.find({deadline : {$gte : today}}).lean();
     res.render(path.join("public", "apply.ejs"), {
       page: {
         title: "Apply at NSUT IIF",

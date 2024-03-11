@@ -3,7 +3,7 @@ const Application = require("../models/applicationModel");
 const { query } = require("express");
 const { roleConfig } = require("../config/roleConfig");
 const User = require("../models/userModel");  
-const openApplicants = require("../models/openApplicantModel");
+const forms = require("../models/formModel");
 const validStatus = ["all","applied","approved","rejected","withdrawn","discrepancy"];
 const mongoose = require("mongoose");
 
@@ -127,7 +127,9 @@ const updateApplication = async (req, res) => {
 }
 
 
-const indexPage = (req, res ) => {
+const indexPage = async (req, res ) => {
+  let openApplicationNo = await forms.countDocuments({ deadline : {$gte : new Date()}, status : {$ne : "closed"}}).lean();
+  console.log(openApplicationNo);
   res.render(path.join("admin", "index.ejs"), {
     page: {
       title: "Admin",
@@ -136,6 +138,10 @@ const indexPage = (req, res ) => {
       path: "/admin",
       type: "admin",
       scripts : ["adminindex.js"],
+      data : {
+        name : req.user.name,
+        openApplicationNo : openApplicationNo,
+      }
     },
   });
 }
@@ -206,10 +212,10 @@ const newApplicationForm = (req, res) => {
 }
 
 // fetching and creating new Open Applicants
-const getOpenApplicants = async (req, res) => {
+const getforms = async (req, res) => {
   try {
-    const openApplicants = await openApplicants.find({}).exec();
-    res.status(200).json(openApplicants);
+    const forms = await forms.find({}).exec();
+    res.status(200).json(forms);
   }
   catch (error) {
     res.status(500).json({ message: error.message });
@@ -217,10 +223,10 @@ const getOpenApplicants = async (req, res) => {
 }
 
 
-const createOpenApplicant = async (req, res) => {
+const createform = async (req, res) => {
   const { name, description, link, start, deadline } = req.body;
   try {
-    const newOpenApplicant = new openApplicants({
+    const newform = new forms({
       name,
       description,
       website : link,
@@ -228,8 +234,8 @@ const createOpenApplicant = async (req, res) => {
       deadline : new Date(deadline),
       applicant :  new mongoose.Types.ObjectId(req.user._id),
     });
-    await newOpenApplicant.save();
-    console.log(newOpenApplicant);
+    await newform.save();
+    console.log(newform);
     res.status(201).json({ message: "New Open Applicant created" });
   }
   catch (error) {
@@ -237,6 +243,46 @@ const createOpenApplicant = async (req, res) => {
   }
 }
 
+// New Event Form
+const newEventForm = (req, res) => {
+  res.render(path.join("admin", "newEventForm.ejs"), {
+    page: {
+      title: "New Event",
+      name: "New Event",
+      description: "New Event",
+      path: "/admin/newEvent",
+      type: "admin",
+      styles: ["photoPreview.css"],
+      scripts: [ 'photoPreview.js'],
+      loggedIn: req.isAuthenticated(),
+    },
+  });
+}
+
+// saving new Event
+const createEvent = async (req, res) => {
+  const { name, description, date, location, type ,link, form } = req.body;
+  try {
+    const newEvent = new Event({
+      name,
+      description,
+      event_date: new Date(date),
+      event_location: location,
+      event_type: type,
+    });
+    if (link) {
+      newEvent.event_link = link;
+    }
+    if (form) {
+      newEvent.form = mongoose.Types.ObjectId(form);
+    }
+    await newEvent.save();
+    res.status(201).json({ message: "New Event created" });
+  }
+  catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
 
 
 
@@ -248,7 +294,8 @@ module.exports = {
   getAccessDetails,
   updateUsersAccess,
   newApplicationForm,
-  getOpenApplicants,
-  createOpenApplicant,
+  getforms,
+  createform,
+  newEventForm,
 };
 

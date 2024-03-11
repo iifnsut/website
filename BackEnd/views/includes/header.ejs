@@ -58,9 +58,20 @@
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="#">Career</a>
                 </li> -->
-                <li class="nav-item">
-                  <% const logged =  page.loggedIn? 'Logout' :  'Login' %>
-                  <a class="nav-link active p-2" id="active" aria-current="page" href="/<%= logged.toLowerCase() %>"><i class="fa-solid fa-user"></i> <%= logged %></a>
+                <% if (!page.loggedIn) { %>
+                  <li class="nav-item">
+                      <a class="nav-link active p-2" id="active" aria-current="page" href="/login"><i class="fa-solid fa-user"></i>Login</a>
+                  </li>
+                  <% } else { %>
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="/admin">DashBoard</a>
+                    </li>
+                  <li class="nav-item">
+                      <a class="nav-link active p-2" id="active" aria-current="page" href="/logout"><i class="fa-solid fa-user"></i>Logout</a>
+                  </li>
+                 
+                    <% }%>
+                     
                 </li>
               </ul>
             </div>

@@ -1,0 +1,15 @@
+/* Photo preview */
+.image-preview {
+    position: relative;
+    display: inline-block;
+    width: 250px;
+    /* height: ; */
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

@@ -15,6 +15,7 @@
     "url": "https://github.com/iifnsut/website/"
   },
   "dependencies": {
+    "body-parser": "^1.20.2",
     "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "ejs-mate": "^4.0.0",
@@ -22,6 +23,7 @@
     "express-mongo-sanitize": "^2.2.0",
     "express-session": "^1.18.0",
     "helmet": "^7.1.0",
+    "joi": "^17.12.2",
     "method-override": "^3.0.0",
     "mongoose": "^8.1.0",
     "mongoose-sequence": "^6.0.0",

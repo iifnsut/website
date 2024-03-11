@@ -19,10 +19,10 @@
     <% for( const elem of path.slice(0,-1) ){%>
         <% if(elem) {%>
         <% url+=elem+'/' %>
-    <li class="breadcrumb-item"><a href="<%= url %>"><%= textCapitalize(elem) %></a></li>
+    <li class="breadcrumb-item"><a href="<%= url %>" class="text-secondary"><%= textCapitalize(elem) %></a></li>
     <% } %>
 
     <% } %>
-    <li class="breadcrumb-item active" aria-current="page"><%= textCapitalize(path.slice(-1)[0]) %></li>
+    <li class="breadcrumb-item active text-muted" aria-current="page"><%= textCapitalize(path.slice(-1)[0]) %></li>
   </ol>
 </nav>

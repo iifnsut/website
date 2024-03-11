@@ -1,0 +1,203 @@
+<% layout('./layouts/indexLayout.ejs') -%> <% function textCapitalize(text) {
+return text.charAt(0).toUpperCase() + text.slice(1); } %>
+<div class="w-100 mt-3 d-flex">
+  <div class="ms-5">
+    <h3><%= page.title %></h3>
+    <%- include("./../includes/breadcrumb.ejs") %>
+  </div>
+</div>
+<!-- New Form for Event -->
+<div class="container mt-2 mb-3 w-100">
+  <div class="row">
+    <div class="">
+      <div class="card">
+        <div class="card-header">
+          <h4>Create New Event</h4>
+        </div>
+        <div class="card-body">
+          <form
+           id="newEventForm"
+            action="/admin/newEvent"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <div class="row">
+              <div class="col-12 col-md-8 order-md-1 order-2">
+                <div class="form-group mb-3">
+                  <label for="name">Event Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group mb-3">
+                  <label for="date">Event Date</label>
+                  <input
+                    type="date"
+                    name="date"
+                    id="date"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group mb-3">
+                  <label for="time">Event Time</label>
+                  <input
+                    type="time"
+                    name="time"
+                    id="time"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group mb-3">
+                  <label for="location">Venue</label>
+                  <input
+                    type="text"
+                    name="location"
+                    id="location"
+                    class="form-control"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-md-4 order-sm-1 order-2">
+                <!-- Image Preview -->
+                <div
+                  class="form-group mb-3 d-flex justify-content-center align-items-center flex-column"
+                >
+                  <label for="image-url">
+                    <div class="image-preview">
+                      <img
+                        src=""
+                        alt=""
+                        id="imagePreview-img"
+                        class="img-fluid"
+                        onerror="this.src='/Assets/nologo.png'"
+                      />
+                      <div class="text-center">
+                        <i class="fa-solid fa-upload"></i> Image Preview
+                      </div>
+                    </div>
+                  </label>
+                  <!-- <input
+                    type="file"
+                    name="image"
+                    id="image"
+                    class="d-none"
+                    onchange="displaySelectedImage(event, 'imagePreview-img')"
+                    accept="image/*"
+                    disabled
+                  /> -->
+                  <div>
+                    <input type="text" name="imageURL" id="image-url" class="form-control" placeholder="image url" required>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="" class="order-last">
+              <!-- Checkbox for the descriptions -->
+              <div class="d-flex align-items-center ms-1 form-inline my-2">
+                <div class="form-check mx-2">
+                  <input
+                    class="form-check-input create-form"
+                    type="checkbox"
+                    value="false"
+                    name="formCreate"
+                    id="description-check"
+                  />
+                  <label class="form-check-label" for="description-check">
+                    Create Form for Event
+                  </label>
+                </div>
+                <!-- Checkbox for Accepting Form form website -->
+                <div class="form-check  mx-2">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="accept-form"
+                    disabled
+                  />
+                  <label class="form-check-label " for="accept-form">
+                    Accept Form from Website
+                  </label>
+                </div>
+                
+                <div class="form-group mx-2 create-new-form">
+                  <div class="d-flex align-items-center">
+                      <label for="form-link" class="flex-shrink-0 me-2">Form Link:</label>
+                    <input
+                    type="text"
+                    name="formLink"
+                    id="form-link"
+                    class="form-control"
+                    />
+                  </div>
+                </div>
+
+              </div>
+              <div class="form-group mb-3 create-new-form">
+                <label for="description">Description</label>
+                <div id="toolbar-container"></div>
+                <!-- This container will become the editable. -->
+                <div
+                  id="description"
+                  class="bg-light border border-2 border-top-0"
+                ></div>
+              </div>
+              <div class="create-new-form">
+
+              <div class="d-flex align-items-center mb-3 create-new-form w-100">
+                <div class="flex-fill m-2">
+                  <div class="form-group">
+                    <label for="date-start">Start Date</label>
+                    <input
+                      type="date"
+                      name="start"
+                      id="date-start"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+                <div class="flex-fill m-2">
+                  <div class="form-group">
+                    <label for="date-end">End Date</label>
+                    <input
+                      type="date"
+                      name="deadline"
+                      id="date-end"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+                <div class="flex-fill m-2">
+                  <div class="form-group">
+                    <label for="time-start">Status</label>
+                    <select name="status" id="status" class="form-control">
+                      <option value="upcoming">Upcoming</option>
+                      <option value="ongoing">Ongoing</option>
+                      <option value="closed">Completed</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            </div>
+
+            <div class="form-group mb-3">
+              <button type="submit" class="btn btn-primary">
+                Create Event
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of New Form for Event -->

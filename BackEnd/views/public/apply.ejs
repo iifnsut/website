@@ -5,6 +5,7 @@
     Apply for Incubation
   </h1>
   <div class="accordion" id="ApplicationBox">
+    <% if(page.data && page.data.length!==0){ %> 
     <% for(const item of page.data){ %>
       <div class="accordion-item">
         <h2 class="accordion-header" id="<%= "heading"+item._id %>">
@@ -27,11 +28,25 @@
                 </strong>
               </li>
             </ul>
-            <a href="/user/application/new?id=<%= item._id %>" class="btn btn-primary">Apply</a>
+            <a href="<%= item.link %>" class="btn btn-primary">Apply</a>
           </div>
         </div>
       </div>
     <% } %>
+    <% } else { %>
+      <div class="text-center m-4">
+        <div class="d-flex justify-content-center align-items-center">
+          <h1 class="not-found-color">!</h1>
+        </div>
+        <h1>No Applications Found</h1>
+        <a
+          class="btn btn-primary my-2 text-light"
+          href="/"
+          role="button"
+          >Click here go to Home</a
+        >
+      </div>
+      <% } %>
   </div>
 
 </div>

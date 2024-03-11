@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 
-const applicationSchema = new mongoose.Schema(
+const formSchema = new mongoose.Schema(
     {
         name: {
             type: String,
@@ -29,10 +29,16 @@ const applicationSchema = new mongoose.Schema(
             ref: 'User',
             required: true,
         },
-        website : {
+        link : {
             type: String,
         },
-        
+        status: {
+            type: String,
+            default: "ongoing",
+            enum: [
+                "upcoming","ongoing" ,"closed"
+            ]
+        }       
 
     },
     {
@@ -40,7 +46,7 @@ const applicationSchema = new mongoose.Schema(
     }
 );
 
-applicationSchema.plugin(AutoIncrement, {inc_field: 'openApplicationId'});
-const OpenApplication = mongoose.model('OpenApplication', applicationSchema);
-module.exports = OpenApplication;
+formSchema.plugin(AutoIncrement, {inc_field: 'formId', start_seq: 1000, prefix: 'F-'});
+const form = mongoose.model('OpenApplication', formSchema);
+module.exports = form;
 

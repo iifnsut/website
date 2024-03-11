@@ -36,9 +36,9 @@ const PORT = process.env.PORT || 5050;
 app.use(methodOverride("_method"));
 
 // For parsing the URL encoded and JSON data in request body
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 // Connect to MongoDB
 connectDB();
 
@@ -66,25 +66,20 @@ app.use(passport.authenticate("session"));
 // Public Routes
 app.use("/", require("./routes/root"));
 app.use("/", require("./routes/api/auth"));
-app.use("/", require("./routes/root"));
-app.use("/", require("./routes/api/auth"));
-
 // Protected Routes
-app.use("/user", require("./routes/user"));
+// app.use("/user", require("./routes/user"));
 app.use("/admin", require("./routes/admin"));
+app.use('/event', require('./routes/event'));
 
 // For serving the protected documents files
-app.use("/file(s)?", require("./routes/documents"));
+// app.use("/file(s)?", require("./routes/documents"));
 
 // Ignore the below routes
 // StartUp Routes
-app.use("/company", require("./routes/company"));
-app.use("/company", require("./routes/company"));
+// app.use("/company", require("./routes/company"));
 
 // Route for API in future uses.
 app.use("/api", require("./routes/api"));
-app.use("/api", require("./routes/api"));
-
 // Not Found Route
 app.all("*", (req, res) => {
   res.status(404);
