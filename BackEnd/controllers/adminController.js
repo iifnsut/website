@@ -4,6 +4,7 @@ const { query } = require("express");
 const { roleConfig } = require("../config/roleConfig");
 const User = require("../models/userModel");  
 const forms = require("../models/formModel");
+const Event = require("../models/eventModel");
 const validStatus = ["all","applied","approved","rejected","withdrawn","discrepancy"];
 const mongoose = require("mongoose");
 
@@ -128,8 +129,7 @@ const updateApplication = async (req, res) => {
 
 
 const indexPage = async (req, res ) => {
-  let openApplicationNo = await forms.countDocuments({ deadline : {$gte : new Date()}, status : {$ne : "closed"}}).lean();
-  console.log(openApplicationNo);
+  let event = await Event.countDocuments({}).lean();
   res.render(path.join("admin", "index.ejs"), {
     page: {
       title: "Admin",
@@ -140,7 +140,7 @@ const indexPage = async (req, res ) => {
       scripts : ["adminindex.js"],
       data : {
         name : req.user.name,
-        openApplicationNo : openApplicationNo,
+        event : event,
       }
     },
   });

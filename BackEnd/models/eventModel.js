@@ -36,6 +36,13 @@ let Event = new Schema({
     timestamps: true
 });
 
+Event.post("findOneAndDelete", async function(event) {
+    console.log("Deleting form", event.form);
+    if(event.form) {
+        await mongoose.model("Form").findOneAndDelete({_id: event.form});
+    }
+    });    
+
 Event.plugin(sequence, {
     inc_field: 'eventId',
     start_seq: 1000

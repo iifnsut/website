@@ -22,6 +22,10 @@ createFormCheckbox.addEventListener("change", (e) => {
             }
             );
         });
+        document.querySelectorAll(".ck-hidden").forEach((input) => {
+            input.required = false;
+        }
+        );
     }
     else {
         e.target.value = "false";
@@ -76,7 +80,7 @@ document.getElementById("newEventForm").addEventListener("submit", async (e) => 
         for (let i = 0; i < editor.children.length; i++) {
             editor.children[i].remove();
         }
-        
+
         Swal.fire({
             title: 'Success!',
             text: data.message,

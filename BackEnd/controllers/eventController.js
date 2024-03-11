@@ -96,6 +96,8 @@ eventSchema = Joi.object({
       "date.empty": `Deadline cannot be an empty field`,
     }),
 });
+
+
 // New Event Form
 const newEventForm = (req, res) => {
   res.render(path.join("event", "newEventForm.ejs"), {
@@ -165,7 +167,7 @@ const createEvent = async (req, res) => {
 };
 
 const index = async (req, res) => {
-  const events = await Event.find({ date: { $gte: new Date() } }).sort({
+  const events = await Event.find().sort({
     date: 1,
   });
   res.render(path.join("event", "index.ejs"), {
@@ -185,18 +187,23 @@ const index = async (req, res) => {
 
 const deleteEvent = async (req, res) => {
   const id = req.params.id;
-  const eventId = parseInt(id);
-  console.log(eventId);
   try {
-    const event = await Event.find({ eventId }).populate("form").exec();
+    const event = await Event.findOneAndDelete({ eventId: id });
     if (!event) {
-      return res.status(404).json({ message: "Event not found." });
-    }
-    await Event.deleteOne({ eventId }).exec();
-    console.log("Event deleted");
-    if (event.form) {
-      await Form.deleteOne({ _id: event.form._id }).exec();
-      console.log("Form deleted");
+      return res.status(404).render(path.join("public", "error.ejs"), {
+        page: {
+          title: "Error",
+          name: "Error",
+          description: "Error",
+          path: "/error",
+          type: "admin",
+          styles: [],
+          scripts: [],
+          loggedIn: req.isAuthenticated(),
+          message: "Event not found",
+        },
+      });
+
     }
     // Redirect to events page
     res.status(302).redirect("/event");
