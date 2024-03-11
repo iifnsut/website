@@ -698,4 +698,14 @@ class OurAchievements {
   
   //Offerings and Collaborations Script End @Shivam Goswami
   
+
+  function stopMarquee() {
+    var marquee = document.getElementById("marquee");
+    marquee.stop();
+  }
+  
+  function startMarquee() {
+    var marquee = document.getElementById("marquee");
+    marquee.start();
+  }
   

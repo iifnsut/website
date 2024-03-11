@@ -764,7 +764,7 @@ body {
     align-items: center;
   }
   .offering-carousel .offering-box {
-    scroll-snap-align: start;
+    scroll-snap-align: center;
     height: 342px;
     list-style: none;
     background: #fff;
@@ -2230,3 +2230,20 @@ input[type="radio"]:checked+label, .contact-us-map-wrapper form button[type="sub
 .create-new-form{
   display: none;
 }
+marquee{
+  background-color:rgb(30, 48, 80);
+  color:white;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+marquee a{
+  margin:5px 20px 5px 20px;
+}
+
+marquee a:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+

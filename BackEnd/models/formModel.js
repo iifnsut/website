@@ -47,6 +47,6 @@ const formSchema = new mongoose.Schema(
 );
 
 formSchema.plugin(AutoIncrement, {inc_field: 'formId', start_seq: 1000, prefix: 'F-'});
-const form = mongoose.model('OpenApplication', formSchema);
+const form = mongoose.model('Form', formSchema);
 module.exports = form;
 

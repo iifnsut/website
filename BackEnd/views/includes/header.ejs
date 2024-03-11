@@ -27,7 +27,13 @@
         <img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e9/Netaji_Subhas_University_of_Technology.svg/640px-Netaji_Subhas_University_of_Technology.svg.png" alt="">
       </a>
   </div>
-    
+ 
+  <% if(page?.marquee){ %>
+    <marquee id="marquee" onMouseOver="stopMarquee()" onMouseOut="startMarquee()">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfWxeXp8SKQp3TyDzHAvObnR10p3f4ZDNdddY4qrM7Y8FvVHA/viewform" target="_blank">Pitch Punch 4.0<sup style="color:red">New</sup></a>
+     </marquee>
+    <% } %>
+ 
   <div id="navbar">
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
           <div class="container-fluid">

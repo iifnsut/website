@@ -2,7 +2,7 @@
 DecoupledEditor
     .create( document.querySelector( '#description' ) )
     .then( editor => {
-        const toolbarContainer = document.querySelector( '#toolbar-container' );
+        let toolbarContainer = document.querySelector( '#toolbar-container' );
 
         toolbarContainer.appendChild( editor.ui.view.toolbar.element );
     } )
@@ -10,14 +10,14 @@ DecoupledEditor
         console.error( error );
     } );
 
-const createFormCheckbox = document.querySelector(".create-form");
+let createFormCheckbox = document.querySelector(".create-form");
 
 createFormCheckbox.addEventListener("change", (e) => {
     if (e.target.checked) {
         e.target.value = "true";
         document.querySelectorAll('.create-new-form').forEach((form) => {
             form.style.display = "block";
-            form.querySelectorAll("input").forEach((input) => {
+            form.querySelectorAll("input:not(#description input)").forEach((input) => {
                 input.required = true;
             }
             );
@@ -36,24 +36,31 @@ createFormCheckbox.addEventListener("change", (e) => {
 });
 
 document.querySelector("#image-url").addEventListener("input", (e) => {
-    const image = document.querySelector(".image-preview img");
+    let image = document.querySelector(".image-preview img");
     console.log(e.target.value);
     image.src = e.target.value;
 });
 
 document.getElementById("newEventForm").addEventListener("submit", async (e) => {
     e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
+    let form = e.target;
+    console.log(form)
+    let formData = new FormData(form);
     if (document.querySelector(".create-form").checked) {
-        const description = document.querySelector("#description").innerHTML;
+        let description = document.querySelector("#description").innerHTML;
         formData.append("description", description);
     }
-    const response = await fetch("/event?format=json", {
+    let checked = document.querySelector(".create-form").checked;
+    formData.delete("formCreate");
+    formData.append("formCreate", checked);
+    for(let pair of formData.entries()) {
+        console.log(pair[0]+ ', '+ pair[1]); 
+    }
+    let response = await fetch("/event?format=json", {
         method: "POST",
         body: formData,
     });
-    const data = await response.json();
+    let data = await response.json();
     if (response.status === 201) {
         form.reset();
         document.querySelector(".image-preview img").src = "";
@@ -65,7 +72,11 @@ document.getElementById("newEventForm").addEventListener("submit", async (e) => 
             }
             );
         });
-        document.querySelector("#description").innerHTML = "";
+        let editor = document.querySelector("#description");
+        for (let i = 0; i < editor.children.length; i++) {
+            editor.children[i].remove();
+        }
+        
         Swal.fire({
             title: 'Success!',
             text: data.message,
