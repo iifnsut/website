@@ -78,7 +78,7 @@ router.get(
     } else if (req.user.roles.includes(roleConfig.subAdmin)) {
       res.redirect("/event");
     } else {
-      res.redirect("/")
+      res.redirect("/");
     }
   }
 );
