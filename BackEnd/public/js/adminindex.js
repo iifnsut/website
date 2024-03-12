@@ -107,7 +107,8 @@ class AccessDetails {
                       <label for="accessrole" class="form-check-label"
                         >Role :
                       </label>
-                      <div id="accessrole" class="form-check-inline">
+                      <div id="accessrole" class="form-check-inline d-flex">
+                        <div class="mx-2">
                         <input
                           type="checkbox"
                           class="form-check-input"
@@ -117,6 +118,21 @@ class AccessDetails {
                           ${data.roles.includes('admin') ? 'checked' : ''}
                         />
                         <label for="aradmin">Admin</label>
+                        </div>
+                        <div class="mx-2">
+                        <input
+                          type="checkbox"
+                          class="form-check-input"
+                          id="arsubAdmin"
+                          name="roles"
+                          value="subAdmin"
+                          ${data.roles.includes('subAdmin') ? 'checked' : ''}
+                        />
+                        <label for="arsubAdmin">Sub Admin</label>
+                        </div>
+
+                        <div class="mx-2">
+                        
                         <input
                           type="checkbox"
                           class="form-check-input"
@@ -129,6 +145,7 @@ class AccessDetails {
                         <label for="aruser" class="form-check-label"
                           >User</label
                         >
+                        </div>
                       </div>
                     </div>
                   </div>

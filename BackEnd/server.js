@@ -121,7 +121,7 @@ app.use((err, req, res, next) => {
         type: "public",
         data: {
           title: err.status,
-          message: err.message,
+          message: "Please contact the administrator, an error occured.",
           link: {
             url: "/",
             text: "Go to Home",

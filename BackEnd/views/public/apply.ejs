@@ -13,19 +13,26 @@
             <%= item.name  %>
           </button>
         </h2>
-        <div id="<%= "control"+item._id %>" class="accordion-collapse collapse" aria-labelledby="<%= "heading"+item._id %>" data-bs-parent="#ApplicationBox">
+        <div id="<%= "control"+item._id %>" class="accordion-collapse collapse <% if (page?.openForm && page?.openForm==item._id) { %> <%= "show" %> <% } %> " aria-labelledby="<%= "heading"+item._id %>" data-bs-parent="#ApplicationBox">
           <div class="accordion-body">
             <%- item.description %>
             <ul>
-              <li>
-                <strong>
-                  Application Opens: <%= new Date( item.start).toLocaleDateString('sv') %>
-                </strong>
+              <li class="">
+                <p class="my-0">
+                  <strong>
+                    Application Opens: 
+                  </strong>
+                  <%= new Date( item.start).toLocaleDateString('sv') %>
+                </p>
+               
               </li>
-              <li>
-                <strong>
-                  Application Closes: <%=  new Date(item.deadline).toLocaleDateString('sv') %>
-                </strong>
+              <li class="">
+                <p class="my-0">
+                  <strong>
+                    Application Closes: 
+                  </strong>
+                  <%= new Date( item.deadline).toLocaleDateString('sv') %>
+                </p>
               </li>
             </ul>
             <a href="<%= item.link %>" class="btn btn-primary">Apply</a>

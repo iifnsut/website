@@ -1,10 +1,17 @@
 <% layout('./layouts/indexLayout.ejs') -%> <% function textCapitalize(text) {
     return text.charAt(0).toUpperCase() + text.slice(1); } %>
-    <div class="w-100 mt-3 d-flex">
-      <div class="ms-5">
-        <h3><%= page.title %></h3>
-        <%- include("./../includes/breadcrumb.ejs") %>
-      </div>
+    <div class="w-100 mt-3">
+      <div class="ms-5 d-flex align-items-center">
+        <div class="flex-grow-1">
+          <h3><%= page.title %></h3>
+          <%- include("./../includes/breadcrumb.ejs") %>    
+        </div>
+        <div class="me-4">
+          <a href="/event/new" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Add New Event 
+          </a>
+        </div>
+        </div>
     </div>
     <!-- Index to show all events -->
     <div class="container mt-2 mb-3 w-100">
@@ -23,7 +30,7 @@
                       <th scope="col">Event Name</th>
                       <th scope="col">Date</th>
                       <th scope="col">Image</th>
-                      <th scope="col">Location</th>
+                      <th scope="col">Form</th>
                       <th scope="col">Actions</th>
                     </tr>
                   </thead>
@@ -34,7 +41,8 @@
                         <td><%= event.name %></td>
                         <td><%= new Date(event.date).toLocaleString('sv') %></td>
                         <td><a href="<%= event.image %>" target="_blank"> Show</a> </td>
-                        <td><%= event.location %></td>
+                        <% var formId = event.form?.formId || null %>
+                        <td><%= formId %></td>
                         <td>
         
                             <form action="/event/<%= event.eventId %>?_method=DELETE" method="post">

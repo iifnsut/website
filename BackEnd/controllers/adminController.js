@@ -79,6 +79,7 @@ const updateApplication = async (req, res) => {
           name: "Error",
           description: "Error",
           path: "admin/applications",
+          loggedIn: req.isAuthenticated(),
           type: "public",
           data : {
               title : "Application Not Found",
@@ -141,7 +142,8 @@ const indexPage = async (req, res ) => {
       data : {
         name : req.user.name,
         event : event,
-      }
+      },
+      loggedIn: req.isAuthenticated(),
     },
   });
 }

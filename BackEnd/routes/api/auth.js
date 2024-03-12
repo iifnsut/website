@@ -2,6 +2,7 @@ var express = require("express");
 const { login } = require("../../controllers/publicController");
 var passport = require("passport");
 const User = require("../../models/userModel");
+const { roleConfig } = require("../../config/roleConfig");
 var GoogleStrategy = require("passport-google-oauth20").Strategy;
 passport.use(
   new GoogleStrategy(
@@ -72,7 +73,11 @@ router.get(
   "/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "/login" }),
   function (req, res) {
-    res.redirect("/admin");
+    if (req.user.roles.includes(roleConfig.admin)) {
+      res.redirect("/admin");
+    } else if (req.user.roles.includes(roleConfig.subAdmin)) {
+      res.redirect("/event");
+    }
   }
 );
 

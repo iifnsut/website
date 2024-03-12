@@ -105,7 +105,7 @@ const newEventForm = (req, res) => {
       title: "New Event",
       name: "New Event",
       description: "New Event",
-      path: "/admin/newEvent",
+      path: "/event/new",
       type: "admin",
       styles: ["photoPreview.css"],
       scripts: [
@@ -168,8 +168,8 @@ const createEvent = async (req, res) => {
 
 const index = async (req, res) => {
   const events = await Event.find().sort({
-    date: 1,
-  });
+    eventId: -1,
+  }).populate("form").lean();
   res.render(path.join("event", "index.ejs"), {
     page: {
       title: "Events",

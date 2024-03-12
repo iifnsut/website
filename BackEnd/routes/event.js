@@ -10,7 +10,7 @@ const methodOverride = require('method-override');
 router.use(methodOverride('_method'));
 
 // router.get('^/event/:id', eventController.viewEvent);
-router.use(loginAccessChecker([roleConfig.admin]));
+router.use(loginAccessChecker([roleConfig.admin, roleConfig.subAdmin]));
 router.get('^/$', eventController.index);
 router.post('^/$',upload.none(), eventController.createEvent);
 router.get('^/new', eventController.newEventForm);

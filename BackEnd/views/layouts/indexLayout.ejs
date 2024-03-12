@@ -72,6 +72,13 @@
     <link rel="stylesheet" href="/css/<%= style  %>" />
     <% } %> <% } %> <% } %>
     <!-- Google Fonts -->
+
+    <!-- Preload the image -->
+    <% if (typeof page.preload !== 'undefined') { %> <% if (page.preload.length > 0) { %> <% for (let preload of page.preload) { %>
+    <link rel="preload" href="<%= preload %>" as="image" />
+    <% } %> <% } %> <% } %>
+    
+     
   </head>
   <body>
     <%- include("./../includes/header.ejs") %>

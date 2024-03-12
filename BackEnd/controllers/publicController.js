@@ -1,8 +1,17 @@
 const path = require("path");
 const formModel = require("../models/formModel");
+const Event = require("../models/eventModel");
 
 
-const index = (req, res) => {
+const index = async (req, res) => {
+  let events = await Event.find({date: {$gte: new Date()}}).sort({
+    date: -1,
+  }).select("name date location image form").limit(15).lean();
+  let latestEvents = await Event.find({date: {$lt: new Date()}}).sort({
+    date: -1,
+  }).select("name date location image form").limit(10).lean();
+
+
   res.render(path.join("public", "index.ejs"), {
     page: {
       title: "NSUT IIF",
@@ -12,6 +21,13 @@ const index = (req, res) => {
       type: "public",
       scripts: ["index.js"],
       loggedIn: req.isAuthenticated(),
+      marquee: events.slice(0, 5),
+      events: events,
+      latestEvents: latestEvents,
+      preload : [
+       ...events.map(event => event.image),
+       
+      ]
     },
   });
 };
@@ -82,6 +98,7 @@ const login = (req, res) => {
 };
 
 const apply = async (req, res) => {  
+  let evenId = req.query.open;
   const today = new Date().toLocaleDateString('sv');
   try {
     const applications = await formModel.find({deadline : {$gte : today}}).lean();
@@ -94,6 +111,7 @@ const apply = async (req, res) => {
         type: "public",
         data: applications,
         loggedIn: req.isAuthenticated(),
+        openForm : evenId
       },
     });
   }
