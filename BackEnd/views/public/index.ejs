@@ -5,6 +5,7 @@
       id="carouselExampleAutoplaying"
       class="carousel slide"
       data-bs-ride="carousel"
+      style="padding: 10px"
     >
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -852,6 +853,6 @@
   </div>
 </main>
 <script>
-  let popup = <%- JSON.stringify(page?.events[0]) %> || {};
-  var latestEvents = <%- JSON.stringify(page?.latestEvents) %> || [];
+  let popup = NULL || {};
+  var latestEvents = NULL || [];
 </script>
